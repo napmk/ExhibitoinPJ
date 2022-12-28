@@ -4,7 +4,7 @@
 *,
 *::before,
 *::after {box-sizing: border-box;}
-html, body{ font-size:16px;word-break: keep-all;}
+html, body{ font-size:16px;word-break: keep-all; font-family: 'Pretendard';}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {margin:0;padding:0}
 body {-webkit-text-size-adjust:none;} 
 ul, li{list-style:none}
@@ -15,13 +15,13 @@ ul, li{list-style:none}
 .reservationWrap li{display:flax;}
 
 
-.top-menu{width:100%; height:30px; font-size:12px;position: relative;margin-top: 10px;
-}
-.top-menu a{width:30px;text-decoration:none; color:#333; padding:10px 20px 5px 0;}
-.top-menu .left-link{float:left}
-.top-menu .right-link{float:right}
-.middle-menu{width:100%;clear:both; height:40px;}
-.middle-menu{display:flex}
+nav .top-menu{width:100%; height:30px; font-size:12px;position: relative;border-bottom:1px solid #eee;margin-top: 7px;text-align: right;}
+nav .top-menu a{width:30px;text-decoration:none; color:#333; padding:10px 20px 5px 0;}
+nav .top-menu .right-area{margin-right:20px}
+nav .middle-menu{width:100%;clear:both; height:40px;border-bottom:2px solid #ffe063 }/*// #00d6c4*/
+nav .middle-menu a{display:inline-block; color:#333;text-decoration: none;  margin-right:50px;font-weight: 700;}
+nav .middle-menu ul li{float:left; margin-right:30px}
+nav .middle-menu ul {display:inline-block;margin-top:10px}
 .container {display: flex;}
 .container ul.reservationWrap{margin:20px 0}
 .container ul.reservationWrap{width:100%}

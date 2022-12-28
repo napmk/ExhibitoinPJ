@@ -10,6 +10,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/layout.css" rel="stylesheet" >
+	<link href="${pageContext.request.contextPath}/resources/css/font.css" rel="stylesheet" >
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 	<!--     Fonts and icons     -->
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -21,40 +22,41 @@
 		String sessionId = (String) session.getAttribute("memberId");
 		//로그인중이라면 로그인한 아이디가 저장되고 비로그인 중이면 sessionId==null 임
 	%>
-	<nav id="wrapper">
+	<nav>
 		<div class="top-menu">
-	        <div class="left-link">
-	            <a href="/goods/store" title="굿즈스토어">굿즈스토어</a>
-	            <a href="/membership/membership" title="멤버십">멤버십</a>
-	            <a href="/support" title="고객센터">고객센터</a>
-	        </div>
-	
-	        <div class="right-link">
+	         <div class="right-area">
 	            <!-- 로그인전 -->
 	            <% if(sessionId == null) { %>
-	            <div class="before">
+	           
 	                <a href="login" title="로그인">로그인</a>
 	                <a href="join" title="회원가입">회원가입</a>
-	            </div>
+	           
 				<% } else { %> 
 	            <!-- 로그인후 -->
-		        <div class="after">
+		       
 		            <a href="logout" title="로그아웃">로그아웃</a>
 		            <a href="mypage" title="마이페이지">마이페이지</a>
 	                <a href="mypage" title="예매확인/취소">예매확인/취소</a>
-	            </div>
+	           
 	           
 	           <% } %> 
-	        </div>
 	        
+	          		<a href="/support" title="고객센터">고객센터</a>
+	       </div>
 	    </div>
 	    <div class="middle-menu">
-	    	<ul>
-	    		<li>예매</li>
-	    		<li>이벤트</li>
-	    		<li>랭킹</li>
-	    		<li>혜택/할인</li>
-	    	</ul>
+	    	<div>
+			    <a href="/">enjoysEE</a>
+			    	<ul>
+			    		<li><a href="">예매</a></li>
+			    		<li><a href="event">이벤트</a></li>
+			    		<li><a href="">랭킹</a></li>
+			    		<li><a href="">혜택/할인</a></li>
+			    	</ul>
+		    </div>
+		    <div>
+		    	<li><i class="material-icons">calendar_month</i></li>
+		    </div>
 	    </div>
    </nav> 
     <div class="middle-area" style="display:none">

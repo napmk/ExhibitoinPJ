@@ -6,9 +6,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="wrapper" >	
+
 	<%@ include file="inc/header.jsp" %>
-	
+<div id="wrapper" >		
    	<!-- tab 메뉴-->
    	<div>
 		   	<div id="exhiPosterWrap">
@@ -42,7 +42,10 @@
 								</div>
 								<div class="rv_btnset">
 									<ul>
-										<li><button type="button" class="btn btn-outline-secondary"><i class="fa-regular fa-heart"></i>좋아요</button></li>
+										<li><button type="button" class="btn btn-outline-secondary">
+										
+										<i class="material-icons" style="font-size: 16px;">favorite</i>
+좋아요</button></li>
 										<li><button type="button" class="btn btn-primary" onclick="location.href='show' ">예매하기</button></li>
 									</ul>
 							

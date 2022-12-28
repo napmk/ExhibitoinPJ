@@ -5,22 +5,16 @@
 <head>
 <meta charset="UTF-8">
 	<link href="${pageContext.request.contextPath}/resources/css/test.css" rel="stylesheet" >
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>예약뷰페이지</title>
 </head>
-<script type="text/javascript">    
-	$(".star").on('click',function(){
-	   var idx = $(this).index();
-	   $(".star").removeClass("on");
-	     for(var i=0; i<=idx; i++){
-	        $(".star").eq(i).addClass("on");
-	   }
-	 });</script>
+
 <body>
 <%@ include file="../inc/header.jsp" %>
 	<div id="wrapper">
 	 <h4>뮤지컬 〈물랑루즈!〉 아시아 초연 (Moulin Rouge! The Musical)</h4>
 	 <div>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
 <style>
 .checked {
   color: orange;
@@ -29,7 +23,6 @@
 </head>
 <body>
 	<div>
-		<h2>Star Rating</h2>
 		<span class="fa fa-star checked"></span>
 		<span class="fa fa-star checked"></span>
 		<span class="fa fa-star checked"></span>
