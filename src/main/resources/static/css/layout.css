@@ -14,6 +14,14 @@ ul, li{list-style:none}
 #wrapper{width:1440px; margin:0 auto}
 .reservationWrap li{display:flax;}
 
+
+.top-menu{width:100%; height:30px; font-size:12px;position: relative;margin-top: 10px;
+}
+.top-menu a{width:30px;text-decoration:none; color:#333; padding:10px 20px 5px 0;}
+.top-menu .left-link{float:left}
+.top-menu .right-link{float:right}
+.middle-menu{width:100%;clear:both; height:40px;}
+.middle-menu{display:flex}
 .container {display: flex;}
 .container ul.reservationWrap{margin:20px 0}
 .container ul.reservationWrap{width:100%}

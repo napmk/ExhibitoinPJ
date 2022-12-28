@@ -11,7 +11,7 @@
 	
    	<!-- tab 메뉴-->
    	<div>
-		   	<div id="exhiPosterWrap" class="mgt50">
+		   	<div id="exhiPosterWrap">
 		   		<h3>전체공연</h3>
 				<ul class="nav nav-tabs mgt20" id="myTab" role="tablist">
 				  <li class="nav-item" role="presentation">
@@ -43,7 +43,7 @@
 								<div class="rv_btnset">
 									<ul>
 										<li><button type="button" class="btn btn-outline-secondary"><i class="fa-regular fa-heart"></i>좋아요</button></li>
-										<li><button type="button" class="btn btn-primary">예매하기</button></li>
+										<li><button type="button" class="btn btn-primary" onclick="location.href='show' ">예매하기</button></li>
 									</ul>
 							
 								</div>
