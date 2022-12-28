@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +19,11 @@
 
 </head>
 <body>
+	<% 
+		String sessionId = (String) session.getAttribute("memberId");
+		//로그인중이라면 로그인한 아이디가 저장되고 비로그인 중이면 sessionId==null 임
+	%>
+	
 	<nav class="navbar navbar-expand-lg bg-light">
 	      <div class="container-fluid">
 	        <a class="navbar-brand" href="/">Seevisit</a>
@@ -32,12 +39,23 @@
 	              <a class="nav-link" href="#">스토어</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" sec:authorize="isAnonymous()"  th:href="@{/login}">로그인</a>
-	              <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
+	            <% if(sessionId == null) { %>
+	              <a class="nav-link" sec:authorize="isAnonymous()"  href="login">
+	              	로그인
+	              </a>
+	             <% } else { %> 
+	              <a class="nav-link" sec:authorize="isAuthenticated()" href="logout">로그아웃</a>
+	             <% } %> 
 	            </li>
+	           <% if(sessionId == null) { %>
 	            <li class="nav-item">
-             		<a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/join}">회원가입</a>
+             		<a class="nav-link" sec:authorize="isAnonymous()"  href="join">회원가입</a>
           		</li>
+          		<% } else { %> 
+          		<li class="nav-item">
+             		<a class="nav-link" sec:authorize="isAnonymous()"  href="mypage">마이페이지</a>
+          		</li>
+          		<% } %>	
 	          </ul>
 	          <form class="d-flex" role="search">
 	            <input class="form-control me-2" type="search" placeholder="Search" aria-label="검색해주세요">

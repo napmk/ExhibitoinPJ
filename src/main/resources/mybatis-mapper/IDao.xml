@@ -6,4 +6,21 @@
 	
 	<mapper namespace="com.exhibition.dao.IDao">
 	
+		<!-- 멤버관련 SQL -->
+		<insert id="joinMember">
+			INSERT INTO emember(mid, mpw, mname, memail) VALUES(#{param1},#{param2},#{param3},#{param4})
+		</insert>
+		<select id="checkId"  resultType="int" >
+			SELECT COUNT(*) FROM emember WHERE mid=#{param1}
+		</select>
+		<select id="checkIdAndPW"  resultType="int" >
+			SELECT COUNT(*) FROM emember WHERE mid=#{param1} AND mpw=#{param2}
+		</select>
+		<select id="getMemberInfo" resultType="com.exhibition.dto.MemberDto">
+			SELECT * FROM emember WHERE mid=#{param1}
+		</select>
+		<update id="memberModify">
+			UPDATE emember SET mpw=#{param2}, mname=#{param3}, memail=#{param4}  WHERE mid=#{param1}
+		</update>
+	
 	</mapper>
