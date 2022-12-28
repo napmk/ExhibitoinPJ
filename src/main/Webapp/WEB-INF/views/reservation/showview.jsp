@@ -20,44 +20,22 @@
 	<div id="wrapper">
 	 <h4>뮤지컬 〈물랑루즈!〉 아시아 초연 (Moulin Rouge! The Musical)</h4>
 	 <div>
-	 <style>
-	 	*{margin:0; padding:0;}
-		.star{
-		  display:inline-block;
-		  width: 30px;height: 60px;
-		  cursor: pointer;
-		}
-		.star_left{
-		  background: url(https://cdn-icons.flaticon.com/png/512/2550/premium/2550223.png?token=exp=1658206826~hmac=853093603ce7f8188af247e705aef276) no-repeat 0 0; 
-		  background-size: 60px; 
-		  margin-right: -3px;
-		}
-		.star_right{
-		  background: url(https://cdn-icons.flaticon.com/png/512/2550/premium/2550223.png?token=exp=1658206826~hmac=853093603ce7f8188af247e705aef276) no-repeat -30px 0; 
-		  background-size: 60px; 
-		  margin-left: -3px;
-		}
-		.star.on{
-		  background-image: url(https://cdn-icons.flaticon.com/png/512/2550/premium/2550357.png?token=exp=1658206869~hmac=205ea741a33853793221c4343f94576a);
-		}
-	 </style>
-	 <!-- 별점 -->
-		<div class="star-box">
-			  <span class="star star_left"></span>
-			  <span class="star star_right"></span>
-			
-			  <span class="star star_left"></span>
-			  <span class="star star_right"></span>
-			
-			  <span class="star star_left"></span>
-			  <span class="star star_right"></span>
-			
-			 <span class="star star_left"></span>
-			 <span class="star star_right"></span>
-			
-			 <span class="star star_left"></span>
-			 <span class="star star_right"></span>
-		</div>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+</head>
+<body>
+	<div>
+		<h2>Star Rating</h2>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star"></span>
+		<span class="fa fa-star"></span>
+		<span>9.1</span>
 	</div>
 	 <div>
 	 	<p><img id="login_title" src="${pageContext.request.contextPath}/resources/image/22014586_p.gif"></p>
