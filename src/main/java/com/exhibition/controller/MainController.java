@@ -23,6 +23,39 @@ public class MainController {
 		return "index";
 	}
 
+	@RequestMapping (value ="join")
+	public String join () {
+		
+		return "join_form";
+	}
+	
+	@RequestMapping (value ="joinOk")
+	public String joinOk (HttpServletRequest request, HttpSession session, Model model) {
+		String mid = request.getParameter("mid");
+		String mpw = request.getParameter("mpw");
+		String mname = request.getParameter("mname");
+		String memail = request.getParameter("memail");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		int joinFlag = dao.memberJoin(mid, mpw, mname, mid);
+		// joinFlag 가 1 이면 회원가입 성공, 아니면 실패
+		//System.out.println("가입성공여부"+ joinFlag);
+		
+		if(joinFlag == 1 ) { //회원가입 성공시 바로 로그인 진행
+			session.setAttribute("memberId", mid);
+			session.setAttribute("memberName", mname);
+		
+			model.addAttribute("mid", mid);
+			model.addAttribute("mname",mname );
+			
+			return "joinOk";
+		} else { //회원가입 실패
+				return "joinFail";
+		}
+	
+	}
+	
+	
 	@RequestMapping (value ="login")
 	public String login () {
 		
@@ -65,4 +98,18 @@ public class MainController {
 
 		return "loginOk";
 	}
+	
+	@RequestMapping (value ="show")
+	public String show () {
+		
+		return "/reservation/showview";
+	}
+	
+	
+	@RequestMapping (value ="event")
+	public String event () {
+		
+		return "/event/evlist";
+	}
+	
 }

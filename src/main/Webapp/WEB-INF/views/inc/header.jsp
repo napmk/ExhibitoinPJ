@@ -14,9 +14,7 @@
 	<!--     Fonts and icons     -->
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-<title>menu</title>
-
-
+	<title>sEEvisit</title>
 </head>
 <body>
 	<% 
@@ -39,6 +37,9 @@
 	              <a class="nav-link" href="#">스토어</a>
 	            </li>
 	            <li class="nav-item">
+	              <a class="nav-link" href="event">이벤트</a>
+	            </li>
+	            <li class="nav-item">
 	            <% if(sessionId == null) { %>
 	              <a class="nav-link" sec:authorize="isAnonymous()"  href="login">
 	              	로그인
@@ -47,11 +48,14 @@
 	              <a class="nav-link" sec:authorize="isAuthenticated()" href="logout">로그아웃</a>
 	             <% } %> 
 	            </li>
-	           <% if(sessionId == null) { %>
+	            <% if(sessionId == null) { %>
 	            <li class="nav-item">
              		<a class="nav-link" sec:authorize="isAnonymous()"  href="join">회원가입</a>
           		</li>
           		<% } else { %> 
+          		<li class="nav-item">
+             		<a class="nav-link" sec:authorize="isAnonymous()"  href="mypage">예매확인/취소</a>
+          		</li>
           		<li class="nav-item">
              		<a class="nav-link" sec:authorize="isAnonymous()"  href="mypage">마이페이지</a>
           		</li>
