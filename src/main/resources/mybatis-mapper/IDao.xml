@@ -22,5 +22,18 @@
 		<update id="memberModify">
 			UPDATE emember SET mpw=#{param2}, mname=#{param3}, memail=#{param4}  WHERE mid=#{param1}
 		</update>
+		
+		<!--show게시판 SQL-->
+		<insert id="showWrite">
+		INSERT INTO 
+			showtbl(snum, stitle, slocation, sdday, stime, sage, sprice,userid, rfbreplycount) 
+		VALUES
+			(show_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4},  #{param5}, #{param6}, #{param7}, 0)
+		</insert>
+	
+		<select id="showList" resultType="com.exhibition.dto.ShowDto">
+			SELECT * FROM showtbl ORDER BY snum DESC <!-- 정렬까먹지 말자. -->
+		</select>
+		
 	
 	</mapper>

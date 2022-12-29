@@ -8,12 +8,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ShowDto {
-	private String sticket; //티켓번호
+	private int snum; //번호
 	private String stitle; //공연제목
 	private String slocation; //공연위치장소
 	private String sdday; //공연날짜
 	private String stime; //공연시간
 	private String sage; //관람나이
 	private String sprice; //공연가격
+	private String userid;//글쓴이의 아이디
+	
 
 }
