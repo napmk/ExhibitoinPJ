@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.boardWrap{margin-top:50px!important}
+.boardWrap .board_title{border-bottom: 2px solid #212529}
+.boardWrap h4{font-size:24px; margin-bottom:5px}
+.boardWrap .star{margin-bottom:4px}
+.boardWrap .show_detail{clear:both; display:block;margin-top: 50px;overflow: auto;}
+.boardWrap .show_detail .show_poster{ float:left}
+.boardWrap .show_detail .show_poster .likes li{float:left;margin-right:10px;}
+.boardWrap .show_detail .pright-area{float:left; margin:0 0 0 50px;}
+.boardWrap .show_detail .pright-area.boardWrap .show_detail .pright-area .show_text{}
+.boardWrap .show_detail .pright-area .show_text{margin-bottom:20px}
+.boardWrap .show_detail .pright-area .show_text li{line-height:30px }

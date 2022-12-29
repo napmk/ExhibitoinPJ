@@ -1,16 +1,26 @@
 package com.exhibition.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.exhibition.dao.IDao;
 import com.exhibition.dto.MemberDto;
+import com.exhibition.dto.ShowDto;
+
 
 @Controller
 public class MainController {
@@ -104,6 +114,68 @@ public class MainController {
 		
 		return "/reservation/showview";
 	}
+	
+	@RequestMapping (value ="showlist")
+	public String showlist () {
+		
+		return "/reservation/showlist";
+	}
+	
+	@RequestMapping (value ="showwrite")
+	public String showwrite () {
+		
+		return "/reservation/showwrite";
+	}
+	
+//	@RequestMapping(value = "writeOk")
+//	public String writeOk(HttpServletRequest request, HttpSession session, @RequestPart MultipartFile files) throws IllegalStateException, IOException {
+//		
+//		String showTitle = request.getParameter("stitle");
+//		String showLocation = request.getParameter("slocation");
+//		String showTime = request.getParameter("stime");
+//		String showAge = request.getParameter("sage");
+//		String showPrice = request.getParameter("sprice");
+//		String sessionId = (String) session.getAttribute("memberId");
+//		//글쓴이의 아이디는 현재 로그인된 유저의 아이디이므로 세션에서 가져와서 전달 
+//		
+//		IDao dao = sqlSession.getMapper(IDao.class);
+//		
+//		if(files.isEmpty()) { // 파일의 첨부여부 확인
+//			dao.showWrite(showTitle, showLocation, showTime,showAge,showPrice, sessionId, 0);
+//		} else {
+//			dao.showWrite(showTitle, showLocation, showTime,showAge,showPrice, sessionId, 1);
+//			ArrayList<ShowDto> latestBoard = dao.boardLatestInfo(sessionId);
+//			ShowDto dto = latestBoard.get(0);
+//			int sticket = dto.getRfbnum();
+//			//파일첨부
+//			String fileoriname = files.getOriginalFilename();//첨부된 파일의 원래 이름
+//			String fileextension = FilenameUtils.getExtension(fileoriname).toLowerCase();
+//			//첨부된 파일의 확장자 추출 후 소문자로 강제 변경
+//			File destinationFile;//java.io 패키지 제공 클래스 임포트
+//			String destinationFileName;//실제 서버에 저장된 파일의 변경된 이름이 저장될 변수 선언
+//			String fileurl = "C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles";
+//			//첨부된 파일이 저장될 서버의 실제 폴더 경로
+//			
+//			do {
+//				destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileextension;
+//				//알파벳대소문자와 숫자를 포함한 랜덤 32자 문자열 생성 후 .을 구분자로 원본 파일의 확장자를 연결->실제 서버에 저장될 파일의 이름
+//				destinationFile = new File(fileurl+destinationFileName);	
+//			} while(destinationFile.exists());
+//			//혹시 같은 이름의 파일이름이 존재하는지 확인
+//			
+//			destinationFile.getParentFile().mkdir();
+//			files.transferTo(destinationFile);//업로드된 파일이 지정한 폴더로 이동 완료!
+//			
+//			dao.fileInfoInsert(sticket, fileoriname, destinationFileName, fileextension, fileurl);		
+//			
+//			
+//		}
+//		
+		
+		
+//		
+//		return "redirect:board_list";
+//	}
 	
 	
 	@RequestMapping (value ="event")

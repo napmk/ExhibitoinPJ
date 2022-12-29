@@ -1,10 +1,13 @@
 package com.exhibition.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.exhibition.dto.MemberDto;
 //import com.exhibition.dto.Criteria;
 //import com.exhibition.dto.QBoardDto;
+import com.exhibition.dto.FileDto;
+//import com.exhibition.dto.RFBoardDto;
 
 public interface IDao {
 
@@ -15,6 +18,15 @@ public interface IDao {
 		public MemberDto getMemberInfo(String mid);//아이디로 조회하여 회원정보 가져오기 SELECT
 		public void memberModify(String mid, String mpw, String mname, String meamil);//아이디로 조회하여 회원정보 수정하기 UPDATE
 
+	//공연정보
+		public int showWrite(int sticket, String stitle, String slocation, String sdday, String stime, String sage, String sprice ,int filecount); //공연등록
+		
+    //파일 업로드 관련
+//		public void fileInfoInsert(int boardnum, String fileoriname, String filename, String fileextension, String fileurl);
+//		public ArrayList<RFBoardDto> boardLatestInfo(String rfbuserid);
+//		//현재 파일이 첨부된 글을 쓴 아이디로 검색된 글 목록
+//		public FileDto getFileInfo(String rfbnum);
+//		//파일이 첨부된 게시글의 번호로 조회한 첨부된 파일의 모든 정보 dto		
 //	//질문게시판
 //		public void writeQuestion(String qid, String qname, String qcontent, String qemail);//질문하기 INSERT
 //		public List<QBoardDto> questionList(Criteria cri);//질문게시판 리스트 가져오기 SELECT

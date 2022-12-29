@@ -10,9 +10,11 @@ body {-webkit-text-size-adjust:none;}
 ul, li{list-style:none}
 .mgt20{margin-top:20px!important}
 .mgt50{margin-top:50px!important}
-.mgt100{margin-top:100px}
+.mgt100{margin-top:100px!important}
+.point_ylw{color:orange }
 #wrapper{width:1440px; margin:0 auto}
 .reservationWrap li{display:flax;}
+.clear{clear:both}
 
 
 nav .top-menu{width:100%; height:30px; font-size:12px;position: relative;border-bottom:1px solid #eee;margin-top: 7px;text-align: right;}

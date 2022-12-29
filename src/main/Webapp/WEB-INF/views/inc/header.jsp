@@ -37,6 +37,7 @@
 		            <a href="logout" title="로그아웃">로그아웃</a>
 		            <a href="mypage" title="마이페이지">마이페이지</a>
 	                <a href="mypage" title="예매확인/취소">예매확인/취소</a>
+	                <a onclick="location.href='showlist'" title="전시올리기">전시업로드</a>
 	           
 	           
 	           <% } %> 
@@ -48,7 +49,7 @@
 	    	<div>
 			    <a href="/">enjoysEE</a>
 			    	<ul>
-			    		<li><a href="">예매</a></li>
+			    		<li><a onclick="location.href='show'">예매</a></li>
 			    		<li><a href="event">이벤트</a></li>
 			    		<li><a href="">랭킹</a></li>
 			    		<li><a href="">혜택/할인</a></li>
