@@ -2,9 +2,12 @@ package com.exhibition.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
@@ -18,13 +21,15 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.exhibition.dao.IDao;
+import com.exhibition.dto.FileDto;
 import com.exhibition.dto.MemberDto;
 import com.exhibition.dto.ShowDto;
-import com.rubato.home.dto.RFBoardDto;
+
 
 
 @Controller
 public class MainController {
+	
 	@Autowired
 	private SqlSession sqlSession;
 	
@@ -110,31 +115,57 @@ public class MainController {
 		return "loginOk";
 	}
 	
-	@RequestMapping (value ="show")
-	public String show () {
-		
-		return "/reservation/showview";
-	}
+
 	
 	@RequestMapping (value ="showlist")
-	public String showlist () {
+	public String showlist (Model model) {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		ArrayList<ShowDto> boardDtos = dao.showList();
+		ArrayList<ShowDto> showboardDtos = dao.showList();
 		
-		int boardCount = dao.rfboardAllCount();
+	//	int boardCount = dao.rfboardAllCount();
 		
-		model.addAttribute("boardList",boardDtos);
-		model.addAttribute("boardCount",boardCount);
+		model.addAttribute("showList",showboardDtos);
+	//	model.addAttribute("boardCount",boardCount);
 		
 		
 		return "/reservation/showlist";
 	}
 	
-	@RequestMapping (value ="showwrite")
-	public String showwrite () {
+	@RequestMapping (value ="showview")
+	public String showview (HttpServletRequest request, Model model, HttpSession session) {
 		
+		String snum = request.getParameter("snum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		//조회수증가 dao.shit(snum);
+		ShowDto showdto = dao.showView(snum);
+		
+		model.addAttribute("showView",showdto);
+		
+		
+		
+		return "/reservation/showview";
+	}
+	
+	
+	@RequestMapping (value ="showwrite")
+	public String showwrite (HttpSession session, HttpServletResponse response) {
+		String sessionId = (String) session.getAttribute("memberId");
+		if(sessionId == null) {//참이면 로그인이 안된 상태
+			PrintWriter out;
+			try {
+				response.setContentType("text/html;charset=utf-8");
+				out = response.getWriter();
+				out.println("<script>alert('로그인하지 않으면 글을 쓰실수 없습니다!');history.go(-1);</script>");
+				out.flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}		
 		return "/reservation/showwrite";
 	}
 	
@@ -143,6 +174,7 @@ public class MainController {
 		
 		String showTitle = request.getParameter("stitle");
 		String showLocation = request.getParameter("slocation");
+		String showSdday = request.getParameter("sdday");
 		String showTime = request.getParameter("stime");
 		String showAge = request.getParameter("sage");
 		String showPrice = request.getParameter("sprice");
@@ -152,9 +184,9 @@ public class MainController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		if(files.isEmpty()) { // 파일의 첨부여부 확인
-			dao.showWrite(showTitle, showLocation, showTime,showAge,showPrice, sessionId, 0);
+			dao.showWrite(showTitle, showLocation, showSdday,showTime,showAge,showPrice, sessionId, 0);
 		} else {
-			dao.showWrite(showTitle, showLocation, showTime,showAge,showPrice, sessionId, 1);
+			dao.showWrite(showTitle, showLocation, showSdday,showTime,showAge,showPrice, sessionId, 1);
 			ArrayList<ShowDto> latestBoard = dao.boardLatestInfo(sessionId);
 			ShowDto dto = latestBoard.get(0);
 			int snum = dto.getSnum();
@@ -165,9 +197,9 @@ public class MainController {
 			File destinationFile;//java.io 패키지 제공 클래스 임포트
 			String destinationFileName;//실제 서버에 저장된 파일의 변경된 이름이 저장될 변수 선언
 			
-			String fileurl = "C:/Users/napmkmk/git/ExhibitoinPJ/src/main/resources/static/uploadfiles";
+			String fileurl = "C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles";
 			//첨부된 파일이 저장될 서버의 실제 폴더 경로 //String fileurl = "C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles";
-			
+			//C:/Users/napmkmk/git/ExhibitoinPJ/src/main/resources/static/uploadfiles
 			do {
 				destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileextension;
 				//알파벳대소문자와 숫자를 포함한 랜덤 32자 문자열 생성 후 .을 구분자로 원본 파일의 확장자를 연결->실제 서버에 저장될 파일의 이름
@@ -180,15 +212,35 @@ public class MainController {
 			
 			dao.fileInfoInsert(snum, fileoriname, destinationFileName, fileextension, fileurl);		
 			
-			
 		}
-		
-		
-		
 		
 		return "redirect:showlist";
 	}
 	
+	@RequestMapping(value = "file_down")
+	public String file_down(HttpServletRequest request, Model model, HttpServletResponse response) {
+		
+		String snum = request.getParameter("snum");//파일이 첨부된 원글 번호
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		FileDto fileDto = dao.getFileInfo(snum);
+		
+		String filename = fileDto.getFilename();
+		
+		PrintWriter out;
+		try {
+			response.setContentType("text/html;charset=utf-8");
+			out = response.getWriter();
+			out.println("<script>window.location.href='/resources/uploadfiles/" + filename + "'</script>");
+			out.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "redirect:/reservation/showlist";
+	}
 	
 	@RequestMapping (value ="event")
 	public String event () {

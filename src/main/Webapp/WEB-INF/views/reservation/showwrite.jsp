@@ -72,6 +72,10 @@ jQuery(function($){
 					  <label for="exampleFormControlTextarea1" class="form-label">공연장소</label>
 					  <input type="text" class="form-control" name="slocation"  placeholder="장소를 입력해주세요" value="">
 				</div>
+			    <div class="mb-3">
+					  <label for="exampleFormControlTextarea1" class="form-label">공연날짜</label>
+					  <input type="text" class="form-control" name="sdday"  placeholder="장소를 입력해주세요" value="">
+				</div>
 				<div class="mb-3">
 					  <label for="exampleFormControlTextarea1" class="form-label">공연시간</label>
 					  <input type="text" class="form-control" name="stime"  placeholder="시간을 입력해주세요" value="">

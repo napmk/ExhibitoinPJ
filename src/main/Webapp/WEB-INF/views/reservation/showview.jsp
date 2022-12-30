@@ -25,7 +25,7 @@
 <%@ include file="../inc/header.jsp" %>
 	<div id="wrapper" class="boardWrap">
 		<div class="board_title">
-		 	<h4>뮤지컬 〈물랑루즈!〉 아시아 초연 (Moulin Rouge! The Musical)</h4>
+		 	<h4>${showView.stitle}</h4>
 		 	<div class="star">
 				<span class="fa fa-star checked"></span>
 				<span class="fa fa-star checked"></span>
@@ -37,7 +37,19 @@
 		</div>
 		<div class="show_detail">	
 			 <div class="show_poster">
-			 	<p><img id="login_title" src="${pageContext.request.contextPath}/resources/image/22014586_p.gif"></p>
+			 	<p id="file_info">
+			 	 ※ 첨부파일 :
+				 	<a href="${pageContext.request.contextPath}/resources/uploadfiles/${fileDto.filename}" download>
+			        	${fileDto.fileoriname }
+			        </a>
+				 		<!--  <img id="login_title" src="${pageContext.request.contextPath}/resources/image/22014586_p.gif">-->
+				 		
+			 	</p>
+			      <c:if test="${fileDto.fileextension =='jpg' or fileDto.fileextension =='png' or fileDto.fileextension =='bmp' or fileDto.fileextension =='gif'}">
+		        	<br>
+		        	<img width="300" src="${pageContext.request.contextPath}/resources/uploadfiles/${fileDto.filename}">
+		        	<br>
+		        </c:if>
 				<ul class="likes">
 					<li><i class="material-icons">favorite</i></li>
 					<li>50</li>
@@ -46,18 +58,14 @@
 			</div>
 			<div class="pright-area">
 				 <ul class="show_text">
-				 	<li>장소 :장소블루스퀘어 신한카드홀</li>
-				 	<li>공연기간 : 2022.12.16 ~ 2023.03.05</li>
-				 	<li>공연시간 : 170분(인터미션 20분 포함)</li>
-				 	<li>관람연령 : 14세 이상 관람가</li>
-				 	<li>가격 : VIP석 180,000원 </li>
+				 	<li>장소 : ${showView.slocation}</li>
+				 	<li>공연기간 : ${showView.sdday}</li>
+				 	<li>공연시간 : ${showView.stime}</li>
+				 	<li>관람연령 : ${showView.sage}</li>
+				 	<li>가격 : ${showView.sprice} </li>
 				 </ul>
 				 <!-- 달력 -->
-				 <ul>
-				 	<li>1장</li>
-				 	<li>2023-01-12</li>
-				 </ul>
-
+				
 				 <button type="submit" class="btn btn-outline-dark" style="padding:8px 24px;font-size:20px;board:2px solid">예약하기</button>
 		
 				 

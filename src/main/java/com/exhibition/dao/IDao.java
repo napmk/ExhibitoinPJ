@@ -8,7 +8,7 @@ import com.exhibition.dto.ShowDto;
 //import com.exhibition.dto.Criteria;
 //import com.exhibition.dto.QBoardDto;
 import com.exhibition.dto.FileDto;
-//import com.exhibition.dto.RFBoardDto;
+
 
 public interface IDao {
 
@@ -19,8 +19,15 @@ public interface IDao {
 		public MemberDto getMemberInfo(String mid);//아이디로 조회하여 회원정보 가져오기 SELECT
 		public void memberModify(String mid, String mpw, String mname, String meamil);//아이디로 조회하여 회원정보 수정하기 UPDATE
 
-	//공연정보
-		public int showWrite(String stitle, String slocation, String sdday, String stime, String sage, String sprice ,int filecount); //공연등록
+	//공연정보게시판
+		public int showWrite(String stitle, String slocation, String sdday, String stime, String sage, String sprice ,String userid,int filecount); //공연등록
+		//public int rfbwrite(String rfbname, String rfbtitle, String rfbcontent, String rfbid, int filecount);//insert
+		public int showboardAllCount();//총 게시물 개수 select
+		public ArrayList<ShowDto> showList();// 게시판 리스트 select
+		public ShowDto showView(String snum); //클긱한 글의 게시물 내용보기.
+		public void delete(String snum);//글삭제 delete
+		public void sbhit(String snum);//조회수
+		
 		
     //파일 업로드 관련
 		public void fileInfoInsert(int sboardnum, String fileoriname, String filename, String fileextension, String fileurl);

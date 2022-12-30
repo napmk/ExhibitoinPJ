@@ -49,7 +49,7 @@
 	    	<div>
 			    <a href="/">enjoysEE</a>
 			    	<ul>
-			    		<li><a onclick="location.href='show'">예매</a></li>
+			    		<li><a onclick="location.href='showview'">예매</a></li>
 			    		<li><a href="event">이벤트</a></li>
 			    		<li><a href="">랭킹</a></li>
 			    		<li><a href="">혜택/할인</a></li>

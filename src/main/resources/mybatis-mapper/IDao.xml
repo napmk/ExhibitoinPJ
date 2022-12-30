@@ -26,14 +26,32 @@
 		<!--show게시판 SQL-->
 		<insert id="showWrite">
 		INSERT INTO 
-			showtbl(snum, stitle, slocation, sdday, stime, sage, sprice,userid, rfbreplycount) 
+			showtbl(snum, stitle, slocation, sdday, stime, sage, sprice, userid, filecount) 
 		VALUES
-			(show_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4},  #{param5}, #{param6}, #{param7}, 0)
+			(showtbl_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4},  #{param5}, #{param6}, #{param7}, #{param8})
+		
 		</insert>
-	
 		<select id="showList" resultType="com.exhibition.dto.ShowDto">
 			SELECT * FROM showtbl ORDER BY snum DESC <!-- 정렬까먹지 말자. -->
 		</select>
 		
-	
+		<select id="showView" resultType="com.exhibition.dto.ShowDto">
+		SELECT * FROM showtbl WHERE snum=#{param1}
+	     </select>
+	     
+	    <!-- 파일업로드 SQL -->
+		<insert id="fileInfoInsert">
+			INSERT INTO showfiles(filenum, sboardnum, fileoriname, filename, fileextension, fileurl) 
+			VALUES (sfile_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5})
+		</insert>
+		
+		<select id="boardLatestInfo" resultType="com.exhibition.dto.ShowDto">
+			SELECT * FROM showtbl WHERE userid = #{param1} ORDER BY snum DESC
+		</select>
+		
+		<select id="getFileInfo" resultType="com.exhibition.dto.FileDto">
+			SELECT * FROM showfiles WHERE sboardnum=#{param1}
+		</select>
+	     
+	     
 	</mapper>
