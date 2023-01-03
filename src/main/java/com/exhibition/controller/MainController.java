@@ -197,9 +197,10 @@ public class MainController {
 			File destinationFile;//java.io 패키지 제공 클래스 임포트
 			String destinationFileName;//실제 서버에 저장된 파일의 변경된 이름이 저장될 변수 선언
 			
-			String fileurl = "C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles";
+			String fileurl = "C:/Users/napmkmk/git/ExhibitoinPJ/src/main/resources/static/uploadfiles";
 			//첨부된 파일이 저장될 서버의 실제 폴더 경로 //String fileurl = "C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles";
 			//C:/Users/napmkmk/git/ExhibitoinPJ/src/main/resources/static/uploadfiles
+			//C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles
 			do {
 				destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileextension;
 				//알파벳대소문자와 숫자를 포함한 랜덤 32자 문자열 생성 후 .을 구분자로 원본 파일의 확장자를 연결->실제 서버에 저장될 파일의 이름

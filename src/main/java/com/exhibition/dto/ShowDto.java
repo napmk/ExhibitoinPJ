@@ -16,6 +16,7 @@ public class ShowDto {
 	private String sage; //관람나이
 	private String sprice; //공연가격
 	private String userid;//글쓴이의 아이디
+	private int filecount;//첨부된 파일 개수
 	
 
 }

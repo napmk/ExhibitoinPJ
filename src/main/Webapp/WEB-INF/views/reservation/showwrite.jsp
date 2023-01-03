@@ -19,36 +19,55 @@
   color: orange;
 }
 </style>
-<script>
-jQuery(function($){
-    $.datepicker.regional["ko"] = {
-        closeText: "CLOSE",
-        prevText: "이전달",
-        nextText: "다음달",
-        currentText: "TODAY",
-        monthNames: ["1월(JAN)","2월(FEB)","3월(MAR)","4월(APR)","5월(MAY)","6월(JUN)", "7월(JUL)","8월(AUG)","9월(SEP)","10월(OCT)","11월(NOV)","12월(DEC)"],
-        monthNamesShort: ["1월","2월","3월","4월","5월","6월", "7월","8월","9월","10월","11월","12월"],
-        dayNames: ["SUN","MON","TUE","WED","THU","FRI","SAT"],
-        dayNamesShort: ["SUN","MON","TUE","WED","THU","FRI","SAT"],
-        dayNamesMin: ["SUN","MON","TUE","WED","THU","FRI","SAT"],
-        weekHeader: "Wk",
-        dateFormat: "yy-mm-dd",
-        firstDay: 0,
-        isRTL: false,
-        showMonthAfterYear: true,
-        yearSuffix: ""
-    };
-	$.datepicker.setDefaults($.datepicker.regional["ko"]);
-	
+<script type="text/javascript">
 
-	
-	// Today 버튼 코드 추가
-	$.datepicker._gotoToday = function(id) { 
-		$(id).datepicker('setDate', new Date());
-		$(".ui-datepicker").hide().blur();
-	};
-	
-});
+
+      <!--      달력 추가 js 시작       -->
+    $(document).ready(function () {
+            $.datepicker.setDefaults($.datepicker.regional['ko']); 
+            $( "#pickDate" ).datepicker({
+                 changeMonth: true, 
+                 changeYear: true,
+                 nextText: '다음 달',
+                 prevText: '이전 달', 
+                 dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+                 dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
+                 monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                 monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                 dateFormat: "yymmdd",
+                 minDate: 0,
+                 maxDate: "+10Y",                       // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
+                 onClose: function( selectedDate ) {    
+                      //시작일(startDate) datepicker가 닫힐때
+                      //종료일(endDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+                     $("#endDate").datepicker( "option", "minDate", selectedDate );
+                 }    
+ 
+            });
+            $( "#endDate" ).datepicker({
+                 changeMonth: true, 
+                 changeYear: true,
+                 nextText: '다음 달',
+                 prevText: '이전 달', 
+                 dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+                 dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
+                 monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                 monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                 dateFormat: "yymmdd",
+                 
+                 maxDate: "+2Y",                       // 선택할수있는 최대날짜, ( 0 : 오늘 이후 날짜 선택 불가)
+                 onClose: function( selectedDate ) {    
+                     // 종료일(endDate) datepicker가 닫힐때
+                     // 시작일(startDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 시작일로 지정
+                     $("#startDate").datepicker( "option", "maxDate", selectedDate );
+                 }    
+ 
+            });    
+    });
+    
+   
+    <!--      달력 추가 js 끝       -->
+
 </script>
 </head>
 
@@ -57,14 +76,12 @@ jQuery(function($){
 <%@ include file="../inc/header.jsp" %>
 
 	<div id="wrapper" class="boardWrap">
-	<div class="container my-3">
-	   		<div style="text-align: center">
-				<h2>공연등록하기</h2>
-			</div>
+	<div id="centerWrap">
+	   	
 	   		<form action="writeOk" method="post" enctype="multipart/form-data">
 	   			<input type="hidden" name="_csrf" value="66d7889b-8c0c-48ad-9f7f-54ba1d2d71e8">
-	   	
-		   		<div class="mb-3">
+	   			<h2>공연등록하기</h2>
+		   		<div class="mb-3 mgt20">
 					  <label for="exampleFormControlInput1" class="form-label">공연제목</label>
 					  <input type="text" class="form-control" name="stitle"  placeholder="제목을 입력해주세요" value="">
 				</div>
@@ -72,9 +89,14 @@ jQuery(function($){
 					  <label for="exampleFormControlTextarea1" class="form-label">공연장소</label>
 					  <input type="text" class="form-control" name="slocation"  placeholder="장소를 입력해주세요" value="">
 				</div>
+				
 			    <div class="mb-3">
 					  <label for="exampleFormControlTextarea1" class="form-label">공연날짜</label>
-					  <input type="text" class="form-control" name="sdday"  placeholder="장소를 입력해주세요" value="">
+					 
+					  	<div class="input-group mb-3">
+						  <span class="input-group-text" id="basic-addon1">@</span>
+						   <input type="text" id="pickDate" name="sdday"  class="form-control" placeholder="공연날짜를 선택해주세요">
+						</div>
 				</div>
 				<div class="mb-3">
 					  <label for="exampleFormControlTextarea1" class="form-label">공연시간</label>
@@ -92,90 +114,13 @@ jQuery(function($){
 					  <label for="exampleFormControlTextarea1" class="form-label">공연이미지등록</label>
 					  <input type="file" name="files" class="form-control"  placeholder="포스터 이미지를 등록해주세요" value="">
 				</div>
-				<input type="submit" value="등록하기"  class="btn btn-dark">
-				<input type="text" value="취소" class="btn btn-secondary" onclick="window.open('index')" style="width:90px">
-	
+				<div class="btn2set mgt20">
+					<div class="firbtn"><input type="submit" value="등록하기"  class="btn btn-dark"></div>
+					<div class="secbtn"><input type="text" value="취소" class="btn btn-secondary" onclick="window.open('index')" ></div>
+				</div>
 	   		</form>
 	   </div>
-		<div class="board_title" style="display:none">
-		 	<h4>뮤지컬 〈물랑루즈!〉 아시아 초연 (Moulin Rouge! The Musical)</h4>
-		 	<div class="star">
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star"></span>
-				<span class="fa fa-star"></span>
-				<span>9.1</span>
-			</div>
-		</div>
-		<div class="show_detail">	
-			 <div class="show_poster">
-			 	<p><img id="login_title" src="${pageContext.request.contextPath}/resources/image/22014586_p.gif"></p>
-				<ul class="likes">
-					<li><i class="material-icons">favorite</i></li>
-					<li>50</li>
-					<li>좋아요</li>
-				</ul>
-			</div>
-			<div class="pright-area">
-				 <ul class="show_text">
-				 	<li>장소 :장소블루스퀘어 신한카드홀</li>
-				 	<li>공연기간 : 2022.12.16 ~ 2023.03.05</li>
-				 	<li>공연시간 : 170분(인터미션 20분 포함)</li>
-				 	<li>관람연령 : 14세 이상 관람가</li>
-				 	<li>가격 : VIP석 180,000원 </li>
-				 </ul>
-				 <!-- 달력 -->
-				<select class="form-select" aria-label="Default select example">
-				  <option selected>구매할 표의 장수를 선택해주세요</option>
-				  <option value="1">1</option>
-				  <option value="2">2</option>
-				  <option value="3">3</option>
-				  <option value="4">4</option>
-				  <option value="5">5</option>
-				  <option value="6">6</option>
-				  <option value="7">7</option>
-				  <option value="8">8</option>
-				  <option value="9">9</option>
-				  <option value="10">10</option>
-				</select>
-				<i>support_agent</i>
-				
-				<div class="input-group mb-3">
-				  <span class="input-group-text" id="basic-addon1">@</span>
-				  <input type="text" class="form-control"  data-toggle="datepicker" placeholder="날짜를 선택해주세요" aria-label="Username" aria-describedby="basic-addon1">
-					<script>
-					$('[data-toggle="datepicker"]').datepicker();
-					</script>
-				</div>
-					
-				 
-			
-				 <button type="submit" class="btn btn-outline-dark" style="padding:8px 24px;font-size:20px;board:2px solid">예약하기</button>
-				 <div id="datepicker"></div>
-				 
-			 </div>
-		 </div>
 
-	<!-- tab컨텐츠 -->
-	<nav class="showview_tab clear mgt50">
-	  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-	    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">관람후기</button>
-	    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">캐스팅정보</button>
-	    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">판매정보</button>
-	    <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">공연정보</button>
-	  </div>
-	</nav>
-	<div class="tab-content" id="nav-tabContent">
-	  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-		관람후기
-	 </div>
-	  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">캐스팅정보</div>
-	  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">판매정보</div>
-	  <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">공연정보</div>
-	</div>
-	</div>
-	<!-- tab컨텐츠 -->
 	
 
 <%@ include file="../inc/footer.jsp" %>

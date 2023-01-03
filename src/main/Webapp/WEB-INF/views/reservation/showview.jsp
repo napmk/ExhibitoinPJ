@@ -22,6 +22,7 @@
 </head>
 
 <body>
+
 <%@ include file="../inc/header.jsp" %>
 	<div id="wrapper" class="boardWrap">
 		<div class="board_title">

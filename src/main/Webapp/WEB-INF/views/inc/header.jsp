@@ -24,7 +24,7 @@
 	%>
 	<nav>
 		<div class="top-menu">
-	         <div class="right-area">
+	         <div class="basic_lo">
 	            <!-- 로그인전 -->
 	            <% if(sessionId == null) { %>
 	           
@@ -46,7 +46,7 @@
 	       </div>
 	    </div>
 	    <div class="middle-menu">
-	    	<div>
+	    	<div class="basic_lo">
 			    <a href="/">enjoysEE</a>
 			    	<ul>
 			    		<li><a onclick="location.href='showview'">예매</a></li>
@@ -55,9 +55,9 @@
 			    		<li><a href="">혜택/할인</a></li>
 			    	</ul>
 		    </div>
-		    <div>
+		   <!--  <div>
 		    	<li><i class="material-icons">calendar_month</i></li>
-		    </div>
+		    </div> -->
 	    </div>
    </nav> 
     <div class="middle-area" style="display:none">
