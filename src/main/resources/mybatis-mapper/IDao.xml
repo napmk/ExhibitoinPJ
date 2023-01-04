@@ -52,6 +52,10 @@
 		<select id="getFileInfo" resultType="com.exhibition.dto.FileDto">
 			SELECT * FROM showfiles WHERE sboardnum=#{param1}
 		</select>
+		<!-- 인덱스 파일 리스트 불러오기  -->
+		<select id="fileList" resultType="com.exhibition.dto.FileDto">
+			SELECT * FROM showfiles ORDER BY sboardnum DESC <!-- 정렬까먹지 말자. -->
+		</select>
 	     
 	     
 	</mapper>

@@ -47,7 +47,7 @@
 			      <c:if test="${fileDto.fileextension =='jpg' or fileDto.fileextension =='png' or fileDto.fileextension =='bmp' or fileDto.fileextension =='gif'}">
 		        	<img width="300" src="${pageContext.request.contextPath}/resources/uploadfiles/${fileDto.filename}">
 		         </c:if>
-		         <!-- 포스터이미지 -->
+		         <!--// 포스터이미지 -->
 				<ul class="likes">
 					<li><i class="material-icons">favorite</i></li>
 					<li>50</li>

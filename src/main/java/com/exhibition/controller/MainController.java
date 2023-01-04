@@ -42,10 +42,10 @@ public class MainController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		ArrayList<ShowDto> showboardDtos = dao.showList();
 	
-
+		//ArrayList<FileDto> fileDtolist = dao.fileList(); // 파일리스트 불러오는것 근데 안됨
 		
 		model.addAttribute("showList",showboardDtos);
-	
+	//	model.addAttribute("fileList",fileDtolist);
 		
 		return "index";
 	}
@@ -129,7 +129,38 @@ public class MainController {
 		return "loginOk";
 	}
 	
-
+	@RequestMapping(value = "/mypage")
+	public String memberModify(Model model, HttpSession session) {
+		
+		String sessionId = (String) session.getAttribute("memberId");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		MemberDto memberDto = dao.getMemberInfo(sessionId);
+		
+		model.addAttribute("memberDto", memberDto);
+		
+		return "member/memberModify";
+	}
+	
+	@RequestMapping(value = "/memberModifyOk")
+	public String memberModifyOk(HttpServletRequest request,  Model model) {
+		
+		String mid = request.getParameter("mid");
+		String mpw = request.getParameter("mpw");
+		String mname = request.getParameter("mname");
+		String memail = request.getParameter("memail");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.memberModify(mid, mpw, mname, memail);
+		
+		MemberDto memberDto = dao.getMemberInfo(mid);//수정된 회원정보 다시 가져오기
+		
+		model.addAttribute("memberDto", memberDto);
+		
+		return "/member/memberModifyOk";
+	}
 	
 	@RequestMapping (value ="showlist")
 	public String showlist (Model model) {

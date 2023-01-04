@@ -12,7 +12,8 @@ import com.exhibition.dto.FileDto;
 
 public interface IDao {
 
-	//회원관리
+	
+		//회원관리
 		public int memberJoin(String mid, String mpw, String mname, String meamil);//회원가입 INSERT
 		public int checkId(String mid); // 아이디 존재여부 확인 SELECT
 		public int checkIdAndPW(String mid,String mpw);//아이디와 비밀번호의 존재 및 일치 여부 SELECT 
@@ -34,7 +35,8 @@ public interface IDao {
 		public ArrayList<ShowDto> boardLatestInfo(String userid);
 		//현재 파일이 첨부된 글을 쓴 아이디로 검색된 글 목록;
         public FileDto getFileInfo(String snum);
-		//파일이 첨부된 게시글의 번호로 조회한 첨부된 파일의 모든 정보 dto		
+		//파일이 첨부된 게시글의 번호로 조회한 첨부된 파일의 모든 정보 dto	
+        public ArrayList<FileDto> fileList();
 //	//질문게시판
 //		public void writeQuestion(String qid, String qname, String qcontent, String qemail);//질문하기 INSERT
 //		public List<QBoardDto> questionList(Criteria cri);//질문게시판 리스트 가져오기 SELECT

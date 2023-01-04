@@ -33,9 +33,9 @@ nav{display:none}
 			</div>
 			<div class="btn2set mgt20">
 				<div class="firbtn"><input type="submit" value="회원가입" class="btn btn-warning my-2" onclick="joinCheck()"></div>
-				<div class="secbtn"><input type="text" value="취소" class="btn btn-secondary" onclick="window.open('/')">
-</div>
+				<div class="secbtn"><input type="text" value="취소" class="btn btn-secondary" onclick="window.open('/')"></div>
 			</div>
+		
 			
 		</form>
 	</div>		
