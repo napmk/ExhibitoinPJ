@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>index</title>
+<title>Insert title here</title>
 </head>
 <body>
 
@@ -15,7 +15,7 @@
 		   		<h3 class="mgt50">전체공연</h3>
 				<ul class="nav nav-tabs mgt20" id="myTab" role="tablist">
 				  <li class="nav-item" role="presentation">
-				    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">뮤지컬</button>
+				    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">전체공연</button>
 				  </li>
 				  <li class="nav-item" role="presentation">
 				    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">콘서트</button>
@@ -24,49 +24,50 @@
 				    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">연극</button>
 				  </li>
 				  <li class="nav-item" role="presentation">
-				    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">클래식/무용</button>
-				  </li>
-				  <li class="nav-item" role="presentation">
 				    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">아동/가족</button>
 				  </li>
+				 
 				</ul>
 				<!-- 예매하기 -->
 				<div class="tab-content" id="myTabContent">
-				  <div class="tab-pane fade show active" id="musical-tab-pane" role="tabpanel" aria-labelledby="musical-tab" tabindex="0">
+				  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
 					<div class="container">
 						<ul class="reservationWrap">
-						<c:forEach items="${showList}" var="showDto">
-							<li>
-								<div>
-									<img src="${pageContext.request.contextPath}/resources/image/22016084_p.gif" class="exhiPoster">
-								</div>
-								<div class="rv_btnset">
-									<ul>
-										<li>
+							<c:forEach items="${showList}" var="showDto" begin="0" end="3" step="1">
+								<li>
+									<div>
+									${showDto.stitle}
+									${fileDto.fileextension =='jpg' or fileDto.fileextension =='png' or fileDto.fileextension =='bmp' or fileDto.fileextension =='gif'}
+									<!-- 포스터이미지 -->
+								      <c:if test="${fileDto.fileextension =='jpg' or fileDto.fileextension =='png' or fileDto.fileextension =='bmp' or fileDto.fileextension =='gif'}">
+							        	<img width="300" src="${pageContext.request.contextPath}/resources/uploadfiles/${fileDto.filename}">
+							         </c:if>
+							         <!-- 포스터이미지 -->
+									</div>
+									<div class="rv_btnset">
+										<ul>
+											<li>
 											<button type="button" class="btn btn-outline-secondary">
 												<i class="material-icons" style="font-size: 16px;">favorite</i>
 													좋아요
 											</button>
-										
-										</li>
-										<li>
-											<button type="button" class="btn btn-primary" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
-											
-										</li>
-									</ul>
-							
-								</div>
-							</li>
-						</c:forEach>	
-							
-					
+											</li>
+											<li>
+												<button type="button" class="btn btn-primary" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												
+											</li>
+										</ul>
+								
+									</div>
+								</li>
+							</c:forEach>	
 						</ul>
 					</div>
 				  </div>
-				  <div class="tab-pane fade" id="concert-tab-pane" role="tabpanel" aria-labelledby="concert-tab" tabindex="0">...</div>
-				  <div class="tab-pane fade" id="theater-tab-pane" role="tabpanel" aria-labelledby="theater-tab" tabindex="0"></div>
-				  <div class="tab-pane fade" id="classic-tab-pane" role="tabpanel" aria-labelledby="classic-tab" tabindex="0">...</div>
-				  <div class="tab-pane fade" id="child-tab-pane" role="tabpanel" aria-labelledby="child-tab" tabindex="0">...</div>
+				  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
+				  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
+				  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+				
 				</div>
 			</div>	
 				<!-- //예매하기 -->
@@ -96,13 +97,13 @@
 		   	</div>
 		   	
 		   	<div id="goodsWrap" class="mgt50">
-			   	<h3>굿즈 스토어</h3>
+			   	<h3>굿즈판매</h3>
 			   	<div class="goodslist">
-			   		<p class="goodImg"><img src="${pageContext.request.contextPath}/resources/image/goods01.jpg" class="exhiPoster"></p>
-			   		<div class="goodsText">엽서패키지 </div>
+			   		<p class="goodImg"></p>
+			   		<div class="goodsText">굿즈판매입니다</div>
 			   	</div>	
 			   	<div class="goodslist">
-			   		<p class="goodImg"><img src="${pageContext.request.contextPath}/resources/image/22016629_p.gif" class="exhiPoster"></p>
+			   		<p class="goodImg"></p>
 			   		<div class="goodsText">굿즈판매입니다</div>
 			   	</div>	
 		   	</div>

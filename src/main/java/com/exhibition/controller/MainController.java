@@ -27,6 +27,7 @@ import com.exhibition.dto.ShowDto;
 
 
 
+
 @Controller
 public class MainController {
 	
@@ -34,11 +35,24 @@ public class MainController {
 	private SqlSession sqlSession;
 	
 	@RequestMapping (value ="/")
-	public String home () {
+	public String home (Model model,HttpServletRequest request,HttpSession session) {
+		
+		
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		ArrayList<ShowDto> showboardDtos = dao.showList();
+	
+
+		
+		model.addAttribute("showList",showboardDtos);
+	
 		
 		return "index";
 	}
 
+	
+
+	
 	@RequestMapping (value ="join")
 	public String join () {
 		
@@ -140,10 +154,11 @@ public class MainController {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		//조회수증가 dao.shit(snum);
+		FileDto fileDto = dao.getFileInfo(snum);
 		ShowDto showdto = dao.showView(snum);
 		
 		model.addAttribute("showView",showdto);
-		
+		model.addAttribute("fileDto", fileDto);
 		
 		
 		return "/reservation/showview";
@@ -197,7 +212,7 @@ public class MainController {
 			File destinationFile;//java.io 패키지 제공 클래스 임포트
 			String destinationFileName;//실제 서버에 저장된 파일의 변경된 이름이 저장될 변수 선언
 			
-			String fileurl = "C:/Users/napmkmk/git/ExhibitoinPJ/src/main/resources/static/uploadfiles";
+			String fileurl = "C:/Users/napmkmk/git/ExhibitoinPJ/src/main/resources/static/uploadfiles/";
 			//첨부된 파일이 저장될 서버의 실제 폴더 경로 //String fileurl = "C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles";
 			//C:/Users/napmkmk/git/ExhibitoinPJ/src/main/resources/static/uploadfiles
 			//C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles

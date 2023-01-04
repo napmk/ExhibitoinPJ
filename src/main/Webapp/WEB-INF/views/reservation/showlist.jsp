@@ -14,7 +14,7 @@
 			    <tr>
 			      <th scope="col">no</th>
 			      <th scope="col">공연제목</th>
-			      <th scope="col">공연날짜</th>
+			      <th scope="col">공연시간</th>
 			      <th scope="col">글쓴이</th>
 			    </tr>
 			  </thead>
