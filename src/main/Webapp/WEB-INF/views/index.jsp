@@ -37,10 +37,10 @@
 								<li>
 									<div>
 									${showDto.stitle}
-									${fileList.fileextension =='jpg' or fileList.fileextension =='png' or fileList.fileextension =='bmp' or fileList.fileextension =='gif'}
+									
 									<!-- 포스터이미지 -->
-								      <c:if test="${fileList.fileextension =='jpg' or fileList.fileextension =='png' or fileList.fileextension =='bmp' or fileList.fileextension =='gif'}">
-							        	<img width="300" src="${pageContext.request.contextPath}/resources/uploadfiles/${fileList.filename}">
+								      <c:if test="${FileDto.fileextension =='jpg' or FileDto.fileextension =='png' or FileDto.fileextension =='bmp' or FileDto.fileextension =='gif'}">
+							        	<img width="300" src="${pageContext.request.contextPath}/resources/uploadfiles/${FileDto.filename}">
 							         </c:if>
 							         <!-- 포스터이미지 -->
 									</div>

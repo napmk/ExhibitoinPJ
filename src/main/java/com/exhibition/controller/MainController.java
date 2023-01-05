@@ -42,7 +42,7 @@ public class MainController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		ArrayList<ShowDto> showboardDtos = dao.showList();
 	
-		//ArrayList<FileDto> fileDtolist = dao.fileList(); // 파일리스트 불러오는것 근데 안됨
+	//	ArrayList<FileDto> fileDtolist = dao.fileList(); // 파일리스트 불러오는것 근데 안됨
 		
 		model.addAttribute("showList",showboardDtos);
 	//	model.addAttribute("fileList",fileDtolist);

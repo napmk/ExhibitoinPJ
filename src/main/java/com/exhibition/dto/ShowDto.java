@@ -18,5 +18,7 @@ public class ShowDto {
 	private String userid;//글쓴이의 아이디
 	private int filecount;//첨부된 파일 개수
 	
+	private FileDto fileDto;
+	
 
 }

@@ -52,10 +52,29 @@
 		<select id="getFileInfo" resultType="com.exhibition.dto.FileDto">
 			SELECT * FROM showfiles WHERE sboardnum=#{param1}
 		</select>
-		<!-- 인덱스 파일 리스트 불러오기  -->
-		<select id="fileList" resultType="com.exhibition.dto.FileDto">
-			SELECT * FROM showfiles ORDER BY sboardnum DESC <!-- 정렬까먹지 말자. -->
-		</select>
+		<!-- 인덱스 파일 리스트 불러오기 
+		<select id="showList" parameterType="com.exhibition.dto.ShowDto" resultMap="">
+		
+			SELECT
+				SHOWTBL.snum , SHOWTBL.stitle, SHOWTBL.slocation ,SHOWTBL sdday,
+				SHOWTBL.stime, SHOWTBL.sage, SHOWTBL.sprice, SHOWTBL.userid,
+				SHOWTBL.filecount,
+				SHOWSFILES.filenum ,SHOWSFILES.sboardnum,SHOWSFILES.fileoriname, SHOWSFILES.filename,  SHOWSFILES.fileextension, SHOWSFILES.fileurl
+			FROM 
+			    SHOWTBL 
+			    JOIN SHOWSFILES 
+			    ON 
+			    SHOWTBL.snum = SHOWSFILES.sboardnum
+			WHERE 
+				SHOWTBL.snum=#{snum}    
+			
+			  
+			
+			
+		</select> -->
 	     
 	     
+
+	
+	
 	</mapper>
