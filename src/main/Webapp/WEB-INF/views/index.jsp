@@ -76,22 +76,13 @@
 		   	<div id="eventWrap" class="mgt50">
 			   	<h3 class="h3">이벤트</h3>
 			   		<ul>
+			   		<c:forEach items="${eventList}" var="EventBDto" begin="0" end="2" step="1">
 			   			<li>
 			   				<div class="eventImg"></div>
-			   				<div class="eventTitle">뮤지컬 〈물랑루즈!〉 아시아 초연 (Moulin Rouge! The Musical)</div>
-			   				<div class="eventDate">2022.12.16 ~ 2023.03.05</div>
+			   				<div class="eventTitle">${EventBDto.qcontent}</div>
+			   				<div class="eventDate">${EventBDto.qdate}</div>
 			   			</li>
-			   			<li>
-			   				<div class="eventImg"></div>
-			   				<div class="eventTitle">뮤지컬 〈물랑루즈!〉 아시아 초연 (Moulin Rouge! The Musical)</div>
-			   				<div class="eventDate">2022.12.16 ~ 2023.03.05</div>
-			   			</li>
-			   			<li>
-			   				<div class="eventImg"></div>
-			   				<div class="eventTitle">뮤지컬 〈물랑루즈!〉 아시아 초연 (Moulin Rouge! The Musical)</div>
-			   				<div class="eventDate">2022.12.16 ~ 2023.03.05</div>
-			   			</li>
-			   		
+			   		</c:forEach>
 		
 			   		</ul>
 		   	</div>

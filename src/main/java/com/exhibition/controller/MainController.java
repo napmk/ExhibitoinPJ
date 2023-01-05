@@ -20,10 +20,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import com.exhibition.dao.IDao;
+import com.exhibition.dto.Criteria;
 import com.exhibition.dto.FileDto;
 import com.exhibition.dto.MemberDto;
+import com.exhibition.dto.PageDto;
 import com.exhibition.dto.ShowDto;
+import com.exhibition.dto.EventBDto;
 
 
 
@@ -42,10 +46,12 @@ public class MainController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		ArrayList<ShowDto> showboardDtos = dao.showList();
 	
+		ArrayList<EventBDto> eventboardDtos = dao.eventList();
+		
 	//	ArrayList<FileDto> fileDtolist = dao.fileList(); // 파일리스트 불러오는것 근데 안됨
 		
 		model.addAttribute("showList",showboardDtos);
-	//	model.addAttribute("fileList",fileDtolist);
+		model.addAttribute("eventList",eventboardDtos);
 		
 		return "index";
 	}
@@ -289,10 +295,136 @@ public class MainController {
 		return "redirect:/reservation/showlist";
 	}
 	
-	@RequestMapping (value ="event")
-	public String event () {
+	//////////////////////////////이벤트게시판영역///////////////////////////////////
+	
+	@RequestMapping(value = "/eventwrite")
+	public String question(HttpSession session, Model model) {
+			
+		String sessionId = (String) session.getAttribute("memberId");
 		
-		return "/event/evlist";
+		if(sessionId == null) {//로그인 상태 확인
+			model.addAttribute("memberId", "ADMIN");
+		} else {
+			model.addAttribute("memberId", sessionId);
+		}
+		
+		model.addAttribute("memberId", sessionId);
+		return "event/question";
 	}
+	
+	@RequestMapping(value = "/questionOk")
+	public String questionOk(HttpServletRequest request) {
+		
+		String qid = request.getParameter("qid");//글쓴유저 아이디
+		String qname = request.getParameter("qname");//글쓴 질문 내용
+		String qcontent = request.getParameter("qcontent");//글쓴 질문 내용
+		String qemail = request.getParameter("qemail");//글쓴유저 이메일
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.writeQuestion(qid, qname, qcontent, qemail);
+		
+		return "redirect:event";
+	}
+	
+	@RequestMapping(value = "event")
+	public String list( Model model, Criteria cri,HttpServletRequest request) {//페이징해야하므로 Criteria 가져온다
+		
+		int pageNumInt=0;
+		if(request.getParameter("pageNum") == null) {
+			 pageNumInt =1;//1페이지부터 시작
+			cri.setPageNum(pageNumInt);
+		} else {
+			 pageNumInt =Integer.parseInt(request.getParameter("pageNum"));
+			 cri.setPageNum(pageNumInt);
+		}
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		int totalRecord = dao.boardAllCount();
+		//cri.setPageNum();
+		cri.setStartNum(cri.getPageNum()-1 * cri.getAmount()); 
+		
+		PageDto pageDto = new PageDto(cri, totalRecord); 
+
+		List<EventBDto> qboardDtos = dao.questionList(cri);
+		
+		model.addAttribute("pageMaker", pageDto);//pageMaker = pageDto
+		model.addAttribute("qdtos", qboardDtos );
+		model.addAttribute("currPage", pageNumInt );
+		
+		return "event/questionList";
+	}
+	
+	
+	
+	@RequestMapping(value = "questionView")
+	public String questionView(HttpServletRequest request, Model model) {
+		
+		String qnum = request.getParameter("qnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		EventBDto qBoardDto = dao.questionView(qnum);
+		
+		model.addAttribute("qdto", qBoardDto);
+		model.addAttribute("qid", qBoardDto.getQid());
+		
+		return "event/questionView";
+	}
+	
+	@RequestMapping(value = "questionModify")
+	public String questionModify(HttpServletRequest request, Model model,HttpSession session) {
+		
+//        String sessionId = (String) session.getAttribute("memberId");
+//		
+//		if(sessionId == null) {//로그인 상태 확인
+//			model.addAttribute("memberId", "ADMIN");
+//		} else {
+//			model.addAttribute("memberId", sessionId);
+//		}
+//		
+//		model.addAttribute("memberId", sessionId);
+//	
+		
+		String qnum = request.getParameter("qnum");
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		EventBDto qBoardDto = dao.questionView(qnum);
+		
+		model.addAttribute("qdto", qBoardDto);
+		return "event/questionModify";
+	}
+
+	
+	@RequestMapping(value = "questionModifyOk")
+	public String questionModifyOk(HttpServletRequest request, Model model) {
+		
+		String qnum = request.getParameter("qnum");
+		String qname = request.getParameter("qname");
+		String qcontent = request.getParameter("qcontent");
+		String qemail = request.getParameter("qemail");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.questionModify(qnum, qname, qcontent, qemail);
+		
+		return "redirect:event";
+	}
+	
+	
+	@RequestMapping(value = "questionDelete")
+	public String questionDelete(HttpServletRequest request, Model model) {
+		
+		String qnum = request.getParameter("qnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		dao.questionDelete(qnum);
+	
+		
+		return "redirect:event";
+	}
+	
+	//////////////////////////////이벤트게시판영역///////////////////////////////////
+
 	
 }

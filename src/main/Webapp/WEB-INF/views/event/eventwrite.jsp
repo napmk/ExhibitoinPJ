@@ -27,12 +27,12 @@
 
 <%@ include file="../inc/header.jsp" %>
 
-
+	<div id="wrapper" class="boardWrap">
 	<div id="centerWrap">
 	   	
 	   		<form action="writeOk" method="post" enctype="multipart/form-data">
 	   			<input type="hidden" name="_csrf" value="66d7889b-8c0c-48ad-9f7f-54ba1d2d71e8">
-	   			<h2 class="mgt50">공연등록하기</h2>
+	   			<h2>공연등록하기</h2>
 		   		<div class="mb-3 mgt20">
 					  <label for="exampleFormControlInput1" class="form-label">공연제목</label>
 					  <input type="text" class="form-control" name="stitle"  placeholder="제목을 입력해주세요" value="">

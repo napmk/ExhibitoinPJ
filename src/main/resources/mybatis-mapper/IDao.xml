@@ -31,8 +31,8 @@
 			(showtbl_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4},  #{param5}, #{param6}, #{param7}, #{param8})
 		
 		</insert>
-		<select id="showList" resultType="com.exhibition.dto.ShowDto">
-			SELECT * FROM showtbl ORDER BY snum DESC <!-- 정렬까먹지 말자. -->
+	    <select id="showList" resultType="com.exhibition.dto.ShowDto">
+			SELECT * FROM showtbl ORDER BY snum DESC  정렬까먹지 말자. 
 		</select>
 		
 		<select id="showView" resultType="com.exhibition.dto.ShowDto">
@@ -52,28 +52,55 @@
 		<select id="getFileInfo" resultType="com.exhibition.dto.FileDto">
 			SELECT * FROM showfiles WHERE sboardnum=#{param1}
 		</select>
-		<!-- 인덱스 파일 리스트 불러오기 
-		<select id="showList" parameterType="com.exhibition.dto.ShowDto" resultMap="">
+		<!-- 인덱스 파일 리스트 불러오기 -->
+		<select id="showListjoin" parameterType="com.exhibition.dto.ShowDto" resultMap="ShowDto2">
 		
 			SELECT
 				SHOWTBL.snum , SHOWTBL.stitle, SHOWTBL.slocation ,SHOWTBL sdday,
 				SHOWTBL.stime, SHOWTBL.sage, SHOWTBL.sprice, SHOWTBL.userid,
 				SHOWTBL.filecount,
-				SHOWSFILES.filenum ,SHOWSFILES.sboardnum,SHOWSFILES.fileoriname, SHOWSFILES.filename,  SHOWSFILES.fileextension, SHOWSFILES.fileurl
+				SHOWSFILES.filenum ,SHOWSFILES.sboardnum,SHOWSFILES.fileoriname, SHOWSFILES.filename
 			FROM 
 			    SHOWTBL 
 			    JOIN SHOWSFILES 
 			    ON 
 			    SHOWTBL.snum = SHOWSFILES.sboardnum
 			WHERE 
-				SHOWTBL.snum=#{snum}    
-			
-			  
-			
-			
-		</select> -->
+				SHOWTBL.snum=#{sboardnum}    
+		</select> 
 	     
 	     
+	     <!-- 이벤트게시판 -->
+		<insert id="writeQuestion">
+			INSERT INTO aboard(qnum, qid, qname, qcontent, qemail) VALUES(aboard_SEQ.nextval,#{param1}, #{param2}, #{param3}, #{param4})
+		</insert>
+		
+		<select id="questionList" resultType="com.exhibition.dto.EventBDto"> <!-- ROWNUM 오라클에 자동생성되는 번호 A와 PAGE는 가상의 필드-->
+			SELECT * FROM
+				(SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM <!--소수점 버림 함수 Floor를 사용 amount는 5 -->
+				FROM
+				(SELECT * FROM aboard ORDER BY qnum DESC)A)
+			WHERE PAGE = #{pageNum}
+			</select>
+		
+		<select id="questionView" resultType="com.exhibition.dto.EventBDto">
+			SELECT * FROM aboard WHERE qnum=#{param1}
+		</select>	
+		
+			<update id="questionModify">
+		 	update aboard set qname=#{param2},qcontent=#{param3}, qemail=#{param4} where qnum=#{param1}
+		</update>
+		
+		<delete id="questionDelete">
+			DELETE FROM aboard WHERE qnum=#{param1}
+		</delete>
+		
+		 <select id="boardAllCount" resultType="int">
+			select count(*) from aboard 
+		</select> 
+		<select id="eventList" resultType="com.exhibition.dto.EventBDto">
+			SELECT * FROM aboard ORDER BY qnum DESC 
+		</select>
 
 	
 	
