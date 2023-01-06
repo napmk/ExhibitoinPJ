@@ -32,7 +32,7 @@
 		
 		</insert>
 	    <select id="showList" resultType="com.exhibition.dto.ShowDto">
-			SELECT * FROM showtbl ORDER BY snum DESC  정렬까먹지 말자. 
+			SELECT * FROM showtbl ORDER BY snum DESC  
 		</select>
 		
 		<select id="showView" resultType="com.exhibition.dto.ShowDto">
@@ -52,14 +52,38 @@
 		<select id="getFileInfo" resultType="com.exhibition.dto.FileDto">
 			SELECT * FROM showfiles WHERE sboardnum=#{param1}
 		</select>
-		<!-- 인덱스 파일 리스트 불러오기 -->
-		<select id="showListjoin" parameterType="com.exhibition.dto.ShowDto" resultMap="ShowDto2">
+		<!-- 조인해서 인덱스 파일 리스트 불러오기 안됨 교수님도와주셔야함 
+		<resultMap type="com.exhibition.dto.FileDto" id="fileDto2">
+		
+			<result property="filenum" column="filenum"/>
+			<result property="sboardnum" column="sboardnum"/>
+			<result property="fileoriname" column="fileoriname"/>
+			<result property="filename" column="filename"/>
+			<result property="fileextension" column="fileextension"/>
+			<result property="fileurl" column="fileurl"/>		
+		</resultMap>
+	
+		<resultMap type="com.exhibition.dto.ShowDto" id="showDto2">
+			<result property="snum" column="snum"/>
+			<result property="stitle" column="stitle"/>
+			<result property="slocation" column="slocation"/>
+			<result property="sdday" column="sdday"/>
+			<result property="stime" column="stime"/>
+			<result property="sage" column="sage"/>
+			<result property="sprice" column="sprice"/>
+			<result property="userid" column="userid"/>	
+			<result property="filecount" column="filecount"/>	
+		
+			<collection property="fileDto" resultMap="fileDto2"></collection>
+		</resultMap>
+	
+		<select id="showList" parameterType="com.exhibition.dto.ShowDto" resultMap="showDto2">
 		
 			SELECT
 				SHOWTBL.snum , SHOWTBL.stitle, SHOWTBL.slocation ,SHOWTBL sdday,
 				SHOWTBL.stime, SHOWTBL.sage, SHOWTBL.sprice, SHOWTBL.userid,
-				SHOWTBL.filecount,
-				SHOWSFILES.filenum ,SHOWSFILES.sboardnum,SHOWSFILES.fileoriname, SHOWSFILES.filename
+				SHOWSFILES.filecount,
+				SHOWSFILES.filenum ,SHOWSFILES.sboardnum,SHOWSFILES.fileoriname, SHOWSFILES.filename, SHOWSFILES.fileextension, SHOWSFILES.fileurl
 			FROM 
 			    SHOWTBL 
 			    JOIN SHOWSFILES 
@@ -67,7 +91,7 @@
 			    SHOWTBL.snum = SHOWSFILES.sboardnum
 			WHERE 
 				SHOWTBL.snum=#{sboardnum}    
-		</select> 
+		</select> -->
 	     
 	     
 	     <!-- 이벤트게시판 -->

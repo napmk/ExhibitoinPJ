@@ -26,11 +26,11 @@ public interface IDao {
 		public int showWrite(String stitle, String slocation, String sdday, String stime, String sage, String sprice ,String userid,int filecount); //공연등록
 		//public int rfbwrite(String rfbname, String rfbtitle, String rfbcontent, String rfbid, int filecount);//insert
 		public int showboardAllCount();//총 게시물 개수 select
-		public ArrayList<ShowDto> showList();// 게시판 리스트 select
+		public List<ShowDto> showList();// 게시판 리스트 select
 		public ShowDto showView(String snum); //클긱한 글의 게시물 내용보기.
 		public void delete(String snum);//글삭제 delete
 		public void sbhit(String snum);//조회수
-		
+		//public ArrayList<showDto> showListjoin(int sboardnum);
 		
         //파일 업로드 관련
 		public void fileInfoInsert(int sboardnum, String fileoriname, String filename, String fileextension, String fileurl);

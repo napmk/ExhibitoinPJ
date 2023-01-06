@@ -39,13 +39,13 @@ public class MainController {
 	private SqlSession sqlSession;
 	
 	@RequestMapping (value ="/")
-	public String home (Model model,HttpServletRequest request,HttpSession session) {
+	public String home (Model model,HttpServletRequest request,HttpSession session, HttpServletResponse response) throws IOException {
 		
 		
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
-		ArrayList<ShowDto> showboardDtos = dao.showList();
-	
+		List<ShowDto> showboardDtos = dao.showList();
+		
 		ArrayList<EventBDto> eventboardDtos = dao.eventList();
 		
 	//	ArrayList<FileDto> fileDtolist = dao.fileList(); // 파일리스트 불러오는것 근데 안됨
@@ -173,7 +173,7 @@ public class MainController {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		ArrayList<ShowDto> showboardDtos = dao.showList();
+		List<ShowDto> showboardDtos = dao.showList();
 		
 	//	int boardCount = dao.rfboardAllCount();
 		

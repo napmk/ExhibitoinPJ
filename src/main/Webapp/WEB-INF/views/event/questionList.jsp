@@ -13,6 +13,75 @@
 <body>
 	<%@ include file="../inc/header.jsp" %>
 	<div id="wrapper" class="mgt50">
+		<div>
+		<h4>HOT 이벤트</h4>
+			<ul>
+			<c:forEach items="${qdtos }" var="qdto">
+				
+				<li>
+					<a href="questionView?qnum=${qdto.qnum }">
+					<div class="card" style="width: 18rem;">
+					  <img src="..." class="card-img-top" alt="...">
+					  <div class="card-body">
+					    <h5 class="card-title">Card title</h5>
+					    <p class="card-text">
+							
+								<c:choose>
+									<c:when test="${fn:length(qdto.qcontent) > 23 }">
+										<c:out value="${fn:substring(qdto.qcontent,0,22) }"></c:out>...
+									</c:when>
+									<c:otherwise>
+											<c:out value="${qdto.qcontent }"></c:out>
+										</c:otherwise>
+								 </c:choose>
+							
+						</p>
+					    <div>${fn:substring(qdto.qdate,0,10) }</div>
+					  </div>
+					</div>
+					</a>
+				</li>
+				
+				
+					
+			</c:forEach>			
+						
+				<li>
+					<div class="card" style="width: 18rem;">
+					  <img src="..." class="card-img-top" alt="...">
+					  <div class="card-body">
+					    <h5 class="card-title">Card title</h5>
+					    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					    <a href="#" class="btn btn-primary">Go somewhere</a>
+					  </div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="card" style="width: 18rem;">
+					  <img src="..." class="card-img-top" alt="...">
+					  <div class="card-body">
+					    <h5 class="card-title">Card title</h5>
+					    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					    <a href="#" class="btn btn-primary">Go somewhere</a>
+					  </div>
+					</div>
+				</li>
+				<li>
+					<div class="card" style="width: 18rem;">
+					  <img src="..." class="card-img-top" alt="...">
+					  <div class="card-body">
+					    <h5 class="card-title">Card title</h5>
+					    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					    <a href="#" class="btn btn-primary">Go somewhere</a>
+					  </div>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+	
+	
 		<table class="table">
 			<thead>
 				<tr>

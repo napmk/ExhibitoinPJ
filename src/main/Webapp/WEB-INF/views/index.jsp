@@ -39,8 +39,8 @@
 									${showDto.stitle}
 									
 									<!-- 포스터이미지 -->
-								      <c:if test="${FileDto.fileextension =='jpg' or FileDto.fileextension =='png' or FileDto.fileextension =='bmp' or FileDto.fileextension =='gif'}">
-							        	<img width="300" src="${pageContext.request.contextPath}/resources/uploadfiles/${FileDto.filename}">
+								      <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
+							        	<img width="300" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
 							         </c:if>
 							         <!-- 포스터이미지 -->
 									</div>
