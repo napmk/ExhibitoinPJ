@@ -52,51 +52,50 @@
 		<select id="getFileInfo" resultType="com.exhibition.dto.FileDto">
 			SELECT * FROM showfiles WHERE sboardnum=#{param1}
 		</select>
-		<!-- 조인해서 인덱스 파일 리스트 불러오기 안됨 교수님도와주셔야함 
-		<resultMap type="com.exhibition.dto.FileDto" id="fileDto2">
 		
+		<!-- 조인테이블 showDto와 fileDto -->
+		<resultMap type="com.exhibition.dto.FileDto" id="FileDto2">
 			<result property="filenum" column="filenum"/>
 			<result property="sboardnum" column="sboardnum"/>
 			<result property="fileoriname" column="fileoriname"/>
 			<result property="filename" column="filename"/>
-			<result property="fileextension" column="fileextension"/>
-			<result property="fileurl" column="fileurl"/>		
+			<result property="fileextension" column="fileextension"/>	
+			<result property="fileurl" column="fileurl"/>	
 		</resultMap>
-	
-		<resultMap type="com.exhibition.dto.ShowDto" id="showDto2">
+
+		<resultMap type="com.exhibition.dto.ShowDto" id="ShowDto2">
 			<result property="snum" column="snum"/>
 			<result property="stitle" column="stitle"/>
 			<result property="slocation" column="slocation"/>
-			<result property="sdday" column="sdday"/>
-			<result property="stime" column="stime"/>
-			<result property="sage" column="sage"/>
-			<result property="sprice" column="sprice"/>
+			<result property="sdday" column="sdday"/>	
+			<result property="sage" column="sage"/>	
+			<result property="stime" column="stime"/>	
+			<result property="sage" column="sage"/>	
+			<result property="sprice" column="sprice"/>	
 			<result property="userid" column="userid"/>	
 			<result property="filecount" column="filecount"/>	
-		
-			<collection property="fileDto" resultMap="fileDto2"></collection>
+
+			<collection property="fileDto" resultMap="FileDto2"></collection>
 		</resultMap>
 	
-		<select id="showList" parameterType="com.exhibition.dto.ShowDto" resultMap="showDto2">
 		
-			SELECT
-				SHOWTBL.snum , SHOWTBL.stitle, SHOWTBL.slocation ,SHOWTBL sdday,
-				SHOWTBL.stime, SHOWTBL.sage, SHOWTBL.sprice, SHOWTBL.userid,
-				SHOWSFILES.filecount,
-				SHOWSFILES.filenum ,SHOWSFILES.sboardnum,SHOWSFILES.fileoriname, SHOWSFILES.filename, SHOWSFILES.fileextension, SHOWSFILES.fileurl
-			FROM 
-			    SHOWTBL 
-			    JOIN SHOWSFILES 
-			    ON 
-			    SHOWTBL.snum = SHOWSFILES.sboardnum
-			WHERE 
-				SHOWTBL.snum=#{sboardnum}    
-		</select> -->
+		<!--메인화면 이미지 뜨게하자 -->
+		<select id="showList2" parameterType="com.exhibition.dto.ShowDto" resultMap="ShowDto2"> 
+		SELECT 
+			SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,
+			SHOWFILES.filenum , SHOWFILES.sboardnum, SHOWFILES.fileoriname, SHOWFILES.filename,SHOWFILES.fileextension , SHOWFILES.fileurl 
+		FROM
+			SHOWTBL
+			JOIN SHOWFILES
+			ON SHOWTBL.snum = SHOWFILES.sboardnum
+		</select>
+		
 	     
+	     <!-- //조인테이블 -->
 	     
-	     <!-- 이벤트게시판 -->
+	     <!-- 이벤트게시판-->
 		<insert id="writeQuestion">
-			INSERT INTO aboard(qnum, qid, qname, qcontent, qemail) VALUES(aboard_SEQ.nextval,#{param1}, #{param2}, #{param3}, #{param4})
+			INSERT INTO aboard(qnum, qid, qname, qcontent, qemail ,qfilecount) VALUES(aboard_SEQ.nextval,#{param1}, #{param2}, #{param3}, #{param4},#{param5})
 		</insert>
 		
 		<select id="questionList" resultType="com.exhibition.dto.EventBDto"> <!-- ROWNUM 오라클에 자동생성되는 번호 A와 PAGE는 가상의 필드-->
@@ -125,7 +124,23 @@
 		<select id="eventList" resultType="com.exhibition.dto.EventBDto">
 			SELECT * FROM aboard ORDER BY qnum DESC 
 		</select>
+		
+		    <!-- 파일업로드 SQL -->
+		<insert id="efileInfoInsert">
+			INSERT INTO eventfiles(efilenum, eboardnum, efileoriname, efilename, efileextension, efileurl) 
+			VALUES (efile_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5})
+		</insert>
+		
+		<select id="eboardLatestInfo" resultType="com.exhibition.dto.EventBDto">
+			SELECT * FROM aboard WHERE qid = #{param1} ORDER BY qnum DESC
+		</select>
+		
+		<select id="egetFileInfo" resultType="com.exhibition.dto.EfileDto">
+			SELECT * FROM eventfiles WHERE eboardnum=#{param1}
+		</select>
 
+	  <!-- 티켓예매 SQL -->
+	
 	
 	
 	</mapper>

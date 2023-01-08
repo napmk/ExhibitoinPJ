@@ -9,5 +9,5 @@
 .boardWrap .show_detail .show_poster .likes li{float:left;margin-right:10px;}
 .boardWrap .show_detail .pright-area{float:left; margin:0 0 0 50px;}
 .boardWrap .show_detail .pright-area.boardWrap .show_detail .pright-area .show_text{}
-.boardWrap .show_detail .pright-area .show_text{margin-bottom:20px}
+.boardWrap .show_detail .pright-area .show_text{margin-bottom:10px}
 .boardWrap .show_detail .pright-area .show_text li{line-height:30px }

@@ -38,28 +38,29 @@ public class MainController {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@RequestMapping (value ="/")
-	public String home (Model model,HttpServletRequest request,HttpSession session, HttpServletResponse response) throws IOException {
+	@RequestMapping (value ="/") 
+	public String home () {
 		
-		
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		List<ShowDto> showboardDtos = dao.showList();
-		
-		ArrayList<EventBDto> eventboardDtos = dao.eventList();
-		
-	//	ArrayList<FileDto> fileDtolist = dao.fileList(); // 파일리스트 불러오는것 근데 안됨
-		
-		model.addAttribute("showList",showboardDtos);
-		model.addAttribute("eventList",eventboardDtos);
-		
-		return "index";
+		return "redirect:index";
 	}
 
-	
+	 @RequestMapping (value ="index") //인덱스 메인페이지
+	   public String home (Model model,HttpServletRequest request,HttpSession session, HttpServletResponse response) throws IOException {
 
-	
-	@RequestMapping (value ="join")
+	      IDao dao = sqlSession.getMapper(IDao.class);
+	      List<ShowDto> showboardDtos = dao.showList2();
+
+	      List<EventBDto> eventboardDtos = dao.eventList();
+
+
+
+	      model.addAttribute("showList",showboardDtos);
+          model.addAttribute("eventList",eventboardDtos);
+
+	      return "index";
+	   }
+
+	@RequestMapping (value ="join") //회원가입페이지
 	public String join () {
 		
 		return "join_form";
@@ -92,13 +93,13 @@ public class MainController {
 	}
 	
 	
-	@RequestMapping (value ="login")
+	@RequestMapping (value ="login") //로그인페이지
 	public String login () {
 		
 		return "login";
 	}
 	
-	@RequestMapping (value = "logout")
+	@RequestMapping (value = "logout") //로그아웃페
 	public String logout(HttpSession session) {
 		
 		session.invalidate();
@@ -107,7 +108,7 @@ public class MainController {
 	}
 	
 	
-	@RequestMapping (value = "loginOk")
+	@RequestMapping (value = "loginOk") 
 	public String loginOk(HttpServletRequest request, Model model, HttpSession session) {
 		
 		String mid = request.getParameter("mid");
@@ -168,7 +169,7 @@ public class MainController {
 		return "/member/memberModifyOk";
 	}
 	
-	@RequestMapping (value ="showlist")
+	@RequestMapping (value ="showlist_adm") //관리자등록 show
 	public String showlist (Model model) {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
@@ -181,7 +182,23 @@ public class MainController {
 	//	model.addAttribute("boardCount",boardCount);
 		
 		
-		return "/reservation/showlist";
+		return "reservation/showlist_adm";
+	}
+	
+	@RequestMapping (value ="showlist")  //사용자용 showlist
+	public String showlist_customer (Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		List<ShowDto> showboardDtos = dao.showList2();
+		
+	//	int boardCount = dao.rfboardAllCount();
+		
+		model.addAttribute("showList",showboardDtos);
+	//	model.addAttribute("boardCount",boardCount);
+		
+		
+		return "reservation/showlist";
 	}
 	
 	@RequestMapping (value ="showview")
@@ -426,5 +443,14 @@ public class MainController {
 	
 	//////////////////////////////이벤트게시판영역///////////////////////////////////
 
+    //////////////////////////////고객센터///////////////////////////////////
+	@RequestMapping(value = "support")
+	public String support(HttpServletRequest request, Model model) {
+		
 	
+	
+		
+		return "customer/support";
+	}
+   //////////////////////////////고객센터///////////////////////////////////
 }

@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+/*footer*/
+footer{width:100%; min-width:1300px;border-top:1px solid #ddd;padding-bottom:25px;font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;}
+footer .cont{width:1200px;}
+.footer-menu{border-bottom:1px solid #f6f6f6;height:70px;position:relative;}
+.footer-menu > a{display:inline-block;line-height:78px;font-size:15px; color:#333;padding:0 16px;position:relative;}
+.footer-menu > a:after{content:""; display:block; width:1px;height:15px;background:#eee;position:absolute;top:27px;left:0;}
+.footer-menu > a:first-child{padding-left:0;}
+.footer-menu > a:first-child:after{display:none;}
+.footer-menu .family{position:absolute;z-index:1; overflow:hidden;top:21px; right:0; border:1px solid #999;width:168px; height:28px;background:#fff;}
+.footer-menu .family li a{display:block;height:24px;line-height:24px;font-size:13px;color:#666;text-indent:10px;}
+.footer-menu .family li a:hover{text-decoration:underline;}
+.footer-menu .family li .family-btn{background:url('http://tkfile.yes24.com/imgNew/common/family-sdown.png')no-repeat 136px 9px;margin-bottom:6px;height:28px;line-height:28px;font-size:15px;color:#333;border-bottom:1px solid #ddd;}
+.footer-menu .family li .family-btn.on{background:url('http://tkfile.yes24.com/imgNew/common/family-sup.png')no-repeat 136px 9px;}
+.footer-menu .family li .family-btn:hover{text-decoration:none;}
+.footer-txt{position:relative;height:165px;}
+.footer-txt .flogo{display:block;position:absolute;top:53px;left:2px;}
+.footxt{position:absolute;top:22px;left:221px;}
+.footxt p{font-size:15px;color:#333;line-height:23px;margin-bottom:5px;}
+.footxt p.gray{color:#999;font-size:13px;}
+.footxt p.gray+p{font-size:13px;}
+.footxt p.gray a{font-size:13px;color:#333;padding-right:10px;background:url('http://tkfile.yes24.com/imgNew/common/f-arrow.png')no-repeat right center;margin-left:15px;}
+.foo-right{position:absolute;top:30px;right:-6px;width:225px;font-size:12px;}
+.foo-right .mark a{font-size:12px;color:#333;padding-right:10px;background:url('http://tkfile.yes24.com/imgNew/common/f-arrow.png')no-repeat right center;margin-left:45px;vertical-align:middle;}
+.foo-right .mark img{vertical-align:middle;}
+.foo-right p.fservice{font-size:12px; color:#999;margin-top:10px;line-height:18px;}
+
+.return-top{display:block;position:fixed;width:50px;height:50px;overflow:hidden;bottom:-50px;right:0; z-index:1}
+.return-top.on{animation-name:rtt;animation-duration: 0.5s;animation-fill-mode: forwards;}
+.return-top.on:hover img{margin-top:-50px;}
+@keyframes rtt {
+  from {bottom:-50px}
+  to {bottom:0;}
+}

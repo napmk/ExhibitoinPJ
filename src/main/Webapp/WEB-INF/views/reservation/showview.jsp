@@ -18,11 +18,9 @@
   </script>
 <title>예약뷰페이지</title>
 
-<style>
-.checked {
-  color: orange;
-}
-</style>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/datepicker.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/jquery-ui.css">
 
 </head>
 
@@ -60,19 +58,44 @@
 				 	<li>공연기간 : ${showView.sdday}</li>
 				 	<li>공연시간 : ${showView.stime}</li>
 				 	<li>관람연령 : ${showView.sage}</li>
-				 	<li>가격 : ${showView.sprice} </li>
+				 	<li>가격 : <b>${showView.sprice}</b> 원</li>
+				 	<li>
+					 	<div>티켓 매수
+					 	<form method="post" action="ticket_sheets">
+							<select class="form-select form-select-sm" >
+							  <option selected>장 수를 선택해 주세요</option>
+							  <option value="1">1</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							  <option value="4">4</option>
+							  <option value="5">5</option>
+							  <option value="6">6</option>
+							  <option value="7">7</option>
+							  <option value="8">8</option>
+							  <option value="9">9</option>
+							  <option value="10">10</option> 
+							 </select>
+					  </form>
+						 </div>
+					</li>
 				 </ul>
+				 <div class="ptselect_txt mgb40">10장이상 단체구매는 1500-3322에 문의하세요</div>
 				 <!-- 달력 -->
 				
-				 <button type="submit" class="btn btn-outline-dark" style="padding:8px 24px;font-size:20px;board:2px solid">예약하기</button>
-		
+				
 				 
 			 </div>
-			 
-			 <div id="datepicker"></div>
+			 <!-- 달력 및 예약하기-->
+			<div class="floatR">
+				<div id="pickDate" class="mgb20"></div>
+				<!--  <button onclick="window.open('ticketMain')" type="submit" class="btn btn-warning" style="width: 100%;padding:8px 24px;font-size:20px">예약하기</button>-->
+				<button onclick="window.open('ticketMain', '_blank', 'width=500px,height=400px,toolbars=no,scrollbars=no'); return false;" type="submit" class="btn btn-warning" style="width: 100%;padding:8px 24px;font-size:20px">예약하기</button>
+			
+			</div>
+<!-- 달력 -->
+		
 		 </div>
-
-	<!-- tab컨텐츠 -->
+  <!-- tab컨텐츠 -->
 	<nav class="showview_tab clear mgt50">
 	  <div class="nav nav-tabs" id="nav-tab" role="tablist">
 	    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">관람후기</button>
@@ -91,6 +114,7 @@
 	</div>
 	</div>
 	<!-- tab컨텐츠 -->
+
 
 
 <%@ include file="../inc/footer.jsp" %>

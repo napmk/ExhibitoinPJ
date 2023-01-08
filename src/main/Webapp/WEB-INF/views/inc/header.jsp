@@ -6,16 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/resources/css/layout.css" rel="stylesheet" >
-	<link href="${pageContext.request.contextPath}/resources/css/font.css" rel="stylesheet" >
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout.css" rel="stylesheet" >
+<link href="${pageContext.request.contextPath}/resources/css/font.css" rel="stylesheet" >
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 	<!--     Fonts and icons     -->
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-	<title>sEEvisit</title>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<title>sEEvisit</title>
 </head>
 <body>
 	<% 
@@ -49,10 +49,11 @@
 	    	<div class="basic_lo">
 			    <a href="/">enjoysEE</a>
 			    	<ul>
-			    		<li><a onclick="location.href='showview'">예매</a></li>
+			    		<li><a href="showlist">예매</a></li>
 			    		<li><a href="event">이벤트</a></li>
-			    		<li><a href="">랭킹</a></li>
-			    		<li><a href="">혜택/할인</a></li>
+			    		<li><a href="void(0);" onclick="alert('준비중입니다.');return false;">랭킹</a></li>
+			    		<li><a href="void(0);" onclick="alert('준비중입니다.');return false;">
+혜택/할인</a></li>
 			    	</ul>
 		    </div>
 		   <!--  <div>
