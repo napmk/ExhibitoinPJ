@@ -52,11 +52,17 @@ public interface IDao {
 		public ArrayList<EventBDto> eventList();// 이벤트 게시판 리스트 select 메인노출
 		
 		//티켓팅
-		public Ticket tictekInfo(String tnum); //예매할 티켓 정보가져오기
-//		public int ticketing(String mid, String ticketName, String rday, String price , String count);//예매
-//		public List<Ticketing> ticketConfirm(String mid); //예매한 티켓 정보 가져오기//조인
-//		public void ticketDelete(String tnum); //예매한 티켓 취소하기
-//		public int writeComment(String rid, String rcontent);//한 마디 적고가
+		//예매
+		//예매할 티켓 정보가져오기
+		public Ticket tictekInfo(String tnum);
+		//예매
+		public int ticketing(String mid, String ticketName, String rday, String price , String count);
+		//예매한 티켓 정보 가져오기//조인
+		public List<Ticketing> ticketConfirm(String mid);
+		//예매한 티켓 취소하기
+		public void ticketDelete(String tnum);
+		
+		
 		
 		//이베트이미지파일 업로드 관련
 		public void efileInfoInsert(int eboardnum, String efileoriname, String efilename, String efileextension, String efileurl);

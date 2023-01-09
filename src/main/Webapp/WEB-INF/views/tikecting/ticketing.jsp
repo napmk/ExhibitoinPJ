@@ -8,21 +8,23 @@
 <meta charset="UTF-8">
 <title>전시회예매</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/title.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/content.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/reservation.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/jquery-ui.css">
+
 <script type="text/javascript">
-
-
       <!--      달력 추가 js 시작       -->
     $(document).ready(function () {
             $.datepicker.setDefaults($.datepicker.regional['ko']); 
             $( "#pickDate" ).datepicker({
             	 showOn: "button",
-                 buttonImage:"${pageContext.request.contextPath }/resources/img/r.png",
+                 buttonImage:"${pageContext.request.contextPath }/resources/image/icon_cal.png",
                  buttonImageOnly: true,
             	 changeMonth: true, 
                  changeYear: true,
@@ -65,78 +67,53 @@
     
    
     <!--      달력 추가 js 끝       -->
-
 </script>
-
-
 </head>
 <body>
-<%@ include file="inc/header.jsp" %>
-   <center>
-   <form action ="ticketingOk?num=${param.num}" method="post"> 
-   <input type="hidden" value="${ticket.tnum }" name="tnum">
-   <table width="75%" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-         <td class="titlebox">
+<%@ include file="../inc/header.jsp" %>
+	<div id="loginWrap" class="mgt100">
+		<h3>예매하기</h3>
+		
+	   <form action ="ticketingOk?num=${param.num}" method="post" class="mgt20"> 
+	   <input type="hidden" value="${ticket.tnum }" name="tnum">
+	      <form action="reservationOk" method="post" name="reservation_frm">
+	        <div>
+				<label class="form-label" >아이디</label>
+				<input class="form-control" type="text" name="mid" value="${memberId}">
+			</div>
+			<div class="mgt8">
+				<label class="form-label" >전시회 이름</label>
+				<input class="form-control" type="text" name="ticketName" value="${ticket.ticketName}">
+			</div>
+			<div class="mgt8">
+				<label class="form-label" >관람날짜</label>
+				<input class="form-control" id="pickDate" type="text" name="rday">
+			</div>
+			<div class="mgt8">
+				<label class="form-label" >가격</label>
+				<input class="form-control" type="text" name="price" value="${ticket.price}">
+				<select name="count" class="form-select form-select-sm" style="margin-top:4px">
+					  <option selected>구매장수를 선택해 주세요</option>
+					  <option value="1">1</option>
+					  <option value="2">2</option>
+					  <option value="3">3</option>
+					  <option value="4">4</option>
+					  <option value="5">5</option>
+					  
+					</select>
 
-            <span class="title01">예매 페이지</span>
-         </td>
-      </tr>
-      <tr>
-         <td>
-            <center>
-            <table width="80%" border="0" cellspacing="0" cellpadding="10">
-               <tr class="contentbox">
-                  <td class="content">
-                     <center>
-                     <table border="0" cellspacing="0" cellpadding="10">
-                        <form action="reservationOk" method="post" name="reservation_frm">
-                           <tr>
-                              <td><span class="content_text01">아이디:</span></td>
-                              <td><input class="input_type01" type="text" name="mid" value="${memberId}"></td>
-                           </tr>
-                           <tr>
-                              <td><span class="content_text01">전시회이름:</span></td>
-                              <td><input class="input_type01" type="text" name="ticketName" value="${ticket.ticketName}"></td>
-                           </tr>
-                           
-                              <td><span class="content_text01">관람날짜:</span>&nbsp;&nbsp;</td>
-                              <td>
-                                 <input class="input_type01" id="pickDate" type="text" name="rday">&nbsp;
-                                 </td>
-                                  <tr>
-                              <td><span class="content_text01">가격:</span></td>
-                              <td><input class="input_type01" type="text" name="price" value="${ticket.price}">
-                         <select name="count">
-                                       <!-- <option value="">${i}</option>-->
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                </select>장 &nbsp&nbsp
-									 </td>
-									 
-                           <tr>
-                              <td colspan="2" align="center">
-
-                                 <!-- <input class="button_type01" type="button" value="예매하기"  onclick="location.href='ticketingtest'">&nbsp;&nbsp; -->
-                                 <input class="button_type01" type="submit" value="예매하기"  >&nbsp;&nbsp; 
-                                 <input class="button_type01" type="button" value="예매취소" onclick="script:window.location='index'">
-                              </td>
-                           </tr>
-                        </form>
-                     </table>
-                     </center>
-                  </td>
-               </tr>
-            </table>
-            </center>
-         </td>
-      </tr>
-      </form>
-   </table>
-   </center>
-<%@ include file="inc/footer.jsp" %>
+				
+			</div>
+   
+		   <!-- 버튼 -->
+		   <div class="btn2set mgt20">
+			   <div class="firbtn"><input type="submit" value="예매하기" class="btn btn-warning my-2"></div>
+			   <div class="secbtn"><input type="button" value="예매취소"  class="btn btn-secondary"  onclick="script:window.location='index'"></div>
+		   </div>
+		   <!-- //버튼 -->
+		         </form>
+		 </form>                        
+    </div>
+<%@ include file="../inc/footer.jsp" %>
 </body>
 </html>

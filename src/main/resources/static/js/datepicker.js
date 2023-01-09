@@ -8,6 +8,7 @@
     $(document).ready(function () {
             $.datepicker.setDefaults($.datepicker.regional['ko']); 
             $( "#pickDate" ).datepicker({
+				 buttonImage:"${pageContext.request.contextPath }/resources/image/icon_cal.png",
                  changeMonth: true, 
                  changeYear: true,
                  nextText: '다음 달',
