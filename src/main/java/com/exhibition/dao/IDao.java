@@ -41,6 +41,8 @@ public interface IDao {
 		//파일이 첨부된 게시글의 번호로 조회한 첨부된 파일의 모든 정보 dto	
         public ArrayList<FileDto> fileList();
         
+        //공연정보게시판 검색 관련 (추가 2023/1/9)
+    	public ArrayList<ShowDto> showSearchContentList(String searchKey);
  
 		//이벤트게시판
 		public void writeQuestion(String qid, String qname, String qcontent, String qemail);//질문하기 insert

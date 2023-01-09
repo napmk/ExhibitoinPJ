@@ -201,6 +201,9 @@
 				</div>
 			</div>
 		   	<!--  검색기능 -->
+		   
+          </form>
+			 <form action="search_list">
 		   	<section class="now_need">
 			<div class="inner_wrap">
 				<div class="cont_left">
@@ -208,7 +211,7 @@
 					<p class="txt">enjoysEE가 다양한 공연들을 추천해 드립니다!</p>
 					<div class="cont_wrap mobile_none">
 						<div class="search_wrap">
-							<input type="text" id="search_prd" class="input_search" placeholder="좋아하는 장르를 검색해보세요!">
+							<input type="text" id="search_prd" name="searchKey" class="input_search" placeholder="좋아하는 장르를 검색해보세요!">
 							<a href="javascript:search();" class="btn_search"></a>
 						</div>
 					</div>
@@ -240,6 +243,7 @@
 				</div>
 			</div>
 		</section>
+		</form>
 		   	<!-- 굿즈판매 -->
 		   	<div id="goodsWrap" class="mgt50">
 			   	<h3>굿즈판매</h3>

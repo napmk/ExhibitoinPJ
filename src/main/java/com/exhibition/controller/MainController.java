@@ -27,6 +27,7 @@ import com.exhibition.dto.FileDto;
 import com.exhibition.dto.MemberDto;
 import com.exhibition.dto.PageDto;
 import com.exhibition.dto.ShowDto;
+
 import com.exhibition.dto.EventBDto;
 
 
@@ -476,6 +477,34 @@ public class MainController {
 	
 	//////////////////////////////이벤트게시판영역///////////////////////////////////
 
+    //////////////////////////////검색 영역///////////////////////////////////
+//	@RequestMapping(value = "search_list")
+//	public String search_list(HttpServletRequest request, Model model) {
+//		
+//		String searchOption = request.getParameter("searchOption");
+//		//title, content, writer 3개중에 한개의 값을 저장
+//		String searchKey = request.getParameter("searchKey");
+//		//유저가 입력한 제목/내용/글쓴이 에 포함된 검색 키워드 낱말
+//		IDao dao = sqlSession.getMapper(IDao.class);
+//		
+//		ArrayList<ShowDto> boardDtos = null;
+//		
+//		if(searchOption.equals("title")) {
+//			boardDtos = dao.rfbSearchTitleList(searchKey);			
+//		} else if(searchOption.equals("content")) {
+//			boardDtos = dao.rfbSearchContentList(searchKey);
+//		} else if(searchOption.equals("writer")) {
+//			boardDtos = dao.rfbSearchWriterList(searchKey);
+//		} 	
+//		
+//		
+//		model.addAttribute("boardList", boardDtos);
+//		model.addAttribute("boardCount", boardDtos.size());//검색 결과 게시물의 개수 반환
+//		
+//		return "board_list";
+//	}
+//	
+	
     //////////////////////////////고객센터///////////////////////////////////
 	@RequestMapping(value = "support")
 	public String support(HttpServletRequest request, Model model) {
