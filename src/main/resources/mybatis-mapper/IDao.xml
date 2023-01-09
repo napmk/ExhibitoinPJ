@@ -41,17 +41,11 @@
 	     
 	     
 	     	<!-- show게시판 검색 SQL 메인페이지노출-->	
-			<select id="rfbSearchTitleList" resultType="com.rubato.home.dto.RFBoardDto">
-				SELECT * FROM showtbl WHERE rfbtitle LIKE '%' || #{param1} || '%' ORDER BY rfbnum DESC	
+			<select id="showSearchContentList" resultType="com.exhibition.dto.ShowDto">
+				SELECT * FROM showtbl WHERE kind LIKE '%' || #{param1} || '%' ORDER BY kind DESC	
 			</select>
 			
-			<select id="rfbSearchContentList" resultType="com.rubato.home.dto.RFBoardDto">
-				SELECT * FROM rubafreeboard WHERE rfbcontent LIKE '%' || #{param1} || '%' ORDER BY rfbnum DESC	
-			</select>
 			
-			<select id="rfbSearchWriterList" resultType="com.rubato.home.dto.RFBoardDto">
-				SELECT * FROM rubafreeboard WHERE rfbname LIKE '%' || #{param1} || '%' ORDER BY rfbnum DESC	
-			</select>
 	
 	    <!-- 파일업로드 SQL -->
 		<insert id="fileInfoInsert">
