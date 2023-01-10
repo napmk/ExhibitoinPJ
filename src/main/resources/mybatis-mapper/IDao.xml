@@ -40,7 +40,7 @@
 	     </select>
 	     
 	     
-	     	<!-- show게시판 검색 SQL 메인페이지노출-->	
+	    <!-- show리스트 게시판 검색 SQL-->	
 		<select id="showSearchTitleList" resultType="com.exhibition.dto.ShowDto">
 			SELECT * FROM showtbl WHERE stitle LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
 		</select>
@@ -141,7 +141,7 @@
 			SELECT * FROM aboard ORDER BY qnum DESC 
 		</select>
 		
-		    <!-- 파일업로드 SQL -->
+		    <!-- 이벤트파일업로드 SQL -->
 		<insert id="efileInfoInsert">
 			INSERT INTO eventfiles(efilenum, eboardnum, efileoriname, efilename, efileextension, efileurl) 
 			VALUES (efile_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5})
@@ -187,22 +187,51 @@
 			<collection property="memberDto" resultMap="memberDto3"></collection>
 		</resultMap>
 	
-		<select id="ticketConfirm" parameterType="com.exhibition.dto.Ticketing" resultMap="Ticketing2">
-			SELECT 
-				ticketing.mid, ticketing.ticketName,ticketing.rday,ticketing.price,ticketing.count,ticketing.tnum,
-				emember.mid , emember.mname, emember.memail
-			FROM
-				ticketing
-				JOIN emember
-				ON ticketing.mid = emember.mid
-			WHERE ticketing.mid=#{mid}
+     <select id="ticketConfirm" parameterType="com.exhibition.dto.ShowDto2" resultMap="ShowDto3">
+      
+      SELECT 
+         SHOWTBL2.snum, SHOWTBL2.stitle, SHOWTBL2.slocation, SHOWTBL2.sdday, SHOWTBL2.stime, SHOWTBL2.sage, SHOWTBL2.sprice, SHOWTBL2.userid, SHOWTBL2.count,
+         emember.mid , emember.mname, emember.memail
+      FROM
+         SHOWTBL2
+         JOIN emember
+         ON SHOWTBL2.userid = emember.mid
+      WHERE SHOWTBL2.userid=#{param1}
+      
+   </select>
 			
-		</select>
-			
-			<!-- 티켓 예매 취소하기  -->
-		<delete id="ticketDelete">
-			DELETE FROM ticketing WHERE tnum=#{param1}
-		</delete>
+	<!-- 티켓 예매 취소하기  -->
+   <delete id="ticketDelete">
+      DELETE FROM SHOWTBL2 WHERE snum=#{param1}
+   </delete>
 	
+	<!-- 티켓 예매 확인정보 가져오기 -->
+   
+   <resultMap type="com.exhibition.dto.MemberDto" id="memberDto2">
+      <result property="mid" column="mid"/>
+      <result property="mpw" column="mpw"/>
+      <result property="mname" column="mname"/>
+      <result property="memail" column="memail"/>   
+      <result property="mdate" column="mdate"/>   
+   </resultMap>
+   
+   <resultMap type="com.exhibition.dto.ShowDto2" id="ShowDto3">
+      <result property="snum" column="snum"/>
+      <result property="stitle" column="stitle"/>
+      <result property="slocation" column="slocation"/>
+      <result property="sdday" column="sdday"/>
+      <result property="stime" column="stime"/>
+      <result property="sage" column="sage"/>   
+      <result property="sprice" column="sprice"/>   
+      <result property="userid" column="userid"/>   
+      <result property="count" column="count"/>   
+      <result property="filecount" column="filecount"/>   
+      
+      <collection property="memberDto" resultMap="memberDto2"></collection>
+   </resultMap>
+   
+
+   
+
 	
 	</mapper>

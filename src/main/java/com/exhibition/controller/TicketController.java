@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.exhibition.dao.IDao;
+import com.exhibition.dto.ShowDto2;
 import com.exhibition.dto.Ticket;
 import com.exhibition.dto.Ticketing;
 
@@ -77,34 +78,60 @@ public class TicketController {
 		return "tikecting/ticketingOk";
 	}
 	
+	   @RequestMapping(value="/ticketConfirm")
+	   public String showview2(Model model, HttpServletResponse response,HttpServletRequest request,HttpSession session)  throws IOException {
+	      
+	      IDao dao = sqlSession.getMapper(IDao.class);
+	      
+	      String userid = (String) session.getAttribute("memberId");
+	      
+	      List<ShowDto2> ticketConfirmList = dao.ticketConfirm(userid);
+	      
+	      model.addAttribute("ticketConfirmList", ticketConfirmList);
+	      
+	      return "ticketConfirm";
+	   }
+	   
+	   @RequestMapping(value="/ticketDelete")
+	   public String dadada(HttpServletRequest request,Model model) {
+	      
+	      String snum = request.getParameter("snum");
+	      
+	      IDao dao = sqlSession.getMapper(IDao.class);
+	      dao.ticketDelete(snum);
+	      
+	      return "redirect:ticketConfirm";
+	   }
+	   
+	   
 	
-	@RequestMapping(value = "/ticketConfirm")
-	public String test(Model model, HttpServletResponse response,HttpServletRequest request,HttpSession session) throws IOException {
-			
-		IDao dao = sqlSession.getMapper(IDao.class);		
-		
-		String mid = (String) session.getAttribute("memberId");
-		
-		List<Ticketing> ticketConfirmList =dao.ticketConfirm(mid);
-		
-		//System.out.println(ticketConfirmList.get(0).getTnum()); 잘가져오는지 확인한댜
-		
-		model.addAttribute("ticketConfirm", ticketConfirmList);
-		
-		
-		return "tikecting/ticketConfirm";
-	}
-	
-	
-	@RequestMapping(value="/ticketDelete")
-	public String ticketDelete(HttpServletRequest request, Model model) {
-		
-		String tnum = request.getParameter("tnum");
-		IDao dao = sqlSession.getMapper(IDao.class);
-		
-		dao.ticketDelete(tnum);
-		
-		return "redirect:ticketConfirm";
-	}
+//	@RequestMapping(value = "/ticketConfirm")
+//	public String test(Model model, HttpServletResponse response,HttpServletRequest request,HttpSession session) throws IOException {
+//			
+//		IDao dao = sqlSession.getMapper(IDao.class);		
+//		
+//		String mid = (String) session.getAttribute("memberId");
+//		
+//		List<Ticketing> ticketConfirmList =dao.ticketConfirm(mid);
+//		
+//		//System.out.println(ticketConfirmList.get(0).getTnum()); 잘가져오는지 확인한댜
+//		
+//		model.addAttribute("ticketConfirm", ticketConfirmList);
+//		
+//		
+//		return "tikecting/ticketConfirm";
+//	}
+//	
+//	
+//	@RequestMapping(value="/ticketDelete")
+//	public String ticketDelete(HttpServletRequest request, Model model) {
+//		
+//		String tnum = request.getParameter("tnum");
+//		IDao dao = sqlSession.getMapper(IDao.class);
+//		
+//		dao.ticketDelete(tnum);
+//		
+//		return "redirect:ticketConfirm";
+//	}
 	
 }

@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShowDto2 {//SHOWTBL
+public class ShowDto2 {//SHOWTBL2 예매한 티켓정보
+	
+	
 	private int snum; //번호
 	private String stitle; //공연제목
 	private String slocation; //공연위치장소
@@ -16,10 +18,9 @@ public class ShowDto2 {//SHOWTBL
 	private String sage; //관람나이
 	private String sprice; //공연가격
 	private String userid;//글쓴이의 아이디
-	private int filecount;//첨부된 파일 개수
-	private String count;// 갯수
+	private String count;// 티켓 구매 갯수
+	private String FILECOUNT;// 첨부된 파일 개수
 	
-	private FileDto fileDto; //join 한 파일 테이블
+	private MemberDto memberDto;// 조인
 	
-
 }

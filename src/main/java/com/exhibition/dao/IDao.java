@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.exhibition.dto.MemberDto;
 import com.exhibition.dto.ShowDto;
+import com.exhibition.dto.ShowDto2;
 import com.exhibition.dto.Ticket;
 import com.exhibition.dto.Ticketing;
 import com.exhibition.dto.Criteria;
@@ -58,16 +59,17 @@ public interface IDao {
 		public ArrayList<EventBDto> eventList();// 이벤트 게시판 리스트 select 메인노출
 		
 		//티켓팅
-		//예매
 		//예매할 티켓 정보가져오기
 		public Ticket tictekInfo(String tnum);
 		//예매
 		public int ticketing(String mid, String ticketName, String rday, String price , String count);
 		//예매한 티켓 정보 가져오기//조인
-		public List<Ticketing> ticketConfirm(String mid);
+		public List<ShowDto2> ticketConfirm(String userid); //예매한 티켓 정보 가져오기//조인
 		//예매한 티켓 취소하기
-		public void ticketDelete(String tnum);
+		public void ticketDelete(String snum); //예매한 티켓 취소하기
 		
+	   
+	      
 		
 		
 		//이베트이미지파일 업로드 관련
