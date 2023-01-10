@@ -59,16 +59,11 @@ public interface IDao {
 		public ArrayList<EventBDto> eventList();// 이벤트 게시판 리스트 select 메인노출
 		
 		//티켓팅
-		//예매할 티켓 정보가져오기
-		public Ticket tictekInfo(String tnum);
-		//예매
-		public int ticketing(String mid, String ticketName, String rday, String price , String count);
+	    public int ticketing(String stitle, String slocation, String sdday, String stime , String sage,String sprice, String userid , String count,String skind);//예매
 		//예매한 티켓 정보 가져오기//조인
 		public List<ShowDto2> ticketConfirm(String userid); //예매한 티켓 정보 가져오기//조인
 		//예매한 티켓 취소하기
 		public void ticketDelete(String snum); //예매한 티켓 취소하기
-		
-	   
 	      
 		
 		

@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.exhibition.dao.IDao;
+import com.exhibition.dto.FileDto;
 import com.exhibition.dto.ShowDto2;
 import com.exhibition.dto.Ticket;
 import com.exhibition.dto.Ticketing;
@@ -38,73 +39,65 @@ public class TicketController {
 		return "ticket";
 	}
 	
-	@RequestMapping(value="/ticketing")
-	public String ticketing(HttpServletRequest request, Model model,HttpSession session) {
-		
-		String sessionId = (String) session.getAttribute("memberId");//아이디 가져오기
-		String tnum = request.getParameter("tnum");
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		
-		Ticket ticket =dao.tictekInfo(tnum);
-		
-		model.addAttribute("memberId", sessionId);
-		model.addAttribute("ticket", ticket);
-		model.addAttribute("mid", ticket.getMid());
-		
-		
-		return "tikecting/ticketing";
-	}
+
 	
-	
-	@RequestMapping (value ="/ticketingOk")
-	public String ticketingtest(HttpServletRequest request,Model model) {
-		String id = request.getParameter("mid");
-		String ticketName = request.getParameter("ticketName");
-		String rday = request.getParameter("rday");
-		String price = request.getParameter("price");
-		String count = request.getParameter("count");
+
+		@RequestMapping(value="/ticketConfirm")
+		public String showview2(Model model, HttpServletResponse response,HttpServletRequest request,HttpSession session)  throws IOException {
+			
+			IDao dao = sqlSession.getMapper(IDao.class);
+			
+			String userid = (String) session.getAttribute("memberId");
+			
+			List<ShowDto2> ticketConfirmList = dao.ticketConfirm(userid);
+			
+			model.addAttribute("ticketConfirmList", ticketConfirmList);
+			
+			return "tikecting/ticketConfirm";
+		}
 		
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		int joinFlag = dao.ticketing(id, ticketName,rday,price,count);
-	
-		 model.addAttribute("id",id);
-		 model.addAttribute("ticketName",ticketName);
-	    model.addAttribute("rday",rday);
-		 model.addAttribute("price",price);
-		model.addAttribute("count",count);
-		
-		return "tikecting/ticketingOk";
-	}
-	
-	   @RequestMapping(value="/ticketConfirm")
-	   public String showview2(Model model, HttpServletResponse response,HttpServletRequest request,HttpSession session)  throws IOException {
-	      
-	      IDao dao = sqlSession.getMapper(IDao.class);
-	      
-	      String userid = (String) session.getAttribute("memberId");
-	      
-	      List<ShowDto2> ticketConfirmList = dao.ticketConfirm(userid);
-	      
-	      model.addAttribute("ticketConfirmList", ticketConfirmList);
-	      
-	      return "ticketConfirm";
-	   }
+		@RequestMapping(value="/ticketDelete")
+		public String dadada(HttpServletRequest request,Model model) {
+			
+			String snum = request.getParameter("snum");
+			
+			IDao dao = sqlSession.getMapper(IDao.class);
+			dao.ticketDelete(snum);
+			
+			return "redirect:tikecting/ticketConfirm";
+		}
 	   
-	   @RequestMapping(value="/ticketDelete")
-	   public String dadada(HttpServletRequest request,Model model) {
-	      
-	      String snum = request.getParameter("snum");
-	      
-	      IDao dao = sqlSession.getMapper(IDao.class);
-	      dao.ticketDelete(snum);
-	      
-	      return "redirect:ticketConfirm";
-	   }
-	   
-	   
-	
+		
+		@RequestMapping(value="/ticketingOk")
+		public String ticketingOk(HttpServletRequest request,Model model) {
+			
+			String stitle = request.getParameter("stitle");
+			String slocation = request.getParameter("slocation");
+			String sdday = request.getParameter("sdday");
+			String stime = request.getParameter("stime");
+			String sage = request.getParameter("sage");
+			String sprice = request.getParameter("sprice");
+			String userid = request.getParameter("userid");
+			String count = request.getParameter("count");
+			String skind = request.getParameter("skind");
+			 
+			IDao dao = sqlSession.getMapper(IDao.class);
+			
+			int joinFlag = dao.ticketing(stitle, slocation, sdday, stime, sage, sprice, userid, count, skind);
+			
+			model.addAttribute("stitle", stitle);
+			model.addAttribute("slocation", slocation);
+			model.addAttribute("sdday", sdday);
+			model.addAttribute("stime", stime);
+			model.addAttribute("sage", sage);
+			model.addAttribute("sprice", sprice);
+			model.addAttribute("userid", userid);
+			model.addAttribute("count",count);
+			model.addAttribute("skind",skind);
+			
+			return "tikecting/ticketingOk";
+		}
+		
 //	@RequestMapping(value = "/ticketConfirm")
 //	public String test(Model model, HttpServletResponse response,HttpServletRequest request,HttpSession session) throws IOException {
 //			

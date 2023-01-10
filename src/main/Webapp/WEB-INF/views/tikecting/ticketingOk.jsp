@@ -10,9 +10,9 @@
 </head>
 <body>
 <%@ include file="../inc/header.jsp" %>
-
+	
 	<div id="loginWrap" class="mgt100">
-		<h2 style="font-weight:700">${ticketName}</h2>
+		<h2 style="font-weight:700">${stitle}</h2>
 		<h3>예매가 완료 되었습니다.</h3>
 		
 	   <form action ="ticketingOk?num=${param.num}" method="post" class="mgt20"> 
@@ -20,21 +20,25 @@
 	      <form action="reservationOk" method="post" name="reservation_frm">
 	        <div>
 				<label class="form-label" >예매한 아이디 :</label>
-				${id}
+				${userid}
 			</div>
 			<div class="mgt8">
 				<label class="form-label" >전시회 이름 : </label>
-				${ticketName}
+				${stitle}
 			</div>
 			<div class="mgt8">
 				<label class="form-label" >관람날짜 : </label>
-				 ${rday }
+				 ${sdday }
+			</div>
+			<div class="mgt8">
+				<label class="form-label" >관람연령 : </label>
+				 ${sage }
 			</div>
 			
 			
 			<div class="mgt8">
 				<label class="form-label" >1장당 가격 : </label>
-				${price }원
+				${sprice }원
 			</div>
 			<div class="mgt8">
 				<label class="form-label" >매 수 : </label>
@@ -42,7 +46,7 @@
 			</div>
 			<div class="mgt8">
 				<label class="form-label" >총 구매한 가격 : </label>
-				${price * count } 원
+				${count * sprice } 원
 			</div>
 			
 			<input type="hidden" name = "id" value="${mid} }">
@@ -52,7 +56,7 @@
 									
 			<!-- 버튼 -->
 			<div class="btn2set mgt20">
-		   		<div style="width:100%"><input  class="btn btn-secondary" type="button" value="확인" onclick="script:window.location='ticket'"></div>
+		   		<div style="width:100%"><input  class="btn btn-secondary" type="button" value="확인" onclick="script:window.location='/'"></div>
 		   	</div>	
 			<!-- //버튼 -->
 		         </form>

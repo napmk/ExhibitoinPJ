@@ -28,72 +28,72 @@
 
 <%@ include file="../inc/header.jsp" %>
 
-<form action ="ticketingOk?snum=${param.snum}" method="post"> 
- <!--  <input type="hidden" value="${showView.snum }" name="snum">
-   <input type="hidden" value="${showView.stitle }" name="stitle">
-   <input type="hidden" value="${showView.userid }" name="userid">
-   <input type="hidden" value="${showView.slocation }" name="slocation">
-   <input type="hidden" value="${showView.sdday }" name="sdday">
-   <input type="hidden" value="${showView.stime }" name="stime">
-   <input type="hidden" value="${showView.sage }" name="sage">
-   <input type="hidden" value="${showView.sprice }" name="sprice"> --> 
-	<div id="wrapper" class="boardWrap" >
-		<div class="board_title">
-		 	<h4>${showView.stitle}</h4>
-		 	<div class="star">
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star"></span>
-				<span class="fa fa-star"></span>
-				<span>9.1</span>
-			</div>
-		</div>
-		<div class="show_detail">	
-			 <div class="show_poster">
+<form action ="ticketingOk?snum=${param.snum}" method="post">  
+   <input type="hidden" value="${showView.snum }" name="snum">
+   <table width="75%" border="0" cellspacing="0" cellpadding="20">
+      <tr>
+         <td class="titlebox">
+
+
+            <span class="title01">예매 페이지</span>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <center>
+            <table width="80%" border="0" cellspacing="0" cellpadding="10">
+               <tr class="contentbox">
+                  <td class="content">
+                     <center>
+                     <table border="0" cellspacing="0" cellpadding="10">
+                        <form action="reservationOk" method="post" name="reservation_frm">
+
+                           <tr>
+                              <td><span class="content_text01">공연제목:</span></td>
+                              <td><input class="input_type01" type="text" name="stitle" value="${showView.stitle}"></td>
+                           </tr>
+                           <tr>
+                              <td><span class="content_text01">공연위치장소:</span></td>
+                              <td><input class="input_type01" type="text" name="slocation" value="${showView.slocation}"></td>
+                           </tr>
+                           <tr>
+                              <td><span class="content_text01">공연날짜:</span></td>
+                              <td><input class="input_type01" type="text" name="sdday" value="${showView.sdday}"></td>
+                           </tr>
+                           <tr>
+                              <td><span class="content_text01">공연시간:</span></td>
+                              <td><input class="input_type01" type="text" name="stime" value="${showView.stime}"></td>
+                           </tr>
+                           <tr>
+                              <td><span class="content_text01">관람나이:</span></td>
+                              <td><input class="input_type01" type="text" name="sage" value="${showView.sage}"></td>
+                           </tr>
+                           <tr>
+                              <td><span class="content_text01">아이디:</span></td>
+                              <td><input class="input_type01" type="text" name="userid" value="${memberId}"></td>
+                           </tr>
+
+                              <td><span class="content_text01">공연가격:</span></td>
+                              <td><input class="input_type01" type="text" name="sprice" value="${showView.sprice}">
+                         <select name="count">
+                                       <!-- <option value="">${i}</option>-->
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                </select>장 &nbsp&nbsp
+									 </td>
+
+
+
 			 	<!-- 포스터이미지 -->
 			      <c:if test="${fileDto.fileextension =='jpg' or fileDto.fileextension =='png' or fileDto.fileextension =='bmp' or fileDto.fileextension =='gif'}">
 		        	<img width="300" src="${pageContext.request.contextPath}/resources/uploadfiles/${fileDto.filename}">
 		         </c:if>
 		         <!--// 포스터이미지 -->
-				<ul class="likes">
-					<li><i class="material-icons">favorite</i></li>
-					<li>50</li>
-					<li>좋아요</li>
-				</ul>
-			</div>
-			<div class="pright-area">
-				 <ul class="show_text">
-				 	<li>장소 : ${showView.slocation}</li>
-				 	<li>공연기간 : ${showView.sdday}</li>
-				 	<li>공연시간 : ${showView.stime}</li>
-				 	<li>관람연령 : ${showView.sage}</li>
-				 	<li>가격 : <b>${showView.sprice}</b> 원</li>
-				 	<li>
-					 	<div>티켓 매수
-					 	<form method="post" action="ticket_sheets">
-							<select class="form-select form-select-sm" name="filecount">
-							  <option selected>장 수를 선택해 주세요</option>
-							  <option value="1">1</option>
-							  <option value="2">2</option>
-							  <option value="3">3</option>
-							  <option value="4">4</option>
-							  <option value="5">5</option>
-							  <option value="6">6</option>
-							  <option value="7">7</option>
-							  <option value="8">8</option>
-							  <option value="9">9</option>
-							  <option value="10">10</option> 
-							 </select>
-					  </form>
-						 </div>
-					</li>
-				 </ul>
-				 <div class="ptselect_txt mgb40">10장이상 단체구매는 1500-3322에 문의하세요</div>
-				 <!-- 달력 -->
-				
-				
-				 
+
+
 			 </div>
 			 <!-- 달력 및 예약하기-->
 			<div class="floatR">
@@ -102,10 +102,12 @@
 			<!-- 	<button onclick="window.open('ticketMain', '_blank', 'width=500px,height=400px,toolbars=no,scrollbars=no'); return false;" type="submit" class="btn btn-warning" style="width: 100%;padding:8px 24px;font-size:20px">예약하기</button>-->
 			 <input class="btn btn-warning" type="submit" value="예매하기"  > 
 			</div>
-<!-- 달력 -->
-		
+
+	
 		 </div>
-		 
+
+
+ </form>
 	<div id="wrapper" class="boardWrap" style="display:none">
 		<div class="board_title">
 		 	<h4>${showView.stitle}</h4>
