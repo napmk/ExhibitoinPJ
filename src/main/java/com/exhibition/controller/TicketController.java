@@ -57,7 +57,7 @@ public class TicketController {
 		}
 		
 		@RequestMapping(value="/ticketDelete")
-		public String dadada(HttpServletRequest request,Model model) {
+		public String ticketDelete(HttpServletRequest request,Model model) {
 			
 			String snum = request.getParameter("snum");
 			
