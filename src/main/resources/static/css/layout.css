@@ -150,7 +150,11 @@ nav .middle-menu ul {display:inline-block;margin: 10px 0 7px;}
 .search_wrap .btn_search {display: inline-block;width: 28px;height: 28px;background: url(/resources/image/ico_search.png) no-repeat;
     background-size: contain}
 
-
+/*showlist*/
+#search{float:right;width: 400px;  }
+#search .search_select{width: 120px;float:left;margin-right:4px}
+#search .search_input{float:left;width:200px;margin-right:4px}
+#search .search_btn{float:left}	
 /*showview*/
 .ptselect_txt{width:100%;font-size:12px; color:#ff6600}
 

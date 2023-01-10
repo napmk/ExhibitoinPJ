@@ -66,6 +66,19 @@
 					  <label for="exampleFormControlTextarea1" class="form-label">공연이미지등록</label>
 					  <input type="file" name="files" class="form-control"  placeholder="포스터 이미지를 등록해주세요" value="">
 				</div>
+				<div class="mb-3">
+					  <label for="exampleFormControlTextarea1" class="form-label">공연타입</label>
+					   <select name="skind" class="form-select">
+			                <option value="콘서트">콘서트</option>
+			                <option value="연극">연극</option>
+			                <option value="어린이/가족">어린이/가족</option>
+			                <option value="뮤지컬">뮤지컬</option>
+			                <option value="클래식">클래식</option>
+			                <option value="전시회">전시회</option>
+			              </select>
+			            </div>
+            
+			
 				<div class="btn2set mgt20">
 					<div class="firbtn"><input type="submit" value="등록하기"  class="btn btn-dark"></div>
 					<div class="secbtn"><input type="text" value="취소" class="btn btn-secondary" onclick="window.open('index')" ></div>

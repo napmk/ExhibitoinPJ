@@ -26,9 +26,9 @@
 		<!--show게시판 SQL-->
 		<insert id="showWrite">
 		INSERT INTO 
-			showtbl(snum, stitle, slocation, sdday, stime, sage, sprice, userid, filecount) 
+			showtbl(snum, stitle, slocation, sdday, stime, sage, sprice, userid, filecount, skind) 
 		VALUES
-			(showtbl_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4},  #{param5}, #{param6}, #{param7}, #{param8})
+			(showtbl_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4},  #{param5}, #{param6}, #{param7}, #{param8},#{param9})
 		
 		</insert>
 	    <select id="showList" resultType="com.exhibition.dto.ShowDto">
@@ -41,9 +41,17 @@
 	     
 	     
 	     	<!-- show게시판 검색 SQL 메인페이지노출-->	
-			<select id="showSearchContentList" resultType="com.exhibition.dto.ShowDto">
-				SELECT * FROM showtbl WHERE kind LIKE '%' || #{param1} || '%' ORDER BY kind DESC	
-			</select>
+		<select id="showSearchTitleList" resultType="com.exhibition.dto.ShowDto">
+			SELECT * FROM showtbl WHERE stitle LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
+		</select>
+		
+		<select id="showSearchContentList" resultType="com.exhibition.dto.ShowDto">
+			SELECT * FROM showtbl WHERE sdday LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
+		</select>
+		
+		<select id="showSearchWriterList" resultType="com.exhibition.dto.ShowDto">
+			SELECT * FROM showtbl WHERE skind LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
+		</select>
 			
 			
 	
@@ -90,7 +98,7 @@
 		<!--메인화면 이미지 뜨게하자 -->
 		<select id="showList2" parameterType="com.exhibition.dto.ShowDto" resultMap="ShowDto2"> 
 		SELECT 
-			SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,
+			SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,SHOWTBL.skind,
 			SHOWFILES.filenum , SHOWFILES.sboardnum, SHOWFILES.fileoriname, SHOWFILES.filename,SHOWFILES.fileextension , SHOWFILES.fileurl 
 		FROM
 			SHOWTBL

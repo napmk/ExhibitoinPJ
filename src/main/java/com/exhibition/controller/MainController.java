@@ -42,7 +42,7 @@ public class MainController {
 	@RequestMapping (value ="/") 
 	public String home () {
 		
-		return "redirect:index2";
+		return "redirect:index";
 	}
 
 	 @RequestMapping (value ="index") //인덱스 메인페이지
@@ -61,7 +61,7 @@ public class MainController {
 	      return "index";
 	   }
 	 
-	 @RequestMapping (value ="index2") //인덱스 메인페이지
+	 @RequestMapping (value ="index2") //인덱스 메인페이지2
 	   public String index2 (Model model,HttpServletRequest request,HttpSession session, HttpServletResponse response) throws IOException {
 
 	      IDao dao = sqlSession.getMapper(IDao.class);
@@ -236,22 +236,22 @@ public class MainController {
 	}
 	
 	
-	@RequestMapping (value ="tikecting/showview")
-	public String tikectingshowview (HttpServletRequest request, Model model, HttpSession session) {
-		
-		String snum = request.getParameter("snum");
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		//조회수증가 dao.shit(snum);
-		FileDto fileDto = dao.getFileInfo(snum);
-		ShowDto showdto = dao.showView(snum);
-		
-		model.addAttribute("showView",showdto);
-		model.addAttribute("fileDto", fileDto);
-		
-		
-		return "/tikecting/showview";
-	}
+//	@RequestMapping (value ="tikecting/showview")
+//	public String tikectingshowview (HttpServletRequest request, Model model, HttpSession session) {
+//		
+//		String snum = request.getParameter("snum");
+//		
+//		IDao dao = sqlSession.getMapper(IDao.class);
+//		//조회수증가 dao.shit(snum);
+//		FileDto fileDto = dao.getFileInfo(snum);
+//		ShowDto showdto = dao.showView(snum);
+//		
+//		model.addAttribute("showView",showdto);
+//		model.addAttribute("fileDto", fileDto);
+//		
+//		
+//		return "/tikecting/showview";
+//	}
 	
 	@RequestMapping (value ="showwrite")
 	public String showwrite (HttpSession session, HttpServletResponse response) {
@@ -282,14 +282,15 @@ public class MainController {
 		String showAge = request.getParameter("sage");
 		String showPrice = request.getParameter("sprice");
 		String sessionId = (String) session.getAttribute("memberId");
+		String showKind = request.getParameter("skind");
 		//글쓴이의 아이디는 현재 로그인된 유저의 아이디이므로 세션에서 가져와서 전달 
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		if(files.isEmpty()) { // 파일의 첨부여부 확인
-			dao.showWrite(showTitle, showLocation, showSdday,showTime,showAge,showPrice, sessionId, 0);
+			dao.showWrite(showTitle, showLocation, showSdday,showTime,showAge,showPrice, sessionId, 0,showKind);
 		} else {
-			dao.showWrite(showTitle, showLocation, showSdday,showTime,showAge,showPrice, sessionId, 1);
+			dao.showWrite(showTitle, showLocation, showSdday,showTime,showAge,showPrice, sessionId, 1,showKind);
 			ArrayList<ShowDto> latestBoard = dao.boardLatestInfo(sessionId);
 			ShowDto dto = latestBoard.get(0);
 			int snum = dto.getSnum();
@@ -488,20 +489,21 @@ public class MainController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ArrayList<ShowDto> boardDtos = null;
+		List<ShowDto> showboardDtos = dao.showList2();
 		
-		if(searchOption.equals("kind")) {
-			boardDtos = dao.showSearchContentList(searchKey);			
-//		} else if(searchOption.equals("content")) {
-//			boardDtos = dao.rfbSearchContentList(searchKey);
-//		} else if(searchOption.equals("writer")) {
-//			boardDtos = dao.rfbSearchWriterList(searchKey);
+		if(searchOption.equals("stitle")) {
+			boardDtos = dao.showSearchTitleList(searchKey);			
+		} else if(searchOption.equals("sdday")) {
+			boardDtos = dao.showSearchContentList(searchKey);
+		} else if(searchOption.equals("kind")) {
+			boardDtos = dao.showSearchWriterList(searchKey);
 		} 	
 		
-		
-		model.addAttribute("boardList", boardDtos);
+		model.addAttribute("showList",showboardDtos);
+		model.addAttribute("showList", boardDtos);
 		model.addAttribute("boardCount", boardDtos.size());//검색 결과 게시물의 개수 반환
 		
-		return "board_list";
+		return "reservation/showlist";
 	}
 	
 	

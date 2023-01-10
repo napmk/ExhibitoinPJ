@@ -24,7 +24,7 @@ public interface IDao {
 		public void memberModify(String mid, String mpw, String mname, String meamil);//아이디로 조회하여 회원정보 수정하기 UPDATE
 
 	    //공연정보게시판
-		public int showWrite(String stitle, String slocation, String sdday, String stime, String sage, String sprice ,String userid,int filecount); //공연등록
+		public int showWrite(String stitle, String slocation, String sdday, String stime, String sage, String sprice ,String userid,int filecount, String skind); //공연등록
 		//public int rfbwrite(String rfbname, String rfbtitle, String rfbcontent, String rfbid, int filecount);//insert
 		public int showboardAllCount();//총 게시물 개수 select
 		public List<ShowDto> showList();// 게시판 리스트 select
@@ -42,7 +42,11 @@ public interface IDao {
         public ArrayList<FileDto> fileList();
         
         //공연정보게시판 검색 관련 (추가 2023/1/9)
+  
+    	public ArrayList<ShowDto> showSearchTitleList(String searchKey);
     	public ArrayList<ShowDto> showSearchContentList(String searchKey);
+    	public ArrayList<ShowDto> showSearchWriterList(String searchKey);
+    	
  
 		//이벤트게시판
 		public void writeQuestion(String qid, String qname, String qcontent, String qemail);//질문하기 insert
