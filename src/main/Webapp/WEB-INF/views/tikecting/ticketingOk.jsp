@@ -13,7 +13,7 @@
 	
 	<div id="loginWrap" class="mgt100">
 		<h2 style="font-weight:700">${stitle}</h2>
-		<h3>예매가 완료 되었습니다.</h3>
+		<h3 class="mgb40">예매가 완료 되었습니다.</h3>
 		
 	     
 	        <div>
@@ -42,7 +42,7 @@
 				<label class="form-label" >매 수 : </label>
 				 ${count }장
 			</div>
-			<div class="mgt8">
+			<div class="mgt8 mgb40">
 				<label class="form-label" >총 구매한 가격 : </label>
 				${count * sprice } 원
 			</div>
@@ -51,7 +51,7 @@
 									
 			<!-- 버튼 -->
 			<div class="btn2set mgt20">
-		   		<div style="width:100%"><input  class="btn btn-secondary" type="button" value="확인" onclick="script:window.location='/'"></div>
+		   		<div style="width:100%"><input  class="btn btn-dark" type="button" value="확인" onclick="script:window.location='/'"></div>
 		   	</div>	
 			<!-- //버튼 -->
 		   

@@ -12,7 +12,7 @@
 <body>
 	<%@ include file="../inc/header.jsp" %>
 	<div id="loginWrap" class="mgt100">
-			<h3>회원정보 수정</h3>
+			<h3 class="mgb20">내 정보 수정</h3>
 			<form action="memberModifyOk" method="post" name="join_frm">
 				<div>
 					<label class="form-label" >아이디</label>
@@ -33,13 +33,13 @@
 					<input class="form-control" type="text" name="mname" value="${memberDto.mname }">
 				
 				</div>
-				<div class="mgt8">
+				<div class="mgt8 mgb20">
 					<label class="form-label" placeholder="비밀번호를 입력해주세요">이메일</label>
 					<input class="form-control" type="text" name="memail" value="${memberDto.memail }">
 				
 				</div>			
 				
-				<div class="btn2set mgt20">
+				<div class="btn2set">
 					<div class="firbtn"><input type="submit" value="수정완료" class="btn btn-warning my-2" onclick="joinCheck()"></div>
 					<div class="secbtn"><input class="btn btn-secondary" type="button" value="취소" onclick="script:window.location='index'">
 			   </div>

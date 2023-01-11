@@ -77,7 +77,8 @@
 			<result property="sage" column="sage"/>	
 			<result property="sprice" column="sprice"/>	
 			<result property="userid" column="userid"/>	
-			<result property="filecount" column="filecount"/>	
+			<result property="filecount" column="filecount"/>
+			<result property="skind" column="skind"/>	
 
 			<collection property="fileDto" resultMap="FileDto2"></collection>
 		</resultMap>
@@ -86,7 +87,7 @@
 		<!--메인화면 이미지 뜨게하자 -->
 		<select id="showList2" parameterType="com.exhibition.dto.ShowDto" resultMap="ShowDto2"> 
 		SELECT 
-			SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,
+			SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,SHOWTBL.skind,
 			SHOWFILES.filenum , SHOWFILES.sboardnum, SHOWFILES.fileoriname, SHOWFILES.filename,SHOWFILES.fileextension , SHOWFILES.fileurl 
 		FROM
 			SHOWTBL
@@ -146,8 +147,8 @@
 	  <!-- 티켓예매 SQL -->
 		<!-- 티켓 예매하기  -->
 		<insert id="ticketing">
-		insert into SHOWTBL2(snum, stitle, slocation, sdday, stime,sage,sprice,userid,count)
-		VALUES(SHOWTBL2_SEQ.nextval,#{param1}, #{param2}, #{param3},#{param4},#{param5}, #{param6},#{param7},#{param8}) 
+		insert into SHOWTBL2(snum, stitle, slocation, sdday, stime,sage,sprice,userid,count,skind)
+		VALUES(SHOWTBL2_SEQ.nextval,#{param1}, #{param2}, #{param3},#{param4},#{param5}, #{param6},#{param7},#{param8},#{param9}) 
 		</insert>
 	
 	
@@ -171,7 +172,8 @@
 		<result property="sprice" column="sprice"/>	
 		<result property="userid" column="userid"/>	
 		<result property="count" column="count"/>	
-		<result property="filecount" column="filecount"/>	
+		<result property="filecount" column="filecount"/>
+		<result property="skind" column="skind"/>	
 		
 		<collection property="memberDto" resultMap="memberDto2"></collection>
 	</resultMap>
@@ -179,7 +181,7 @@
 	<select id="ticketConfirm" parameterType="com.exhibition.dto.ShowDto2" resultMap="ShowDto3">
 		
 		SELECT 
-			SHOWTBL2.snum, SHOWTBL2.stitle, SHOWTBL2.slocation, SHOWTBL2.sdday, SHOWTBL2.stime, SHOWTBL2.sage, SHOWTBL2.sprice, SHOWTBL2.userid, SHOWTBL2.count,
+			SHOWTBL2.snum, SHOWTBL2.stitle, SHOWTBL2.slocation, SHOWTBL2.sdday, SHOWTBL2.stime, SHOWTBL2.sage, SHOWTBL2.sprice, SHOWTBL2.userid, SHOWTBL2.count,SHOWTBL2.skind,
 			emember.mid , emember.mname, emember.memail
 		FROM
 			SHOWTBL2

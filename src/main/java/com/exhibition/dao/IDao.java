@@ -57,7 +57,7 @@ public interface IDao {
 		
 		
 		//티켓팅
-		public int ticketing(String stitle, String slocation, String sdday, String stime , String sage,String sprice, String userid , String count);//예매
+		public int ticketing(String stitle, String slocation, String sdday, String stime , String sage,String sprice, String userid , String count,String skind);//예매
 		//예매한 티켓 정보 가져오기//조인
 		public List<ShowDto2> ticketConfirm(String userid); //예매한 티켓 정보 가져오기//조인
 		//예매한 티켓 취소하기

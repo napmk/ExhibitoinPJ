@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/jquery-ui.css">
 <style>
 .input_type01{border: 0;}
+.likes{margin-top:12px}
 </style>
 </head>
 
@@ -69,15 +70,7 @@
 				 	<li> 공연 장소 : <input class="input_type01" type="text" name="sprice" value="${showView.sprice}" readonly="readonly"></li>
 				 	<li> 공연 나이 : <input class="input_type01" type="text" name="sage" value="${showView.sage}" readonly="readonly"></li>
 				 	<li> 아이디 : <input class="input_type01" type="text" name="userid" value="${memberId}" readonly="readonly"></li>
-				 	
-				 	
-				 <!--  	<li>공연제목 : ${showView.stitle}<input  type="text" name="stitle"></li>
-				 	<li>장소 : ${showView.slocation}<input  type="text" name="slocation"></li>
-				 	<li>공연기간 : ${showView.sdday}<input type="text" name="sdday"></li>
-				 	<li>공연시간 : ${showView.stime}<input  type="text" name="stime"></li>
-				 	<li>관람연령 : ${showView.sage}<input  type="text" name="sage"></li>
-				 	<li style="display:none"> 아이디 : <input class="input_type01" type="text" name="userid" value="${memberId}"></li>
-				 	<li>가격 : <b>${showView.sprice}</b> 원<input class="input_type01" type="text" name="sprice"></li>-->
+		
 				 	<li>
 					 	<div>티켓 매수
 					 

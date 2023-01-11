@@ -61,10 +61,11 @@ public class TicketController {
 		String sprice = request.getParameter("sprice");
 		String userid = request.getParameter("userid");
 		String count = request.getParameter("count");
+		String skind = request.getParameter("skind");
 		 
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		int joinFlag = dao.ticketing(stitle, slocation, sdday, stime, sage, sprice, userid, count);
+		int joinFlag = dao.ticketing(stitle, slocation, sdday, stime, sage, sprice, userid, count, skind);
 		
 		model.addAttribute("stitle", stitle);
 		model.addAttribute("slocation", slocation);
@@ -74,6 +75,7 @@ public class TicketController {
 		model.addAttribute("sprice", sprice);
 		model.addAttribute("userid", userid);
 		model.addAttribute("count",count);
+		model.addAttribute("skind",skind);
 		
 		return "tikecting/ticketingOk";
 	}

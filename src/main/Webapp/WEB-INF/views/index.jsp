@@ -3,7 +3,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>index</title>
+<style>
+
+
+.nav-link  {color:#333!important;}
+.nav-tabs .nav-link.active {font-weight:700; color:#ec7d2c!important;}
+.tabmenu_cm{position: relative;width: 100%;}
+.tabmenu_cm .more{position: absolute;right: 0; color:#999; font-size:14px; padding:10px}
+.tabmenu_cm .more:hover{color:#000}
+</style>
 </head>
 <body>
 
@@ -13,24 +22,33 @@
    	<div>
 		   	<div id="exhiPosterWrap">
 		   		<h3 class="mgt50">전체공연</h3>
-				<ul class="nav nav-tabs mgt20" id="myTab" role="tablist">
-				  <li class="nav-item" role="presentation">
-				    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">전체공연</button>
-				  </li>
-				  <li class="nav-item" role="presentation">
-				    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">콘서트</button>
-				  </li>
-				  <li class="nav-item" role="presentation">
-				    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">연극</button>
-				  </li>
-				  <li class="nav-item" role="presentation">
-				    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">아동/가족</button>
-				  </li>
-				 
-				</ul>
+		   		<div class="tabmenu_cm">
+					<ul class="nav nav-tabs mgt20" id="myTab" role="tablist">
+					  <li class="nav-item" role="presentation">
+					    <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-tab-pane" type="button" role="tab" aria-controls="all-tab-pane" aria-selected="true">전체공연</button>
+					  </li>
+					  <li class="nav-item" role="presentation">
+					    <button class="nav-link" id="musical-tab" data-bs-toggle="tab" data-bs-target="#musical-tab-pane" type="button" role="tab" aria-controls="musical-tab-pane" aria-selected="false">뮤지컬</button>
+					  </li>
+					  <li class="nav-item" role="presentation">
+					    <button class="nav-link" id="classic-tab" data-bs-toggle="tab" data-bs-target="#classic-tab-pane" type="button" role="tab" aria-controls="classic-tab-pane" aria-selected="false">클래식</button>
+					  </li>
+					  <li class="nav-item" role="presentation">
+					    <button class="nav-link" id="concert-tab" data-bs-toggle="tab" data-bs-target="#concert-tab-pane" type="button" role="tab" aria-controls="concert-tab-pane" aria-selected="false">콘서트</button>
+					  </li>
+					  <li class="nav-item" role="presentation">
+					    <button class="nav-link" id="theater-tab" data-bs-toggle="tab" data-bs-target="#theater-tab-pane" type="button" role="tab" aria-controls="theater-tab-pane" aria-selected="false">연극</button>
+					  </li>
+					  <li class="nav-item" role="presentation">
+					    <button class="nav-link" id="kids-tab" data-bs-toggle="tab" data-bs-target="#kids-tab-pane" type="button" role="tab" aria-controls="kids-tab-pane" aria-selected="false">아동/가족</button>
+					  </li>
+					  <a class="more" href="/showlist"> + 더 보기</a>
+				 	</ul>
+				 	
+				 </div>
 				<!-- 예매하기 -->
 				<div class="tab-content" id="myTabContent">
-				  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+				  <div class="tab-pane fade show active" id="all-tab-pane" role="tabpanel" aria-labelledby="all-tab" tabindex="0">
 					<div class="container">
 						<ul class="reservationWrap">
 							<c:forEach items="${showList}" var="showDto" begin="0" end="3" step="1">
@@ -66,11 +84,14 @@
 						</ul>
 					</div>
 				  </div>
-				  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
-				  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
-				  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+				  <div class="tab-pane fade" id="musical-tab-pane" role="tabpanel" aria-labelledby="musical-tab" tabindex="0">뮤지컬만나오게</div>
+				  <div class="tab-pane fade" id="classic-tab-pane" role="tabpanel" aria-labelledby="classic-tab" tabindex="0">.클래식만나오게.</div>
+				  <div class="tab-pane fade" id="concert-tab-pane" role="tabpanel" aria-labelledby="concert-tab" tabindex="0">.콘서트만나오게.</div>
+				  <div class="tab-pane fade" id="theater-tab-pane" role="tabpanel" aria-labelledby="theater-tab" tabindex="0">연극만나오게..</div>
+				  <div class="tab-pane fade" id="kids-tab-pane" role="tabpanel" aria-labelledby="kids-tab" tabindex="0">어린이만나오게..</div>
 				
 				</div>
+				
 			</div>	
 				<!-- //예매하기 -->
 			<!-- //tab -->	
