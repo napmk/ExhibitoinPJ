@@ -15,9 +15,7 @@
 		<h2 style="font-weight:700">${stitle}</h2>
 		<h3>예매가 완료 되었습니다.</h3>
 		
-	   <form action ="ticketingOk?num=${param.num}" method="post" class="mgt20"> 
-	   <input type="hidden" value="${ticket.tnum }" name="tnum">
-	      <form action="reservationOk" method="post" name="reservation_frm">
+	     
 	        <div>
 				<label class="form-label" >예매한 아이디 :</label>
 				${userid}
@@ -49,18 +47,15 @@
 				${count * sprice } 원
 			</div>
 			
-			<input type="hidden" name = "id" value="${mid} }">
-			<input type="hidden" name = "ticketName" value="${ticketName}">
-			<input type="hidden" name = "selectedDate" value="${selectedDate}">
-			<input type="hidden" name = "ticketName" value="${count}">
+		
 									
 			<!-- 버튼 -->
 			<div class="btn2set mgt20">
 		   		<div style="width:100%"><input  class="btn btn-secondary" type="button" value="확인" onclick="script:window.location='/'"></div>
 		   	</div>	
 			<!-- //버튼 -->
-		         </form>
-		 </form>                        
+		   
+	                       
     </div>
  
 <%@ include file="../inc/footer.jsp" %>

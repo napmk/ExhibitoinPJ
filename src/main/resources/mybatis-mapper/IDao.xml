@@ -89,7 +89,8 @@
 			<result property="sage" column="sage"/>	
 			<result property="sprice" column="sprice"/>	
 			<result property="userid" column="userid"/>	
-			<result property="filecount" column="filecount"/>	
+			<result property="filecount" column="filecount"/>
+			<result property="skind" column="skind"/>	
 
 			<collection property="fileDto" resultMap="FileDto2"></collection>
 		</resultMap>
@@ -155,82 +156,70 @@
 			SELECT * FROM eventfiles WHERE eboardnum=#{param1}
 		</select>
 
+
 	  <!-- 티켓예매 SQL -->
-	  <!-- 예매 -->
-		<select id="tictekInfo" resultType="com.exhibition.dto.Ticket"> 
-		SELECT * FROM ticket WHERE tnum=#{param1} 
-		</select>
-		
 		<!-- 티켓 예매하기  -->
 		<insert id="ticketing">
-		insert into ticketing(tnum,mid, ticketName, rday, price, count)
-		VALUES(ticketing_SEQ.nextval,#{param1}, #{param2}, #{param3},#{param4},#{param5}) 
+		insert into SHOWTBL2(snum, stitle, slocation, sdday, stime,sage,sprice,userid,count,skind)
+		VALUES(SHOWTBL2_SEQ.nextval,#{param1}, #{param2}, #{param3},#{param4},#{param5}, #{param6},#{param7},#{param8},#{param9}) 
 		</insert>
-		
-		<!-- 티켓 예매 확인정보 가져오기-->
-		<resultMap type="com.exhibition.dto.MemberDto" id="memberDto3">
-			<result property="mid" column="mid"/>
-			<!--  column아이디는 테이블 아이디 -->
-			<result property="mpw" column="mpw"/>
-			<result property="mname" column="mname"/>
-			<result property="memail" column="memail"/>	
-			<result property="mdate" column="mdate"/>	
-	    </resultMap>
 	
-		<resultMap type="com.exhibition.dto.Ticketing" id="Ticketing2">
-			<result property="mid" column="mid"/>
-			<result property="ticketName" column="ticketName"/>
-			<result property="rday" column="rday"/>	
-			<result property="price" column="price"/>	
-			<result property="count" column="count"/>	
-			<result property="tnum" column="tnum"/>	
-			<collection property="memberDto" resultMap="memberDto3"></collection>
-		</resultMap>
-	
-     <select id="ticketConfirm" parameterType="com.exhibition.dto.ShowDto2" resultMap="ShowDto3">
-      
-      SELECT 
-         SHOWTBL2.snum, SHOWTBL2.stitle, SHOWTBL2.slocation, SHOWTBL2.sdday, SHOWTBL2.stime, SHOWTBL2.sage, SHOWTBL2.sprice, SHOWTBL2.userid, SHOWTBL2.count,
-         emember.mid , emember.mname, emember.memail
-      FROM
-         SHOWTBL2
-         JOIN emember
-         ON SHOWTBL2.userid = emember.mid
-      WHERE SHOWTBL2.userid=#{param1}
-      
-   </select>
-			
-	<!-- 티켓 예매 취소하기  -->
-   <delete id="ticketDelete">
-      DELETE FROM SHOWTBL2 WHERE snum=#{param1}
-   </delete>
 	
 	<!-- 티켓 예매 확인정보 가져오기 -->
-   
-   <resultMap type="com.exhibition.dto.MemberDto" id="memberDto2">
-      <result property="mid" column="mid"/>
-      <result property="mpw" column="mpw"/>
-      <result property="mname" column="mname"/>
-      <result property="memail" column="memail"/>   
-      <result property="mdate" column="mdate"/>   
-   </resultMap>
-   
-   <resultMap type="com.exhibition.dto.ShowDto2" id="ShowDto3">
-      <result property="snum" column="snum"/>
-      <result property="stitle" column="stitle"/>
-      <result property="slocation" column="slocation"/>
-      <result property="sdday" column="sdday"/>
-      <result property="stime" column="stime"/>
-      <result property="sage" column="sage"/>   
-      <result property="sprice" column="sprice"/>   
-      <result property="userid" column="userid"/>   
-      <result property="count" column="count"/>   
-      <result property="filecount" column="filecount"/>   
-      
-      <collection property="memberDto" resultMap="memberDto2"></collection>
-   </resultMap>
-   
+	
+	<resultMap type="com.exhibition.dto.MemberDto" id="memberDto2">
+		<result property="mid" column="mid"/>
+		<result property="mpw" column="mpw"/>
+		<result property="mname" column="mname"/>
+		<result property="memail" column="memail"/>	
+		<result property="mdate" column="mdate"/>	
+	</resultMap>
+	
+	<resultMap type="com.exhibition.dto.ShowDto2" id="ShowDto3">
+		<result property="snum" column="snum"/>
+		<result property="stitle" column="stitle"/>
+		<result property="slocation" column="slocation"/>
+		<result property="sdday" column="sdday"/>
+		<result property="stime" column="stime"/>
+		<result property="sage" column="sage"/>	
+		<result property="sprice" column="sprice"/>	
+		<result property="userid" column="userid"/>	
+		<result property="count" column="count"/>	
+		<result property="filecount" column="filecount"/>
+		<result property="skind" column="skind"/>		
+		
+		<collection property="memberDto" resultMap="memberDto2"></collection>
+	</resultMap>
+	
+	<select id="ticketConfirm" parameterType="com.exhibition.dto.ShowDto2" resultMap="ShowDto3">
+		
+		SELECT 
+			SHOWTBL2.snum, SHOWTBL2.stitle, SHOWTBL2.slocation, SHOWTBL2.sdday, SHOWTBL2.stime, SHOWTBL2.sage, SHOWTBL2.sprice, SHOWTBL2.userid, SHOWTBL2.count, SHOWTBL2.skind,
+			emember.mid , emember.mname, emember.memail
+		FROM
+			SHOWTBL2
+			JOIN emember
+			ON SHOWTBL2.userid = emember.mid
+		WHERE SHOWTBL2.userid=#{param1}
+		
+	</select>
+	
+	<!-- 티켓 예매 취소하기  -->
+		<delete id="ticketDelete">
+		DELETE FROM SHOWTBL2 WHERE snum=#{param1}
+	</delete>
+	
+	<!-- 공연 정보 가져오기 -->
+	<select id="ticketList" resultType="com.exhibition.dto.ShowDto"> <!-- ROWNUM 오라클에 자동생성되는 번호 A와 PAGE는 가상의 필드-->
+		SELECT * FROM
+			(SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM <!--소수점 버림 함수 Floor를 사용 amount는 5 -->
+			FROM
+			(SELECT * FROM SHOWTBL ORDER BY snum DESC)A)
+		WHERE PAGE = #{pageNum}
+		</select>
 
+
+	
    
 
 	

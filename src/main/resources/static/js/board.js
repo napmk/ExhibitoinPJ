@@ -32,3 +32,13 @@ function boardCheck() {
 	
 	document.board_frm.submit();
 } 
+
+function purchasesNum(){
+	
+	if(document.purchases_num.count.value.length == 0) {
+		alert("구매 장 수를 선택해 주세요 ");
+		return;
+	}
+	document.purchases_num.submit();
+	
+}

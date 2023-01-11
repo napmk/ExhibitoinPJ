@@ -21,94 +21,18 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/datepicker.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/jquery-ui.css">
-
+<style>
+.input_type01{border: 0;}
+</style>
 </head>
 
 <body>
 
 <%@ include file="../inc/header.jsp" %>
-
-<form action ="ticketingOk?snum=${param.snum}" method="post">  
+  
+  <form action ="ticketingOk?snum=${param.snum}" method="post">  
    <input type="hidden" value="${showView.snum }" name="snum">
-   <table width="75%" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-         <td class="titlebox">
-
-
-            <span class="title01">예매 페이지</span>
-         </td>
-      </tr>
-      <tr>
-         <td>
-            <center>
-            <table width="80%" border="0" cellspacing="0" cellpadding="10">
-               <tr class="contentbox">
-                  <td class="content">
-                     <center>
-                     <table border="0" cellspacing="0" cellpadding="10">
-                        <form action="reservationOk" method="post" name="reservation_frm">
-
-                           <tr>
-                              <td><span class="content_text01">공연제목:</span></td>
-                              <td><input class="input_type01" type="text" name="stitle" value="${showView.stitle}"></td>
-                           </tr>
-                           <tr>
-                              <td><span class="content_text01">공연위치장소:</span></td>
-                              <td><input class="input_type01" type="text" name="slocation" value="${showView.slocation}"></td>
-                           </tr>
-                           <tr>
-                              <td><span class="content_text01">공연날짜:</span></td>
-                              <td><input class="input_type01" type="text" name="sdday" value="${showView.sdday}"></td>
-                           </tr>
-                           <tr>
-                              <td><span class="content_text01">공연시간:</span></td>
-                              <td><input class="input_type01" type="text" name="stime" value="${showView.stime}"></td>
-                           </tr>
-                           <tr>
-                              <td><span class="content_text01">관람나이:</span></td>
-                              <td><input class="input_type01" type="text" name="sage" value="${showView.sage}"></td>
-                           </tr>
-                           <tr>
-                              <td><span class="content_text01">아이디:</span></td>
-                              <td><input class="input_type01" type="text" name="userid" value="${memberId}"></td>
-                           </tr>
-
-                              <td><span class="content_text01">공연가격:</span></td>
-                              <td><input class="input_type01" type="text" name="sprice" value="${showView.sprice}">
-                         <select name="count">
-                                       <!-- <option value="">${i}</option>-->
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                </select>장 &nbsp&nbsp
-									 </td>
-
-
-
-			 	<!-- 포스터이미지 -->
-			      <c:if test="${fileDto.fileextension =='jpg' or fileDto.fileextension =='png' or fileDto.fileextension =='bmp' or fileDto.fileextension =='gif'}">
-		        	<img width="300" src="${pageContext.request.contextPath}/resources/uploadfiles/${fileDto.filename}">
-		         </c:if>
-		         <!--// 포스터이미지 -->
-
-
-			 </div>
-			 <!-- 달력 및 예약하기-->
-			<div class="floatR">
-				<div id="pickDate" class="mgb20"></div>
-				<!--  <button onclick="window.open('ticketMain')" type="submit" class="btn btn-warning" style="width: 100%;padding:8px 24px;font-size:20px">예약하기</button>-->
-			<!-- 	<button onclick="window.open('ticketMain', '_blank', 'width=500px,height=400px,toolbars=no,scrollbars=no'); return false;" type="submit" class="btn btn-warning" style="width: 100%;padding:8px 24px;font-size:20px">예약하기</button>-->
-			 <input class="btn btn-warning" type="submit" value="예매하기"  > 
-			</div>
-
-	
-		 </div>
-
-
- </form>
-	<div id="wrapper" class="boardWrap" style="display:none">
+	<div id="wrapper" class="boardWrap">
 		<div class="board_title">
 		 	<h4>${showView.stitle}</h4>
 		 	<div class="star">
@@ -133,17 +57,31 @@
 					<li>좋아요</li>
 				</ul>
 			</div>
+			
+			<form action="reservationOk" method="post" name="reservation_frm" novalidate>
 			<div class="pright-area">
 				 <ul class="show_text">
-				 	<li>장소 : ${showView.slocation}</li>
-				 	<li>공연기간 : ${showView.sdday}</li>
-				 	<li>공연시간 : ${showView.stime}</li>
-				 	<li>관람연령 : ${showView.sage}</li>
-				 	<li>가격 : <b>${showView.sprice}</b> 원</li>
+					<li> 공연 종류 :<input class="input_type01" type="text" name="skind" value="${showView.skind}" readonly="readonly"></li>
+				 	<li> 공연 제목 : <input class="input_type01" type="text" name="stitle" value="${showView.stitle}" readonly="readonly"></li>
+				 	<li> 공연 위치 : <input class="input_type01" type="text" name="slocation" value="${showView.slocation}" readonly="readonly"></li>
+				 	<li> 공연 날짜 : <input class="input_type01" type="text" name="sdday" value="${showView.sdday}" readonly="readonly"></li>
+				 	<li> 공연 시간 : <input class="input_type01" type="text" name="stime" value="${showView.stime}" readonly="readonly"></li>
+				 	<li> 공연 장소 : <input class="input_type01" type="text" name="stime" value="${showView.sprice}" readonly="readonly"></li>
+				 	<li> 공연 나이 : <input class="input_type01" type="text" name="sage" value="${showView.sage}" readonly="readonly"></li>
+				 	<li> 아이디 : <input class="input_type01" type="text" name="userid" value="${memberId}" readonly="readonly"></li>
+				 	
+				 	
+				 <!--  	<li>공연제목 : ${showView.stitle}<input  type="text" name="stitle"></li>
+				 	<li>장소 : ${showView.slocation}<input  type="text" name="slocation"></li>
+				 	<li>공연기간 : ${showView.sdday}<input type="text" name="sdday"></li>
+				 	<li>공연시간 : ${showView.stime}<input  type="text" name="stime"></li>
+				 	<li>관람연령 : ${showView.sage}<input  type="text" name="sage"></li>
+				 	<li style="display:none"> 아이디 : <input class="input_type01" type="text" name="userid" value="${memberId}"></li>
+				 	<li>가격 : <b>${showView.sprice}</b> 원<input class="input_type01" type="text" name="sprice"></li>-->
 				 	<li>
 					 	<div>티켓 매수
-					 	<form method="post" action="ticket_sheets">
-							<select class="form-select form-select-sm" >
+					 
+							<select class="form-select form-select-sm"  name="count">
 							  <option selected>장 수를 선택해 주세요</option>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
@@ -156,25 +94,28 @@
 							  <option value="9">9</option>
 							  <option value="10">10</option> 
 							 </select>
-					  </form>
+					
 						 </div>
 					</li>
 				 </ul>
+				
 				 <div class="ptselect_txt mgb40">10장이상 단체구매는 1500-3322에 문의하세요</div>
 				 <!-- 달력 -->
 				
 				
 				 
 			 </div>
-			 <!-- 달력 및 예약하기-->
-			<div class="floatR">
-				<div id="pickDate" class="mgb20"></div>
-				<!--  <button onclick="window.open('ticketMain')" type="submit" class="btn btn-warning" style="width: 100%;padding:8px 24px;font-size:20px">예약하기</button>-->
-				<button onclick="window.open('ticketMain', '_blank', 'width=500px,height=400px,toolbars=no,scrollbars=no'); return false;" type="submit" class="btn btn-warning" style="width: 100%;padding:8px 24px;font-size:20px">예약하기</button>
-			
-			</div>
-<!-- 달력 -->
-		
+				 <!-- 달력 및 예약하기-->
+				<div class="floatR">
+					<div id="pickDate" class="mgb20"></div>
+					<!--  <button onclick="window.open('ticketMain')" type="submit" class="btn btn-warning" style="width: 100%;padding:8px 24px;font-size:20px">예약하기</button>
+					<button onclick="window.open('ticketMain', '_blank', 'width=500px,height=400px,toolbars=no,scrollbars=no'); return false;" type="submit" class="btn btn-warning" style="width: 100%;padding:8px 24px;font-size:20px">예약하기</button>-->
+					 <input class="btn btn-warning" type="submit" value="예매하기" style="width:100%" > 
+				</div>
+				 
+				<!-- //달력 -->
+				</form>
+			  </form>
 		 </div>
   <!-- tab컨텐츠 -->
 	<nav class="showview_tab clear mgt50">
@@ -196,7 +137,7 @@
 	</div>
 	<!-- tab컨텐츠 -->
 
-
+</form>
 
 <%@ include file="../inc/footer.jsp" %>
 </body>
