@@ -66,7 +66,7 @@
 				 	<li> 공연 위치 : <input class="input_type01" type="text" name="slocation" value="${showView.slocation}" readonly="readonly"></li>
 				 	<li> 공연 날짜 : <input class="input_type01" type="text" name="sdday" value="${showView.sdday}" readonly="readonly"></li>
 				 	<li> 공연 시간 : <input class="input_type01" type="text" name="stime" value="${showView.stime}" readonly="readonly"></li>
-				 	<li> 공연 장소 : <input class="input_type01" type="text" name="stime" value="${showView.sprice}" readonly="readonly"></li>
+				 	<li> 공연 장소 : <input class="input_type01" type="text" name="sprice" value="${showView.sprice}" readonly="readonly"></li>
 				 	<li> 공연 나이 : <input class="input_type01" type="text" name="sage" value="${showView.sage}" readonly="readonly"></li>
 				 	<li> 아이디 : <input class="input_type01" type="text" name="userid" value="${memberId}" readonly="readonly"></li>
 				 	

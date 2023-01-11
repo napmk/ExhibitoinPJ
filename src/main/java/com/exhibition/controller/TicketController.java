@@ -61,11 +61,10 @@ public class TicketController {
 		String sprice = request.getParameter("sprice");
 		String userid = request.getParameter("userid");
 		String count = request.getParameter("count");
-		String skind = request.getParameter("skind");
 		 
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		int joinFlag = dao.ticketing(stitle, slocation, sdday, stime, sage, sprice, userid, count,skind);
+		int joinFlag = dao.ticketing(stitle, slocation, sdday, stime, sage, sprice, userid, count);
 		
 		model.addAttribute("stitle", stitle);
 		model.addAttribute("slocation", slocation);
@@ -75,7 +74,6 @@ public class TicketController {
 		model.addAttribute("sprice", sprice);
 		model.addAttribute("userid", userid);
 		model.addAttribute("count",count);
-		model.addAttribute("skind",skind);
 		
 		return "tikecting/ticketingOk";
 	}
@@ -122,19 +120,72 @@ public class TicketController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		dao.ticketDelete(snum);
 		
-		return "redirect:/ticketConfirm";
+		return "redirect:ticketConfirm";
 	}
 	
+	@RequestMapping (value ="boardList")
+	public String boardList(Model model, Criteria cri,HttpServletRequest request) {//페이징해야하므로 Criteria 가져온다
+		
+		int pageNumInt=0;
+		if(request.getParameter("pageNum") == null) {
+			 pageNumInt =1;//1페이지부터 시작
+			cri.setPageNum(pageNumInt);
+		} else {
+			 pageNumInt =Integer.parseInt(request.getParameter("pageNum"));
+			 cri.setPageNum(pageNumInt);
+		}
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		int totalRecord = dao.boardAllCount();
+		//cri.setPageNum();
+		cri.setStartNum(cri.getPageNum()-1 * cri.getAmount()); 
+		
+		PageDto pageDto = new PageDto(cri, totalRecord); 
+		
+		List<ShowDto> qboardDtos = dao.ticketList(cri);
+		
+		model.addAttribute("pageMaker", pageDto);//pageMaker = pageDto
+		model.addAttribute("qdtos", qboardDtos );
+		model.addAttribute("currPage", pageNumInt );
+		
+		
+		
+		ArrayList<ShowDto> boardDtos = dao.tlist();//
+		int boardCount = dao.ticketAllCount();//
+		
+		model.addAttribute("boardList", boardDtos);//
+		model.addAttribute("boardCount", boardCount);//
+		
+		
+		
+
+		return "boardList";
+	}
 	
+	@RequestMapping(value = "search_list")
+	public String search_list(HttpServletRequest request, Model model) {
+		
+		String searchOption = request.getParameter("searchOption");
+		
+		String searchKey = request.getParameter("searchKey");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		ArrayList<ShowDto> showDto = null;
+		
+		if(searchOption.equals("stitle")) {
+			showDto = dao.ShowSearchTitleList(searchKey);			
+		} else if(searchOption.equals("slocation")) {
+			showDto = dao.ShowSearchLocarionList(searchKey);
+		} else if(searchOption.equals("sprice")) {
+			showDto = dao.ShowSearchSpriceList(searchKey);
+		} 	
+		
+		
+		model.addAttribute("boardList", showDto);
+		model.addAttribute("boardCount", showDto.size());
+		
+		return "boardList";
+	}
 	
 }
-
-
-
-
-
-
-
-
-
-

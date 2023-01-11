@@ -1,9 +1,11 @@
+
+
 package com.exhibition.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.exhibition.dto.MemberDto;
+import com.exhibition.dto.*;
 import com.exhibition.dto.ShowDto;
 import com.exhibition.dto.ShowDto2;
 import com.exhibition.dto.Ticket;
@@ -42,12 +44,6 @@ public interface IDao {
 		//파일이 첨부된 게시글의 번호로 조회한 첨부된 파일의 모든 정보 dto	
         public ArrayList<FileDto> fileList();
         
-        //공연정보게시판 검색 관련 (추가 2023/1/9)
-  
-    	public ArrayList<ShowDto> showSearchTitleList(String searchKey);
-    	public ArrayList<ShowDto> showSearchContentList(String searchKey);
-    	public ArrayList<ShowDto> showSearchWriterList(String searchKey);
-    	
  
 		//이벤트게시판
 		public void writeQuestion(String qid, String qname, String qcontent, String qemail);//질문하기 insert
@@ -57,8 +53,17 @@ public interface IDao {
 		public void questionDelete(String qnum);//글 삭제 delete
 		public int boardAllCount();//게시판 총 글의 개수 가져오기
 		public ArrayList<EventBDto> eventList();// 이벤트 게시판 리스트 select 메인노출
-	
-	     	
+		
+		
+		
+		//티켓팅
+		public int ticketing(String stitle, String slocation, String sdday, String stime , String sage,String sprice, String userid , String count);//예매
+		//예매한 티켓 정보 가져오기//조인
+		public List<ShowDto2> ticketConfirm(String userid); //예매한 티켓 정보 가져오기//조인
+		//예매한 티켓 취소하기
+		public void ticketDelete(String snum); //예매한 티켓 취소하기
+		
+		
 		
 		//이베트이미지파일 업로드 관련
 		public void efileInfoInsert(int eboardnum, String efileoriname, String efilename, String efileextension, String efileurl);
@@ -68,13 +73,24 @@ public interface IDao {
 	    //파일이 첨부된 게시글의 번호로 조회한 첨부된 파일의 모든 정보 dto	
 		public ArrayList<EventBDto> efileList();
 		
-		//티켓팅
-		public int ticketing(String stitle, String slocation, String sdday, String stime , String sage,String sprice, String userid , String count, String skind);//예매
-		//예매한 티켓 정보 가져오기//조인
-		public List<ShowDto2> ticketConfirm(String userid); //예매한 티켓 정보 가져오기//조인
-		//예매한 티켓 취소하기
-		public void ticketDelete(String snum); //예매한 티켓 취소하기
-
 		
-				
+		//공연정보 가져오기
+		public List<ShowDto> ticketList(Criteria cri);
+		
+		public ArrayList<ShowDto> tlist();//게시판 리스트 select
+		
+		public int ticketAllCount();//총 게시물 개수 select
+		
+		//공연 검색 관련
+		public ArrayList<ShowDto> ShowSearchTitleList(String searchKey);
+		public ArrayList<ShowDto> ShowSearchLocarionList(String searchKey);
+		public ArrayList<ShowDto> ShowSearchSpriceList(String searchKey);
+		
+//		//리뷰에서 별점이랑 좋아요 보내보쟝
+//		public int rivewStar(String rating, String rid, String rcontent);
+//		//리뷰에서 별점 결과 몽땅 가져오기
+//		public List<ReviewStar> reviewList();
+//		
+		
+
 }
