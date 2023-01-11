@@ -8,7 +8,7 @@
 
 
 .nav-link  {color:#333!important;}
-.nav-tabs .nav-link.active {font-weight:700; color:#ec7d2c!important;}
+.nav-tabs .nav-link.active {font-weight:700; }
 .tabmenu_cm{position: relative;width: 100%;}
 .tabmenu_cm .more{position: absolute;right: 0; color:#999; font-size:14px; padding:10px}
 .tabmenu_cm .more:hover{color:#000}
@@ -68,15 +68,15 @@
 									</div>
 									<div class="rv_btnset">
 										<ul>
-											<li>
+											<li class="good-btn">
 											<button type="button" class="btn btn-outline-secondary">
 												<i class="material-icons" style="font-size: 16px;">favorite</i>
 													좋아요
 											</button>
 											</li>
 											<li>
-												<button type="button" class="btn btn-secondary" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
-												
+												<button style="background:#666;border-color:#a659bc" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												<!-- background:#8364c4;border-color:#a659bc-->
 											</li>
 										</ul>
 								

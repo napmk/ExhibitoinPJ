@@ -49,7 +49,7 @@
 	    </div>
 	    <div class="middle-menu">
 	    	<div class="basic_lo">
-			    <a href="/">enjoysEE</a>
+			    <a class="logo" href="/" ><img src="${pageContext.request.contextPath}/resources/image/logo5.jpg" ></a>
 			    	<ul>
 			    		<li><a href="showlist">예매</a></li>
 			    		<li><a href="event">이벤트</a></li>
@@ -58,8 +58,8 @@
 혜택/할인</a></li>
 			    	</ul>
 			    	<!-- 검색 -->
-			    	<div class="menutop_search">
-			    	 	돋보기
+			    	<div class="menutop_search dodbogi" >
+			    	 	<a  href="boardList"><i class="material-icons" style="font-size: 24px;">search</i></a>
 			    	</div>
 			    	<!-- //검색 -->
 		    </div>

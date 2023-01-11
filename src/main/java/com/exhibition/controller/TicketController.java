@@ -1,6 +1,7 @@
 package com.exhibition.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,13 +46,14 @@ public class TicketController {
 		model.addAttribute("fileDto", fileDto);
 		
 		
+		
 		return "reservation/showview";
 	}
 	
 	
 	
 	@RequestMapping(value="ticketingOk")
-	public String ticketingOk(HttpServletRequest request,Model model) {
+	public String ticketingOk(HttpServletRequest request,Model model,HttpSession session, HttpServletResponse response) {
 		
 		String stitle = request.getParameter("stitle");
 		String slocation = request.getParameter("slocation");
@@ -76,6 +78,21 @@ public class TicketController {
 		model.addAttribute("userid", userid);
 		model.addAttribute("count",count);
 		model.addAttribute("skind",skind);
+		
+//		String sessionId = (String) session.getAttribute("memberId");
+//		if(sessionId == null) {//참이면 로그인이 안된 상태
+//			PrintWriter out;
+//			try {
+//				response.setContentType("text/html;charset=utf-8");
+//				out = response.getWriter();
+//				out.println("<script>alert('로그인 후 예매해 주세요');history.go(-1);</script>");
+//				out.flush();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			
+//		}		
 		
 		return "tikecting/ticketingOk";
 	}

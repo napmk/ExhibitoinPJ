@@ -54,6 +54,13 @@ public interface IDao {
 		public int boardAllCount();//게시판 총 글의 개수 가져오기
 		public ArrayList<EventBDto> eventList();// 이벤트 게시판 리스트 select 메인노출
 		
+		//이베트이미지파일 업로드 관련
+		public void efileInfoInsert(int eboardnum, String efileoriname, String efilename, String efileextension, String efileurl);
+	    public ArrayList<EventBDto> eboardLatestInfo(String userid);
+		//현재 파일이 첨부된 글을 쓴 아이디로 검색된 글 목록;
+		public EfileDto geteFileInfo(String qnum);
+	    //파일이 첨부된 게시글의 번호로 조회한 첨부된 파일의 모든 정보 dto	
+		public ArrayList<EventBDto> efileList();
 		
 		
 		//티켓팅
@@ -65,13 +72,7 @@ public interface IDao {
 		
 		
 		
-		//이베트이미지파일 업로드 관련
-		public void efileInfoInsert(int eboardnum, String efileoriname, String efilename, String efileextension, String efileurl);
-		public ArrayList<EventBDto> eboardLatestInfo(String userid);
-		//현재 파일이 첨부된 글을 쓴 아이디로 검색된 글 목록;
-		public EfileDto geteFileInfo(String qnum);
-	    //파일이 첨부된 게시글의 번호로 조회한 첨부된 파일의 모든 정보 dto	
-		public ArrayList<EventBDto> efileList();
+		
 		
 		
 		//공연정보 가져오기

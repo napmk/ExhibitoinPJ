@@ -17,6 +17,7 @@
 </style>
 
 
+
 <div id="wrapper" class="confirm-cancel-wrap mgt50" >
 	<h3 class="mgb20">예매 확인 및 취소</h3>
 	 <form action="ticketDelete" method="get" >

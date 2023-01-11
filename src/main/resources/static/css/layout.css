@@ -13,12 +13,15 @@ a:hover{text-decoration:none;color: none}
 .mgt8{margin-top:8px!important}
 .mgt20{margin-top:20px!important}
 .mgb20{margin-bottom:20px!important}
+.mgt40{margin-top:40px!important}
 .mgb40{margin-bottom:40px!important}
 .mgt50{margin-top:50px!important}
 .mgt100{margin-top:100px!important}
 .point_ylw{color:orange }
 #wrapper{width:1320px; margin:0 auto}
-.basic_lo{width:1320px; margin:0 auto}
+.basic_lo{width:1320px; margin:0 auto;padding: 5px 0;}
+.basic_lo .logo{float:left; margin-right:100px;    margin-top: 7px;}
+.basic_lo .logo img{width:150px}
 .floatL{float:left!important}
 .floatR{float:right!important}
 
@@ -31,17 +34,20 @@ nav .top-menu .right-area{margin-right:20px}
 nav .middle-menu{width:100%;clear:both;border-bottom:2px solid #ffe063 }/*// #00d6c4*/
 nav .middle-menu a{display:inline-block; color:#333;text-decoration: none;  margin-right:50px;font-weight: 700;}
 nav .middle-menu ul li{float:left; margin-right:30px}
-nav .middle-menu ul {display:inline-block;margin: 10px 0 7px;}
+nav .middle-menu ul {display:inline-block;margin: 12px 0 5px;}
 .container {display: flex;}
 .container ul.reservationWrap{margin:20px 0}
 .container ul.reservationWrap{width:100%}
-.container ul.reservationWrap li{float:left;; margin-right:30px}
-.container ul.reservationWrap li .img_title_wrap .poster_title{display:inline-block}
-.container ul.reservationWrap li .img_title_wrap .exhiPoster{width: 280px;height: 360px;}
-.container ul.reservationWrap li .rv_btnset{width:100%; margin-top:10px}
-.container ul.reservationWrap li .rv_btnset ul li:nth-child(1){margin-right:10px}
+.container ul.reservationWrap >li{float:left;; margin-right:30px}
+.container ul.reservationWrap >li .img_title_wrap .poster_title{display:inline-block}
+.container ul.reservationWrap >li .img_title_wrap .exhiPoster{width: 280px;height: 360px;}
+.container ul.reservationWrap >li .rv_btnset{width:100%; margin-top:10px}
+.container ul.reservationWrap >li .rv_btnset ul li:nth-child(1){margin-right:10px}
 .reservationBtn{width:190px}
 
+.container ul.reservationWrap >li .rv_btnset ul >li{float:left}
+.container ul.reservationWrap >li .rv_btnset ul.good-btn{margin-right: 4px;}
+.rebtn{width:185px}
 #eventWrap {overflow: auto;margin-top:80px}
 #eventWrap h3 ,#goodsWrap h3{margin-bottom:15px}
 #eventWrap ul{}
@@ -153,7 +159,7 @@ nav .middle-menu ul {display:inline-block;margin: 10px 0 7px;}
 /*showlist*/
 #search{float:right;width: 400px;  }
 #search .search_select{width: 120px;float:left;margin-right:4px}
-#search .search_input{float:left;width:200px;margin-right:4px}
+#search .search_input{float:left;width:270px;margin-right:4px}
 #search .search_btn{float:left}	
 /*showview*/
 .ptselect_txt{width:100%;font-size:12px; color:#ff6600}
@@ -162,6 +168,74 @@ nav .middle-menu ul {display:inline-block;margin: 10px 0 7px;}
 .confirm-cancel-wrap{}
 .confirm-cancel-wrap ul{overflow: auto;}
 .confirm-cancel-wrap ul li{float:left; margin-right:20px; margin-bottom:20px}
+
+/*boardlist*/
+#total_search{overflow: hidden;}
+.count-total{float: left;color:#999}
+
+.menutop_search{float:right; margin-top:8px}
+.form-select {border-radius: 50px!important;border: 1px solid #575756!important;color:#575756!important;}
+.search__input {
+        width: 100%;
+        padding: 8px 20px;
+        background-color: transparent;
+        transition: transform 250ms ease-in-out;
+        font-size: 14px;
+        line-height: 18px;
+        color: #575756;
+        background-color: transparent;
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: 18px 18px;
+        background-position: 95% center;
+        border-radius: 50px;
+        border: 1px solid #575756;
+        transition: all 250ms ease-in-out;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+    }
+
+.search__input::placeholder {
+            color: rgba(87, 87, 86, 0.8);
+            letter-spacing: 1.5px;
+        }
+
+.search__input:hover,
+        .search__input:focus {
+            padding: 8px 0;
+            outline: 0;
+            border: 1px solid transparent;
+            border-bottom: 1px solid #575756;
+            border-radius: 0;
+            background-position: 100% center;
+        }
+
+.credits__container {
+        margin-top: 24px;
+    }
+
+.credits__text {
+        text-align: center;
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+.credits__link {
+        color: #ff8b88;
+        text-decoration: none;
+        transition: color 250ms ease-in;
+    }
+
+.credits__link:hover,
+        .credits__link:focus {
+            color: rgb(191, 137, 135);
+        }
+        
+        /*showlist*/
+#search{float:right;width: 400px;  }
+#search .search_select{width: 120px;float:left;margin-right:4px} 
+#search .search_input{float:left;width:200px;margin-right:4px}
+#search .search_btn{float:left}	
 
 @media only screen and (max-width: 680px) {
 #wrapper{width:100%}
