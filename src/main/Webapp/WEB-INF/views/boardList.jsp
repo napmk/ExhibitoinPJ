@@ -53,8 +53,8 @@
 	            </div>
 	            <div class="search_input">
 					<div class="search__container">
-						<div id="search_input"><input class="search__input" type="text" name="searchKey" placeholder="Search"></div>
-          				<div id="search_btn"><input type="submit" value="검색하기" ></div>
+						<div class="input-search"><input class="search__input" type="text" name="searchKey" placeholder="Search"></div>
+          				<div class="btn-search"><input type="submit" class="btn btn-secondary" value="검색" ></div>
 					</div>
 			      </div>
 	          </div>

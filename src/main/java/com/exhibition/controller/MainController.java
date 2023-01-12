@@ -359,59 +359,66 @@ public class MainController {
 //		String qcontent = request.getParameter("qcontent");//글쓴 질문 내용
 //		String qemail = request.getParameter("qemail");//글쓴유저 이메일
 //		
+//		
 //		IDao dao = sqlSession.getMapper(IDao.class);
 //		
-//		dao.writeQuestion(qid, qname, qcontent, qemail);
+//		dao.writeQuestion(qid, qname, qcontent, qemail );
 //		
 //		return "redirect:event";
 //	}
-//	
 	
-//	@RequestMapping(value = "/questionOk")
-//	public String questionOk(HttpServletRequest request, HttpSession session, @RequestPart MultipartFile files) throws IllegalStateException, IOException {
-//		
-//		String qid = request.getParameter("qid");//글쓴유저 아이디
-//		//String qname = request.getParameter("qname");//글쓴 질문 내용
-//		String qcontent = request.getParameter("qcontent");//글쓴 질문 내용
-//		String qemail = request.getParameter("qemail");//이벤트기간
-//	
-//		//글쓴이의 아이디는 현재 로그인된 유저의 아이디이므로 세션에서 가져와서 전달 
-//		
-//				IDao dao = sqlSession.getMapper(IDao.class);
-//				
-//				if(files.isEmpty()) { // 파일의 첨부여부 확인
-//					dao.writeQuestion(qid, qcontent, qemail,0);
-//				} else {
-//					dao.writeQuestion(qid, qcontent, qemail,1);
-//					ArrayList<EventBDto> latestBoard = dao.boardLatestInfo(sessionId);
-//					EventBDto dto = latestBoard.get(0);
-//					int snum = dto.getQnum();
-//					//파일첨부
-//					String fileoriname = files.getOriginalFilename();//첨부된 파일의 원래 이름
-//					String fileextension = FilenameUtils.getExtension(fileoriname).toLowerCase();
-//					//첨부된 파일의 확장자 추출 후 소문자로 강제 변경
-//					File destinationFile;//java.io 패키지 제공 클래스 임포트
-//					String destinationFileName;//실제 서버에 저장된 파일의 변경된 이름이 저장될 변수 선언
-//					
-//					String fileurl = "C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles/";
-//					//첨부된 파일이 저장될 서버의 실제 폴더 경로 //String fileurl = "C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles";
-//					//C:/Users/napmkmk/git/ExhibitoinPJ/src/main/resources/static/uploadfiles
-//					//C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles
-//					do {
-//						destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + fileextension;
-//						//알파벳대소문자와 숫자를 포함한 랜덤 32자 문자열 생성 후 .을 구분자로 원본 파일의 확장자를 연결->실제 서버에 저장될 파일의 이름
-//						destinationFile = new File(fileurl+destinationFileName);	
-//					} while(destinationFile.exists());
-//					//혹시 같은 이름의 파일이름이 존재하는지 확인
-//					
-//					destinationFile.getParentFile().mkdir();
-//					files.transferTo(destinationFile);//업로드된 파일이 지정한 폴더로 이동 완료!
-//					
-//					dao.fileInfoInsert(efilenum, fileoriname, destinationFileName, fileextension, fileurl);	
-//		
-//		return "redirect:event";
-//	}
-//	
+	
+	@RequestMapping(value = "/questionOk")
+	public String questionOk(HttpServletRequest request, HttpSession session, @RequestPart MultipartFile files) throws IllegalStateException, IOException {
+		
+		String qnum = request.getParameter("qnum");//글번호
+		String qid = request.getParameter("qid");//글쓴유저 아이디
+		//String qname = request.getParameter("qname");//글쓴 질문 내용
+		String sessionId = (String) session.getAttribute("qid");
+		String qcontent = request.getParameter("qcontent");//글쓴 질문 내용
+		String qemail = request.getParameter("qemail");//이벤트기간
+	
+		//글쓴이의 아이디는 현재 로그인된 유저의 아이디이므로 세션에서 가져와서 전달 
+		
+				IDao dao = sqlSession.getMapper(IDao.class);
+				
+	
+				
+				if(files.isEmpty()) { // 파일의 첨부여부 확인
+					dao.writeQuestion(qnum, qid, qcontent, qemail ,0);
+				} else {
+					dao.writeQuestion(qnum, qid, qcontent, qemail, 1);
+					ArrayList<EventBDto> latestBoard = dao.eboardLatestInfo(sessionId);
+					EventBDto dto = latestBoard.get(0);
+					int anum = dto.getQnum();
+					//파일첨부
+					String efileoriname = files.getOriginalFilename();//첨부된 파일의 원래 이름
+					String efileextension = FilenameUtils.getExtension(efileoriname).toLowerCase();
+					//첨부된 파일의 확장자 추출 후 소문자로 강제 변경
+					File destinationFile;//java.io 패키지 제공 클래스 임포트
+					String destinationFileName;//실제 서버에 저장된 파일의 변경된 이름이 저장될 변수 선언
+					
+					String efileurl = "C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles/";
+					//첨부된 파일이 저장될 서버의 실제 폴더 경로 //String fileurl = "C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles";
+					//C:/Users/napmkmk/git/ExhibitoinPJ/src/main/resources/static/uploadfiles
+					//C:/springBootWork/Exhibition/src/main/resources/static/uploadfiles
+					do {
+						destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + efileextension;
+						//알파벳대소문자와 숫자를 포함한 랜덤 32자 문자열 생성 후 .을 구분자로 원본 파일의 확장자를 연결->실제 서버에 저장될 파일의 이름
+						destinationFile = new File(efileurl+destinationFileName);	
+					} while(destinationFile.exists());
+					//혹시 같은 이름의 파일이름이 존재하는지 확인
+					
+					destinationFile.getParentFile().mkdir();
+					files.transferTo(destinationFile);//업로드된 파일이 지정한 폴더로 이동 완료!
+					
+					dao.fileInfoInsert(anum, efileoriname, destinationFileName, efileextension, efileurl);		
+					
+				}
+		
+		return "redirect:event";
+	}
+	
 				
 	@RequestMapping(value = "event") //이벤트 리스트
 	public String list( Model model, Criteria cri,HttpServletRequest request) {//페이징해야하므로 Criteria 가져온다

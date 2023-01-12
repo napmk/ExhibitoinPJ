@@ -53,7 +53,7 @@ nav .middle-menu ul {display:inline-block;margin: 12px 0 5px;}
 #eventWrap ul{}
 #eventWrap ul li{float:left;width: 440px; margin-right:0;margin-bottom:5px}
 #eventWrap ul li .eventImg{background:#eee; width:350px; height:180px;border-radius: 10px;}
-#eventWrap ul li .eventTitle{font-size:1.0em}
+#eventWrap ul li .eventTitle{font-size: 18px;margin-top: 10px;color: #363636;}
 #eventWrap ul li .eventDate{font-size:.95em; color:#999}
 #eventWrap ul li:last-child {margin-right:0px}
 
@@ -160,6 +160,8 @@ nav .middle-menu ul {display:inline-block;margin: 12px 0 5px;}
 #search{float:right;width: 400px;  }
 #search .search_select{width: 120px;float:left;margin-right:4px}
 #search .search_input{float:left;width:270px;margin-right:4px}
+#search .search_input{}
+.input-search , .btn-search{float:left}
 #search .search_btn{float:left}	
 /*showview*/
 .ptselect_txt{width:100%;font-size:12px; color:#ff6600}
@@ -174,7 +176,7 @@ nav .middle-menu ul {display:inline-block;margin: 12px 0 5px;}
 .count-total{float: left;color:#999}
 
 .menutop_search{float:right; margin-top:8px}
-.form-select {border-radius: 50px!important;border: 1px solid #575756!important;color:#575756!important;}
+.form-select {border-radius: 10px!important;border: 1px solid #575756!important;color:#575756!important;}
 .search__input {
         width: 100%;
         padding: 8px 20px;
@@ -188,7 +190,7 @@ nav .middle-menu ul {display:inline-block;margin: 12px 0 5px;}
         background-repeat: no-repeat;
         background-size: 18px 18px;
         background-position: 95% center;
-        border-radius: 50px;
+        border-radius: 10px;
         border: 1px solid #575756;
         transition: all 250ms ease-in-out;
         backface-visibility: hidden;
@@ -231,11 +233,11 @@ nav .middle-menu ul {display:inline-block;margin: 12px 0 5px;}
             color: rgb(191, 137, 135);
         }
         
-        /*showlist*/
-#search{float:right;width: 400px;  }
+/*showlist*/
+#search{float:right;width: 415px;  }
 #search .search_select{width: 120px;float:left;margin-right:4px} 
-#search .search_input{float:left;width:200px;margin-right:4px}
-#search .search_btn{float:left}	
+#search .search_input{float:left;width:280px;margin-right:4px}
+
 
 @media only screen and (max-width: 680px) {
 #wrapper{width:100%}

@@ -4,7 +4,7 @@
 /* datepicker Style */
 .hasDatepicker{padding: 5px 10px;border: 1px solid #ced4da;border-radius: 10px;}
 .ui-datepicker { width: 270px; padding: 0; display: none; border: 0; margin-top: 10px;}
-.ui-widget.ui-widget-content { border: 0; border-radius: 3px; overflow: hidden;}
+.ui-widget.ui-widget-content { border: 0; border-radius: 3px; overflow: hidden;background: #fff;border: 1px solid #ededed;}
 .ui-datepicker .ui-widget-header { position: relative; padding: 6px 0 36px 0; border: 0; color: #000; border-radius: 0; }
 .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year { width: 70px; height: 26px; line-height: 26px;  margin: 0 4px; padding: 0 6px; border: 0; border-radius: 3px; font-size: 13px; font-weight: bold; box-sizing: border-box; -webkit-appearance: none; -moz-appearance: none; appearance: none; /* 화살표 없애기 */ }
 .ui-datepicker select.ui-datepicker-month:hover, .ui-datepicker select.ui-datepicker-year:hover { background: rgba(0,0,0,0.3) url(images/arrow-button.png) 100% -27px no-repeat; }

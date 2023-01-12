@@ -11,19 +11,24 @@
 	<div id="wrapper" class="mgt50">
 	<!-- 검색기능 -->
 	
-	<form action="search_list">
-          <div id="search">
-            <div class="search_select">
-              <select name="searchOption" class="form-select">
-                <option value="stitle">공연제목</option>
-                <option value="sdday">공연날짜</option>
-                <option value="kind">공연종류</option>
-              </select>
-            </div>
-            <div class="search_input"><input type="text"  class="form-control" name="searchKey" placeholder="제목,날짜,공연스타일"></div>
-            <div class="search_btn"><input type="image"></div>
-          </div>
-     </form>
+  <form action="boardList" >
+	 <div id="search">
+	     <div class="search_select">
+	         <select name="searchOption" class="form-select">
+	             <option value="stitle">공연제목</option>
+	             <option value="slocation">공연위치장소</option>
+	             <option value="sprice">공연가격</option>
+	             <option value="skind">공연종류</option>
+	         </select>
+	      </div>
+	      <div class="search_input">
+		     <div class="search__container">
+				<div class="input-search"><input class="search__input" type="text" name="searchKey" placeholder="Search"></div>
+          		<div class="btn-search"><input type="submit" class="btn btn-secondary" value="검색" ></div>
+			</div>
+		</div>
+	</div>
+  </form>
       <!-- //검색기능 -->    
 		<div class="container">
 			<ul class="reservationWrap">

@@ -99,12 +99,15 @@
 	     <!-- //조인테이블 -->
 	     
 	     <!-- 이벤트게시판
-		<insert id="writeQuestion">
-			INSERT INTO aboard(qnum, qid, qcontent, qemail ,qfilecount) VALUES(aboard_SEQ.nextval,#{param1}, #{param2}, #{param3}, #{param4})
-		</insert>-->
+	     <insert id="writeQuestion">
+			INSERT INTO aboard(qnum, qid, qcontent, qemail ) VALUES(aboard_SEQ.nextval,#{param1}, #{param2}, #{param3})
+		</insert>
+		-->
+		
+		
 		
 		<insert id="writeQuestion">
-			INSERT INTO aboard(qnum, qid, qcontent, qemail ) VALUES(aboard_SEQ.nextval,#{param1}, #{param2}, #{param3})
+			INSERT INTO aboard(qnum, qid, qcontent, qemail ,qfilecount) VALUES(aboard_SEQ.nextval,#{param1}, #{param2}, #{param3}, #{param4})
 		</insert>
 		
 		<select id="questionList" resultType="com.exhibition.dto.EventBDto"> <!-- ROWNUM 오라클에 자동생성되는 번호 A와 PAGE는 가상의 필드-->
@@ -137,7 +140,7 @@
 		 <!-- 이벤트파일업로드 SQL -->
 		<insert id="efileInfoInsert">
 			INSERT INTO eventfiles(efilenum, eboardnum, efileoriname, efilename, efileextension, efileurl) 
-			VALUES (efile_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5})
+			VALUES (eventfiles_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5})
 		</insert>
 		
 		<select id="eboardLatestInfo" resultType="com.exhibition.dto.EventBDto">
@@ -147,6 +150,10 @@
 		<select id="egetFileInfo" resultType="com.exhibition.dto.EfileDto">
 			SELECT * FROM eventfiles WHERE eboardnum=#{param1}
 		</select>
+
+
+
+	
 
 	  <!-- 티켓예매 SQL -->
 		<!-- 티켓 예매하기  -->
@@ -241,7 +248,7 @@
       SELECT * FROM
          (SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
          FROM
-         (SELECT * FROM SHOWTBL WHERE sprice LIKE '%' || #{searchKey} || '%' ORDER BY snum DESC   )A)
+         (SELECT * FROM SHOWTBL WHERE sprice LIKE '%' || #{searchKey} || '%' ORDER BY snum DESC)A)
       WHERE PAGE = #{pageNum}
    </select>
    
@@ -249,7 +256,7 @@
       SELECT * FROM
          (SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
          FROM
-         (SELECT * FROM SHOWTBL WHERE skind LIKE '%' || #{searchKey} || '%' ORDER BY snum DESC   )A)
+         (SELECT * FROM SHOWTBL WHERE skind LIKE '%' || #{searchKey} || '%' ORDER BY snum DESC)A)
       WHERE PAGE = #{pageNum}
    </select>
 	

@@ -86,7 +86,42 @@ footer {margin-top: 0px!important;}
 						</ul>
 					</div>
 				  </div>
-				  <div class="tab-pane fade" id="musical-tab-pane" role="tabpanel" aria-labelledby="musical-tab" tabindex="0">뮤지컬만나오게</div>
+				  <div class="tab-pane fade" id="musical-tab-pane" role="tabpanel" aria-labelledby="musical-tab" tabindex="0">
+					 <div class="container">
+						<ul class="reservationWrap">
+							<c:forEach items="${showList}" var="showDto" begin="0" end="3" step="1">
+								<li>
+									<div class="img_title_wrap">
+										<p class="poster_title" style="display:none">${showDto.stitle}</p>
+										
+										<!-- 포스터이미지 -->
+										<div class="exhiPoster">
+									      <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
+								        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
+								         </c:if>
+								        </div> 
+								         <!-- 포스터이미지 -->
+									</div>
+									<div class="rv_btnset">
+										<ul>
+											<li class="good-btn">
+											<button type="button" class="btn btn-outline-secondary">
+												<i class="material-icons" style="font-size: 16px;">favorite</i>
+													좋아요
+											</button>
+											</li>
+											<li>
+												<button style="background:#666;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												<!-- background:#8364c4;border-color:#a659bc-->
+											</li>
+										</ul>
+								
+									</div>
+								</li>
+							</c:forEach>	
+						</ul>
+					</div>
+				  </div>
 				  <div class="tab-pane fade" id="classic-tab-pane" role="tabpanel" aria-labelledby="classic-tab" tabindex="0">.클래식만나오게.</div>
 				  <div class="tab-pane fade" id="concert-tab-pane" role="tabpanel" aria-labelledby="concert-tab" tabindex="0">.콘서트만나오게.</div>
 				  <div class="tab-pane fade" id="theater-tab-pane" role="tabpanel" aria-labelledby="theater-tab" tabindex="0">연극만나오게..</div>
@@ -101,14 +136,17 @@ footer {margin-top: 0px!important;}
 		   	<div id="eventWrap">
 			   	<h3 class="h3">이벤트</h3>
 			   		<ul>
+			   		
 			   		<c:forEach items="${eventList}" var="EventBDto" begin="0" end="2" step="1">
-			   			<li>
-			   				<div class="eventImg"></div>
-			   				<div class="eventTitle">${EventBDto.qcontent}</div>
-			   				<div class="eventDate">${EventBDto.qdate}</div>
-			   			</li>
+			   			<a href="questionView?qnum=${EventBDto.qnum }">
+				   			<li>
+				   				<div class="eventImg"></div>
+				   				<div class="eventTitle">${EventBDto.qcontent}</div>
+				   				<div class="eventDate">${EventBDto.qdate}</div>
+				   			</li>
+			   			</a>
 			   		</c:forEach>
-		
+					
 			   		</ul>
 		   	</div>
 		   	<!--  동영상 -->
@@ -159,7 +197,7 @@ footer {margin-top: 0px!important;}
 		</section>
 		   	<!-- 굿즈판매 -->
 		   	<div id="goodsWrap" class="mgt50">
-			   	<h3>굿즈판매</h3>
+			   	<h3>굿즈 스토어</h3>
 			   	<div class="goodslist">
 			   		<p class="goodImg"><img width="200" height="200" src="${pageContext.request.contextPath}/resources/image/goods1.png"></p>
 			   		<div class="good_r">
@@ -176,7 +214,7 @@ footer {margin-top: 0px!important;}
 			   	<p class="goodImg"><img width="200" height="200" src="${pageContext.request.contextPath}/resources/image/goods2.png"></p>
 			   		<div class="good_r">
 			   			<div class="goodsTitle">하리보 골드베렌 100주년</div>
-			   			<div class="goodsText">이상한 나라의 엘리스 직소퍼즐300피스<br> QR code를 촬영해 보세요</div>
+			   			<div class="goodsText">귀여운 곰돌이가 궁금하다면 <br> QR code를 촬영해 보세요</div>
 			   			<button type="button" class="btn btn-outline-secondary"
 					        style="--bs-btn-padding-y: .35rem; --bs-btn-padding-x: .7rem; --bs-btn-font-size: .85rem;">
 					 바로가기

@@ -35,7 +35,7 @@
 	           
 				<% } else { %> 
 	            <!-- 로그인후 -->
-		       
+		            <a><%= sessionId %>님 <i class="material-icons" style="font-size: 16px;">face</i></a>
 		            <a href="logout" title="로그아웃">로그아웃</a>
 		            <a href="mypage" title="내정보수정">내정보수정</a>
 	                <a href="ticketConfirm" title="예매확인/취소">예매확인/취소</a>

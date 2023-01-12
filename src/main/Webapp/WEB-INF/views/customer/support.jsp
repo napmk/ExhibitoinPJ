@@ -68,7 +68,7 @@
 <body>
 <%@ include file="../inc/header.jsp" %>
 	<div id="wrapper">
-	 <div class="tit-util mt70">
+	 <div class="tit-util mt70" style="display:none">
 	 
 	 <div class="c_check_warp">
 				<div class="c_box qna_search">
