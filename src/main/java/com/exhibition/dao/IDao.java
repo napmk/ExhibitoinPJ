@@ -46,10 +46,10 @@ public interface IDao {
         
  
 		//이벤트게시판
-		public void writeQuestion(String qid, String qname, String qcontent, String qemail);//질문하기 insert
+		public void writeQuestion(String qnum,String qid, String qcontent, String qemail);//질문하기 insert int qfilecount 작업중
 		public List<EventBDto> questionList(Criteria cri);//질문게시판 리스트 가져오기 select
 		public EventBDto questionView(String qnum);//선택한 글 번호의 정보 가져오기 select
-		public void questionModify(String qnum, String qname, String qcontent, String qemail);//해당 글번호로 조회하여 질문 수정 update
+		public void questionModify(String qnum,String qid, String qcontent, String qemail);//해당 글번호로 조회하여 질문 수정 update
 		public void questionDelete(String qnum);//글 삭제 delete
 		public int boardAllCount();//게시판 총 글의 개수 가져오기
 		public ArrayList<EventBDto> eventList();// 이벤트 게시판 리스트 select 메인노출
@@ -73,19 +73,17 @@ public interface IDao {
 		
 		
 		
+		 //공연정보 가져오기
+	     public List<ShowDto> ticketList(Criteria2 cri);
+	     public int ticketAllCount();//총 게시물 개수 select
+	     //공연 검색 관련
+	      public ArrayList<ShowDto> ShowSearchTitleList(Criteria3 cri);
+	      public ArrayList<ShowDto> ShowSearchLocarionList(Criteria3 cri);
+	      public ArrayList<ShowDto> ShowSearchSpriceList(Criteria3 cri);
+	      public ArrayList<ShowDto> ShowSearchSkindList(Criteria3 cri);
+	      
 		
-		
-		//공연정보 가져오기
-		public List<ShowDto> ticketList(Criteria cri);
-		
-		public ArrayList<ShowDto> tlist();//게시판 리스트 select
-		
-		public int ticketAllCount();//총 게시물 개수 select
-		
-		//공연 검색 관련
-		public ArrayList<ShowDto> ShowSearchTitleList(String searchKey);
-		public ArrayList<ShowDto> ShowSearchLocarionList(String searchKey);
-		public ArrayList<ShowDto> ShowSearchSpriceList(String searchKey);
+	
 		
 //		//리뷰에서 별점이랑 좋아요 보내보쟝
 //		public int rivewStar(String rating, String rid, String rcontent);

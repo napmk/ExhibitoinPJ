@@ -39,11 +39,11 @@
 				</div>
 				
 			   <!-- 이벤트 이미지  -->
-				<!-- <div class="mb-3">
+				 <div class="mb-3" style="display:none">
 					  <label for="exampleFormControlTextarea1" class="form-label">이벤트 이미지등록</label>
-					  <input type="file" name="files" class="form-control"  placeholder="이미지를 등록해주세요" value="">
+					  <input type="file" name=" " class="form-control"  placeholder="이미지를 등록해주세요" value="">
 				</div>
-				아직 구현안함   -->
+				
 				<div class="btn2set mgt20">
 					<div class="firbtn"><input class="btn btn-dark" type="button" value="등록하기" onclick="boardCheck()"> </div>
 					<div class="secbtn"><input type="text" value="취소" class="btn btn-secondary" onclick="window.open('/')" ></div>

@@ -4,12 +4,13 @@
 <footer>
     <div class="cont basic_lo">
 	    <div class="footer-menu">
-		    <a href="/" >회사소개</a>
-		    <a href="/">이용약관</a>
-		    <a href="/"  class="fb">개인정보처리방침</a>
-		    <a href="/" >청소년보호정책</a>
-		    <a href="/">이용안내</a>
-		    <a href="/">티켓판매안내</a>
+		    <a>회사소개</a>
+		    <a>이용약관</a>
+		    <a class="fb">개인정보처리방침</a>
+		    <a>청소년보호정책</a>
+		    <a>이용안내</a>
+		    <a>티켓판매안내</a>
+		    <a onclick="location.href='showlist_adm'" title="관리자">관리자</a>
 		    
 		    <ul class="family">
 			    <li><a href="#" class="family-btn">Family Site</a></li>

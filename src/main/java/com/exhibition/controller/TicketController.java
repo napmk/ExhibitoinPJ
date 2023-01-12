@@ -17,8 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.exhibition.dao.IDao;
 import com.exhibition.dto.Criteria;
+import com.exhibition.dto.Criteria2;
+import com.exhibition.dto.Criteria3;
 import com.exhibition.dto.FileDto;
 import com.exhibition.dto.PageDto;
+import com.exhibition.dto.PageDto2;
+import com.exhibition.dto.PageDto3;
 import com.exhibition.dto.ShowDto;
 import com.exhibition.dto.ShowDto2;
 import com.exhibition.dto.Ticket;
@@ -98,24 +102,7 @@ public class TicketController {
 	}
 	
 	
-//	
-//	@RequestMapping(value = "ticketConfirm")
-//	public String test(Model model, HttpServletResponse response,HttpServletRequest request,HttpSession session) throws IOException {
-//			
-//		IDao dao = sqlSession.getMapper(IDao.class);		
-//		
-//		String mid = (String) session.getAttribute("memberId");
-//		
-//		List<Ticketing> ticketConfirmList =dao.ticketConfirm(mid);
-//		
-//		//System.out.println(ticketConfirmList.get(0).getTnum()); 잘가져오는지 확인한댜
-//		
-//		model.addAttribute("ticketConfirm", ticketConfirmList);
-//		
-//		
-//		return "ticketConfirm";
-//	}
-//	
+
 	
 	@RequestMapping(value="/ticketConfirm")
 	public String showview2(Model model, HttpServletResponse response,HttpServletRequest request,HttpSession session)  throws IOException {
@@ -139,72 +126,139 @@ public class TicketController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		dao.ticketDelete(snum);
 		
+		
+		
 		return "redirect:ticketConfirm";
 	}
 	
 	@RequestMapping (value ="boardList")
-	public String boardList(Model model, Criteria cri,HttpServletRequest request) {//페이징해야하므로 Criteria 가져온다
-		
-		int pageNumInt=0;
-		if(request.getParameter("pageNum") == null) {
-			 pageNumInt =1;//1페이지부터 시작
-			cri.setPageNum(pageNumInt);
-		} else {
-			 pageNumInt =Integer.parseInt(request.getParameter("pageNum"));
-			 cri.setPageNum(pageNumInt);
-		}
-		IDao dao = sqlSession.getMapper(IDao.class);
-		
-		int totalRecord = dao.boardAllCount();
-		//cri.setPageNum();
-		cri.setStartNum(cri.getPageNum()-1 * cri.getAmount()); 
-		
-		PageDto pageDto = new PageDto(cri, totalRecord); 
-		
-		List<ShowDto> qboardDtos = dao.ticketList(cri);
-		
-		model.addAttribute("pageMaker", pageDto);//pageMaker = pageDto
-		model.addAttribute("qdtos", qboardDtos );
-		model.addAttribute("currPage", pageNumInt );
-		
-		
-		
-		ArrayList<ShowDto> boardDtos = dao.tlist();//
-		int boardCount = dao.ticketAllCount();//
-		
-		model.addAttribute("boardList", boardDtos);//
-		model.addAttribute("boardCount", boardCount);//
-		
-		
-		
+    public String boardList(Model model, Criteria2 cri, Criteria3 cri3, HttpServletRequest request) {//페이징해야하므로 Criteria2 가져온다 검색할 때 사용할 criteria3도 가져온다 
+       
+       String searchKey = request.getParameter("searchKey");
+       
+       if(searchKey != null) {
+          
+          cri3.setSearchKey(searchKey);
+          
+          String searchOption = request.getParameter("searchOption");      
+          
+          IDao dao = sqlSession.getMapper(IDao.class);
+          
+          ArrayList<ShowDto> showDto = null;
+          
+          int pageNumInt=1;
+          
+          int totalRecord = 0;
+          
+          PageDto3 pageDto = null;
+          
+          if(request.getParameter("pageNum") == null) {
+              pageNumInt =1;//1페이지부터 시작
+             cri3.setPageNum(pageNumInt);
+          } else {
+              pageNumInt =Integer.parseInt(request.getParameter("pageNum"));
+              cri3.setPageNum(pageNumInt);
+          }
+          
+          if(searchOption.equals("stitle")) {
+             
+             cri3.setStartNum(cri.getPageNum()-1 * cri.getAmount());
+             
+             showDto = dao.ShowSearchTitleList(cri3);
+             
+             totalRecord = showDto.size();//총 게시글수
+             
+             pageDto = new PageDto3(cri3, totalRecord); 
+             
+             
+          } else if(searchOption.equals("slocation")) {
+             
+             cri3.setStartNum(cri.getPageNum()-1 * cri.getAmount());
+             
+             //showDto = dao.ShowSearchTitleList(cri3);
+             
+             showDto = dao.ShowSearchLocarionList(cri3);
+             
+             totalRecord = showDto.size();
+             
+             pageDto = new PageDto3(cri3, totalRecord);
+             
+          } else if(searchOption.equals("sprice")) {
+             
+             cri3.setStartNum(cri.getPageNum()-1 * cri.getAmount());
+             
+             //showDto = dao.ShowSearchTitleList(cri3);
+             
+             showDto = dao.ShowSearchSpriceList(cri3);
+             
+             totalRecord = showDto.size();
+             
+             pageDto = new PageDto3(cri3, totalRecord);
+        
+          
+	       } else if(searchOption.equals("skind")) {
+	           
+	           cri3.setStartNum(cri.getPageNum()-1 * cri.getAmount());
+	           
+	           showDto = dao.ShowSearchSkindList(cri3);
+	           
+	           totalRecord = showDto.size();
+	           
+	           pageDto = new PageDto3(cri3, totalRecord);
+	        }
+       
+          System.out.println("pagenumint:"+pageNumInt);         
+          
+          model.addAttribute("pageMaker", pageDto);//pageMaker = pageDto
+          model.addAttribute("qdtos", showDto);
+          model.addAttribute("boardCount", showDto.size());      
+          model.addAttribute("currPage", pageNumInt );
+          
+          
+       } else {
+       
+          int pageNumInt=1;
+          if(request.getParameter("pageNum") == null) {
+              pageNumInt =1;//1페이지부터 시작
+             cri.setPageNum(pageNumInt);
+          } else {
+              pageNumInt =Integer.parseInt(request.getParameter("pageNum"));
+              cri.setPageNum(pageNumInt);
+          }
+          IDao dao = sqlSession.getMapper(IDao.class);
+          
+          int totalRecord = dao.ticketAllCount();
+          //cri.setPageNum();
+          cri.setStartNum(cri.getPageNum()-1 * cri.getAmount()); 
+          
+          PageDto2 pageDto = new PageDto2(cri, totalRecord); 
+          
+    //      System.out.println("pagenum:"+cri.getPageNum());
+    //      System.out.println("amount:"+cri.getAmount());
+    //      System.out.println("startnum:"+cri.getStartNum());
+    //      System.out.println("pagenumberint:"+pageNumInt);
+          
+          List<ShowDto> qboardDtos = dao.ticketList(cri);
+          
+          model.addAttribute("pageMaker", pageDto);//pageMaker = pageDto
+          model.addAttribute("qdtos", qboardDtos );
+          model.addAttribute("currPage", pageNumInt );
+          model.addAttribute("boardCount", totalRecord);
+          
+       }
+       
+       
+//       ArrayList<ShowDto> boardDtos = dao.tlist();//
+//       int boardCount = dao.ticketAllCount();//
+//       
+//       model.addAttribute("boardList", boardDtos);//
+//       model.addAttribute("boardCount", boardCount);//
+       
+       
+       
 
-		return "boardList";
-	}
-	
-	@RequestMapping(value = "search_list")
-	public String search_list(HttpServletRequest request, Model model) {
-		
-		String searchOption = request.getParameter("searchOption");
-		
-		String searchKey = request.getParameter("searchKey");
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		
-		ArrayList<ShowDto> showDto = null;
-		
-		if(searchOption.equals("stitle")) {
-			showDto = dao.ShowSearchTitleList(searchKey);			
-		} else if(searchOption.equals("slocation")) {
-			showDto = dao.ShowSearchLocarionList(searchKey);
-		} else if(searchOption.equals("sprice")) {
-			showDto = dao.ShowSearchSpriceList(searchKey);
-		} 	
-		
-		
-		model.addAttribute("boardList", showDto);
-		model.addAttribute("boardCount", showDto.size());
-		
-		return "boardList";
-	}
+       return "boardList";
+    }
+
 	
 }

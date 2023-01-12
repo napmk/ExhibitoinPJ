@@ -32,7 +32,7 @@
 				    <p class="card-count">매수 : <input class="input_type01"  name="count" value="${ticketRev.count  }" readonly="readonly"></p>
 				    <p class="card-price">구매한 총 가격 : <input class="input_type01"   name="sprice" value="${ticketRev.sprice *ticketRev.count  }" readonly="readonly"></p>
 				    <input class="btn btn-outline-dark mgt8" type="button" value="예매취소" onclick="script:window.location='ticketDelete?snum=${ ticketRev.snum}'">
-				    <input class="btn btn-outline-dark mgt8" type="button" value="리뷰남기기" onclick="/">
+				    <input class="btn btn-warning mgt8" type="button" value="리뷰남기기" onclick="/">
 				  </div>
 				</div>
 			</li>

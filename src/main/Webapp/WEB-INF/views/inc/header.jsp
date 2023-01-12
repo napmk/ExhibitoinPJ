@@ -39,7 +39,7 @@
 		            <a href="logout" title="로그아웃">로그아웃</a>
 		            <a href="mypage" title="내정보수정">내정보수정</a>
 	                <a href="ticketConfirm" title="예매확인/취소">예매확인/취소</a>
-	                <a onclick="location.href='showlist_adm'" title="관리자공연정보올리기">관리자공연정보올리기</a>
+	                
 	           
 	           
 	           <% } %> 

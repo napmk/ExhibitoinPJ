@@ -12,11 +12,11 @@
 <body>
 	<%@ include file="../inc/header.jsp" %>
 	<div id="loginWrap" class="mgt100">
-			<h3>회원정보 수정 확인</h3>
+			<h3 class="mgb20">회원정보 수정 확인</h3>
 			<form action="memberModifyOk" method="post" name="join_frm">
 				<div>
 					<label class="form-label" >아이디</label>
-					<div>{memberDto.mid }</div>
+					<div>${memberDto.mid }</div>
 					
 				</div>
 				<div class="mgt8">
@@ -41,53 +41,7 @@
 			   </div>
 			</form>	
 		</div>
-	<table width="75%" border="0" cellspacing="0" cellpadding="20">
-		
-		<tr>
-			<td>
-		
-				<table width="80%" border="0" cellspacing="0" cellpadding="10">
-					<tr class="contentbox">
-						<td class="content">
-												
-							<table border="0" cellspacing="0" cellpadding="10">
-									<tr>
-										<td colspan="2" align="center"><span class="content_text01">회원 정보 수정 완료</span></td>
-									</tr>
-									<tr>
-										<td><span class="content_text01">아 이 디 : </span></td>
-										<td>${memberDto.mid }</td>
-									</tr>									
-									<tr>
-										<td><span class="content_text01">비밀번호 : </span></td>
-										<td>${memberDto.mpw }</td>
-									</tr>
-									<tr>
-										<td><span class="content_text01">이&nbsp;&nbsp;&nbsp;&nbsp;름 : </span></td>
-										<td>${memberDto.mname }</td>
-									</tr>
-									<tr>
-										<td><span class="content_text01">이 메 일 : </span></td>
-										<td>${memberDto.memail }</td>
-									</tr>
-									
-									<tr>
-										<td colspan="2">
-											<input class="button_type01" type="button" value="정보수정" onclick="script:window.location='mypage'">&nbsp;&nbsp;
-											<input class="button_type01" type="button" value="수정완료" onclick="script:window.location='index'">
-										</td>
-									</tr>
-														
-							</table>
-											
-						</td>						
-					</tr>
-					
-				</table>
-					
-			</td>
-		</tr>
-	</table>
+	
 
 	<%@ include file="../inc/footer.jsp" %>
 </body>

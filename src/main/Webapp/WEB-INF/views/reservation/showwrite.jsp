@@ -76,7 +76,7 @@
 			                <option value="클래식">클래식</option>
 			                <option value="전시회">전시회</option>
 			              </select>
-			            </div>
+			     </div>
             
 			
 				<div class="btn2set mgt20">

@@ -98,9 +98,13 @@
 	     
 	     <!-- //조인테이블 -->
 	     
-	     <!-- 이벤트게시판-->
+	     <!-- 이벤트게시판
 		<insert id="writeQuestion">
-			INSERT INTO aboard(qnum, qid, qname, qcontent, qemail ,qfilecount) VALUES(aboard_SEQ.nextval,#{param1}, #{param2}, #{param3}, #{param4},#{param5})
+			INSERT INTO aboard(qnum, qid, qcontent, qemail ,qfilecount) VALUES(aboard_SEQ.nextval,#{param1}, #{param2}, #{param3}, #{param4})
+		</insert>-->
+		
+		<insert id="writeQuestion">
+			INSERT INTO aboard(qnum, qid, qcontent, qemail ) VALUES(aboard_SEQ.nextval,#{param1}, #{param2}, #{param3})
 		</insert>
 		
 		<select id="questionList" resultType="com.exhibition.dto.EventBDto"> <!-- ROWNUM 오라클에 자동생성되는 번호 A와 PAGE는 가상의 필드-->
@@ -116,7 +120,7 @@
 		</select>	
 		
 			<update id="questionModify">
-		 	update aboard set qname=#{param2},qcontent=#{param3}, qemail=#{param4} where qnum=#{param1}
+		 	update aboard set qcontent=#{param2},qemail=#{param3} where qnum=#{param1}
 		</update>
 		
 		<delete id="questionDelete">
@@ -196,32 +200,59 @@
 		DELETE FROM SHOWTBL2 WHERE snum=#{param1}
 	</delete>
 	
+	
+	<!--230112추가 sm-->
 	<!-- 공연 정보 가져오기 -->
-	<select id="ticketList" resultType="com.exhibition.dto.ShowDto"> <!-- ROWNUM 오라클에 자동생성되는 번호 A와 PAGE는 가상의 필드-->
-		SELECT * FROM
-			(SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM <!--소수점 버림 함수 Floor를 사용 amount는 5 -->
-			FROM
-			(SELECT * FROM SHOWTBL ORDER BY snum DESC)A)
-		WHERE PAGE = #{pageNum}
-		</select>
+   <select id="ticketList" resultType="com.exhibition.dto.ShowDto"> 
+      SELECT * FROM
+         (SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM 
+         FROM
+         (SELECT * FROM SHOWTBL ORDER BY snum DESC)A)
+      WHERE PAGE = #{pageNum}
+      </select>
 
-	<!-- 공연 정보 숫자세기 -->
-	<select id="ticketAllCount" resultType="int">
-		SELECT COUNT(*) FROM SHOWTBL
-	</select>
+   <!-- 공연 정보 숫자세기 -->
+   <select id="ticketAllCount" resultType="int">
+      SELECT COUNT(*) FROM SHOWTBL
+   </select>
 
-	<!-- 공연 검색하기 	-->
-	<select id="ShowSearchTitleList" resultType="com.exhibition.dto.ShowDto">
-		SELECT * FROM SHOWTBL WHERE stitle LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
-	</select>
+
 	
-	<select id="ShowSearchLocarionList" resultType="com.exhibition.dto.ShowDto">
-		SELECT * FROM SHOWTBL WHERE slocation LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
-	</select>
+	<!--230112추가 sm-->
+	<!-- 공연 검색하기 -->
+   <select id="ShowSearchTitleList" parameterType="com.exhibition.dto.Criteria3" resultType="com.exhibition.dto.ShowDto">
+      SELECT * FROM
+         (SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
+         FROM
+         (SELECT * FROM SHOWTBL WHERE stitle LIKE '%' || #{searchKey} || '%' ORDER BY snum DESC)A)
+      WHERE PAGE = #{pageNum}
+      
+   </select>
+   
+   <select id="ShowSearchLocarionList" parameterType="com.exhibition.dto.Criteria3" resultType="com.exhibition.dto.ShowDto">
+      SELECT * FROM
+         (SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
+         FROM
+         (SELECT * FROM SHOWTBL WHERE slocation LIKE '%' || #{searchKey} || '%' ORDER BY snum DESC)A)
+      WHERE PAGE = #{pageNum}      
+   </select>
+   
+   <select id="ShowSearchSpriceList" parameterType="com.exhibition.dto.Criteria3" resultType="com.exhibition.dto.ShowDto">
+      SELECT * FROM
+         (SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
+         FROM
+         (SELECT * FROM SHOWTBL WHERE sprice LIKE '%' || #{searchKey} || '%' ORDER BY snum DESC   )A)
+      WHERE PAGE = #{pageNum}
+   </select>
+   
+   <select id="ShowSearchSkindList" parameterType="com.exhibition.dto.Criteria3" resultType="com.exhibition.dto.ShowDto">
+      SELECT * FROM
+         (SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
+         FROM
+         (SELECT * FROM SHOWTBL WHERE skind LIKE '%' || #{searchKey} || '%' ORDER BY snum DESC   )A)
+      WHERE PAGE = #{pageNum}
+   </select>
 	
-	<select id="ShowSearchSpriceList" resultType="com.exhibition.dto.ShowDto">
-		SELECT * FROM SHOWTBL WHERE sprice LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
-	</select>
 	
 	
 	

@@ -12,7 +12,7 @@
 .tabmenu_cm{position: relative;width: 100%;}
 .tabmenu_cm .more{position: absolute;right: 0; color:#999; font-size:14px; padding:10px}
 .tabmenu_cm .more:hover{color:#000}
-
+footer {margin-top: 0px!important;}
 
 </style>
 </head>
@@ -75,7 +75,7 @@
 											</button>
 											</li>
 											<li>
-												<button style="background:#666;border-color:#a659bc" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												<button style="background:#666;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
 												<!-- background:#8364c4;border-color:#a659bc-->
 											</li>
 										</ul>
@@ -112,7 +112,7 @@
 			   		</ul>
 		   	</div>
 		   	<!--  동영상 -->
-		   	<div class="focuson">
+		   	<div class="focuson" style="display:none">
 				<div class="focuson-wrap">
 			        <div class="focus-txt"><p class="focus-tit"><span href="#"><img src="http://tkfile.yes24.com/imgNew/main/tit8.png" alt=""></span></p><p class="focus-tit2"><a href="?Gcode=009_212">뮤지컬<br>오페라의 유령</a></p><p class="focus-detail"><a href="?Gcode=009_212">마침내,<br>13년 만의 한국어 공연!</a></p></div><div class="focus-con"><iframe id="playerFocusOn" class="focus-con-movie" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/?enablejsapi=1&amp;origin=http%3A%2F%2Fticket.yes24.com&amp;widgetid=1"></iframe><div class="focus-con-img"><a href="#" title="PJL5WN4NGLQ"><img src="http://tkfile.yes24.com/Upload2/Display/202212/20221230/오페라의 유령 썸네일.jpg/dims/quality/70/" alt="" class="lazyload"></a></div></div>
 				</div>
@@ -122,7 +122,7 @@
 			<div class="inner_wrap">
 				<div class="cont_left">
 					<h2 class="title">지금 나에게 딱 맞는 공연은?</h2>
-					<p class="txt">enjoysEE가 다양한 공연들을 추천해 드립니다!</p>
+					<p class="txt">티켓켓이 다양한 공연들을 추천해 드립니다!</p>
 					<div class="cont_wrap mobile_none">
 						<div class="search_wrap">
 							<input type="text" id="search_prd" class="input_search" placeholder="좋아하는 장르를 검색해보세요!">
@@ -132,25 +132,25 @@
 				</div>
 				<div class="cont_right">
 					<div class="category_wrap">
-						<a href="/" class="cate01 big_ver">
+						<a href="/boardList?searchOption=skind&searchKey=콘서트" class="cate01 big_ver">
 							<span class="cate_name">콘서트</span>
 						</a>
-						<a href="/" class="cate02 big_ver">
+						<a href="/boardList?searchOption=skind&searchKey=뮤지컬" class="cate02 big_ver">
 							<span class="cate_name font_black">뮤지컬</span>
 						</a>
-						<a href="/" class="cate03 small_ver">
+						<a href="/boardList?searchOption=skind&searchKey=연극" class="cate03 small_ver">
 							<span class="cate_name">연극</span>
 						</a>
-						<a href="/" class="cate04 small_ver">
-							<span class="cate_name font_black">클래식</span>
+						<a href="/boardList?searchOption=sprice&searchKey=free" class="cate04 small_ver">
+							<span class="cate_name font_black">무료공연</span>
 						</a>
-						<a href="/" class="cate05 small_ver">
-							<span class="cate_name">전시</span>
+						<a href="/boardList?searchOption=slocation&searchKey=예술의전당" class="cate05 small_ver">
+							<span class="cate_name">예술의전당</span>
 						</a>
-						<a href="/" class="cate06 small_ver">
+						<a href="/boardList?searchOption=skind&searchKey=가족" class="cate06 small_ver">
 							<span class="cate_name">가족</span>
 						</a>
-						<a href="/" class="cate07 big_ver">
+						<a href="/boardList?searchOption=skind&searchKey=어린이" class="cate07 big_ver">
 							<span class="cate_name">어린이</span>
 						</a>
 					</div>
@@ -161,10 +161,10 @@
 		   	<div id="goodsWrap" class="mgt50">
 			   	<h3>굿즈판매</h3>
 			   	<div class="goodslist">
-			   		<p class="goodImg"><img width="200" height="200" src="${pageContext.request.contextPath}/resources/image/goods1.jpg"></p>
+			   		<p class="goodImg"><img width="200" height="200" src="${pageContext.request.contextPath}/resources/image/goods1.png"></p>
 			   		<div class="good_r">
 			   			<div class="goodsTitle">앤서니 브라운 </div>
-			   			<div class="goodsText">이상한 나라의 엘리스 직소퍼즐300피스</div>
+			   			<div class="goodsText">사냥꾼을 만난 꼬마곰 문구셋트 출시<br>책부터 연필까지 꼬마곰과 함께 하세요!</div>
 			   			<button type="button" class="btn btn-outline-secondary"
 					        style="--bs-btn-padding-y: .35rem; --bs-btn-padding-x: .7rem; --bs-btn-font-size: .85rem;">
 					 바로가기
@@ -173,7 +173,7 @@
 			   		
 			   	</div>	
 			   	<div class="goodslist floatR">
-			   	<p class="goodImg"><img width="200" height="200" src="${pageContext.request.contextPath}/resources/image/goods2.jpg"></p>
+			   	<p class="goodImg"><img width="200" height="200" src="${pageContext.request.contextPath}/resources/image/goods2.png"></p>
 			   		<div class="good_r">
 			   			<div class="goodsTitle">하리보 골드베렌 100주년</div>
 			   			<div class="goodsText">이상한 나라의 엘리스 직소퍼즐300피스<br> QR code를 촬영해 보세요</div>
