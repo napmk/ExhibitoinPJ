@@ -107,7 +107,7 @@
 		
 		
 		<insert id="writeQuestion">
-			INSERT INTO aboard(qnum, qid, qcontent, qemail ,qfilecount) VALUES(aboard_SEQ.nextval,#{param1}, #{param2}, #{param3}, #{param4})
+			INSERT INTO aboard(qnum, qid, qname, qcontent, qemail ,qfilecount) VALUES(aboard_SEQ.nextval,#{param1}, #{param2}, #{param3}, #{param4})
 		</insert>
 		
 		<select id="questionList" resultType="com.exhibition.dto.EventBDto"> <!-- ROWNUM 오라클에 자동생성되는 번호 A와 PAGE는 가상의 필드-->

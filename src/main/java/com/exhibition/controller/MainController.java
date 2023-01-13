@@ -368,14 +368,14 @@ public class MainController {
 //	}
 	
 	
-	@RequestMapping(value = "/questionOk")
+	@RequestMapping(value = "/questionOk") //이벤트OK
 	public String questionOk(HttpServletRequest request, HttpSession session, @RequestPart MultipartFile files) throws IllegalStateException, IOException {
 		
 		String qnum = request.getParameter("qnum");//글번호
 		String qid = request.getParameter("qid");//글쓴유저 아이디
-		//String qname = request.getParameter("qname");//글쓴 질문 내용
+		String qname = request.getParameter("qname");//이벤트제목
 		String sessionId = (String) session.getAttribute("qid");
-		String qcontent = request.getParameter("qcontent");//글쓴 질문 내용
+		String qcontent = request.getParameter("qcontent");//이벤트 내용
 		String qemail = request.getParameter("qemail");//이벤트기간
 	
 		//글쓴이의 아이디는 현재 로그인된 유저의 아이디이므로 세션에서 가져와서 전달 
@@ -384,10 +384,10 @@ public class MainController {
 				
 	
 				
-				if(files.isEmpty()) { // 파일의 첨부여부 확인
-					dao.writeQuestion(qnum, qid, qcontent, qemail ,0);
+				if(files.isEmpty()) { // 파일의 첨부여부 확인 번호 이벤트 pk/제목/내용/기간/이미지등록
+					dao.writeQuestion(qnum, qid,qname, qcontent, qemail ,0);
 				} else {
-					dao.writeQuestion(qnum, qid, qcontent, qemail, 1);
+					dao.writeQuestion(qnum, qid,qname, qcontent, qemail, 1);
 					ArrayList<EventBDto> latestBoard = dao.eboardLatestInfo(sessionId);
 					EventBDto dto = latestBoard.get(0);
 					int anum = dto.getQnum();

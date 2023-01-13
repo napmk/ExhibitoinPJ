@@ -28,13 +28,13 @@
 					  <input class="form-control" type="text" name="qid" value="${memberId }" readonly="readonly">
 				</div>
 				<div class="mb-3 mgt20">
-					  <label for="exampleFormControlInput1" class="form-label">이벤트제목</label>
+					  <label for="exampleFormControlInput1" class="form-label" placeholder="제목을 입력해주세요">이벤트제목</label>
 					  <input class="form-control" type="text" name="qname" >
 				</div>
 				<div class="mb-3">
 					  <label class="form-label">이벤트 내용</label>
 					  <div class="form-floating">
-						  <textarea class="form-control" name="qcontent" placeholder="제목을 입력해주세요" style="height: 100px"></textarea>
+						  <textarea class="form-control" name="qcontent" placeholder="내용을 입력해주세요" style="height: 100px"></textarea>
 						  <label for="floatingTextarea2">이벤트 내용을 입력해주세요</label>
 					  </div>
 				</div>
