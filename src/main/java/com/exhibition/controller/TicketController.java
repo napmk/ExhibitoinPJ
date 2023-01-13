@@ -56,7 +56,7 @@ public class TicketController {
 		return "reservation/showview";
 	}
 	
-	
+
 	
 	@RequestMapping(value="ticketingOk")
 	public String ticketingOk(HttpServletRequest request,Model model,HttpSession session, HttpServletResponse response) {

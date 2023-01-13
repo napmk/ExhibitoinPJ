@@ -54,7 +54,9 @@
 		         </c:if>
 		         <!--// 포스터이미지 -->
 		         
-		    
+		      <a type="button" href="reviewlikeStar?snum=${showView.snum}"  class="btn btn-outline-danger" name="liker">
+			   			♥좋아요${showView.liker}<span class="badge text-bg-secondary" ></span>
+			   			</a> 
 			   			
 				<ul class="likes">
 					<li><i class="material-icons">favorite</i></li>

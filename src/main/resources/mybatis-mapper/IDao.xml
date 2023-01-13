@@ -152,17 +152,19 @@
 		</select>
 
 
-
-	
-
-	  <!-- 티켓예매 SQL -->
-		<!-- 티켓 예매하기  -->
-		<insert id="ticketing">
-		insert into SHOWTBL2(snum, stitle, slocation, sdday, stime,sage,sprice,userid,count,skind)
-		VALUES(SHOWTBL2_SEQ.nextval,#{param1}, #{param2}, #{param3},#{param4},#{param5}, #{param6},#{param7},#{param8},#{param9}) 
-		</insert>
-	
-	
+	 <!-- 티켓예매 SQL -->
+      <!-- 티켓 예매하기  -->
+      <insert id="ticketing">
+      insert into SHOWTBL2(snum, stitle, slocation, sdday, stime,sage,sprice,userid,count,liker)
+      VALUES(SHOWTBL2_SEQ.nextval,#{param1}, #{param2}, #{param3},#{param4},#{param5}, #{param6},#{param7},#{param8},0) 
+      </insert>
+   
+      <!-- 예매하기에서 좋아요 보내기 -->
+      <update id="rivewLikeHit">
+         UPDATE SHOWTBL SET liker=liker+1  WHERE snum=#{param1}
+      </update>
+      
+      
 	<!-- 티켓 예매 확인정보 가져오기 -->
 	
 	<resultMap type="com.exhibition.dto.MemberDto" id="memberDto2">

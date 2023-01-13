@@ -46,6 +46,26 @@ public class MainController {
 	}
 
 	
+	@RequestMapping (value ="reviewlikeStar")
+	   public String showview (HttpServletRequest request, Model model, HttpSession session) {
+	      
+	      String sessionId = (String) session.getAttribute("memberId");
+	      String snum = request.getParameter("snum");
+	      
+	      IDao dao = sqlSession.getMapper(IDao.class);
+
+	      FileDto fileDto = dao.getFileInfo(snum);
+	      ShowDto showdto = dao.showView(snum);
+	      
+	      dao.rivewLikeHit(snum);
+	      
+	      model.addAttribute("showView",showdto);
+	      model.addAttribute("fileDto", fileDto);
+	      
+	      return "showview";
+	   }
+	
+	
 	@RequestMapping (value ="index") //인덱스 메인페이지
     public String home (Model model,HttpServletRequest request,HttpSession session, HttpServletResponse response) throws IOException {
 

@@ -89,7 +89,10 @@ public interface IDao {
 	      public ArrayList<ShowDto> showTheaterList(String theater);//연극 리스트 가져오기
 	      public ArrayList<ShowDto> showFamilyList(String family);//아동/가족 리스트 가져오기
 	         
-		
+	    //좋아요 버튼 클릭//좋아요 조회수 나타낸다
+	      public void rivewLikeHit(String tnum);
+	      
+	      
 //		//리뷰에서 별점이랑 좋아요 보내보쟝
 //		public int rivewStar(String rating, String rid, String rcontent);
 //		//리뷰에서 별점 결과 몽땅 가져오기

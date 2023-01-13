@@ -18,7 +18,7 @@ public class ShowDto {
 	private String userid;//글쓴이의 아이디
 	private int filecount;//첨부된 파일 개수
 	private String skind;
-	private int likecount; //좋아요 기능
+	private int liker;
 	
 	private FileDto fileDto; //join 한 파일 테이블
 	

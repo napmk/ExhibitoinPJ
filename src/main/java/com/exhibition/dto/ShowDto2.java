@@ -21,6 +21,7 @@ public class ShowDto2 {//SHOWTBL2 예매한 티켓정보
 	private String count;// 티켓 구매 갯수
 	private String FILECOUNT;// 첨부된 파일 개수
 	private String skind;//공연종류
+	private int liker;
 	
 	private MemberDto memberDto;// 조인
 	
