@@ -26,7 +26,7 @@
 			</div>
 			<div class="mgt8">
 				<label class="form-label" >관람날짜 : </label>
-				 ${sdday }
+				 ${selectedDate }
 			</div>
 			<div class="mgt8">
 				<label class="form-label" >관람연령 : </label>

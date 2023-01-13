@@ -390,6 +390,8 @@ footer {margin-top: 0px!important;}
 	    <span class="visually-hidden">Next</span>
 	  </button>
 	</div>
+	
+	
     <%@ include file="inc/footer.jsp" %> 	
 </body>
 </html>

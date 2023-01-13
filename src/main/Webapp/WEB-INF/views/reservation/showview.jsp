@@ -34,107 +34,106 @@
   
   <form action ="ticketingOk?snum=${param.snum}" method="post">  
    <input type="hidden" value="${showView.snum }" name="snum">
-	<div id="wrapper" class="boardWrap">
-		<div class="board_title">
-		 	<h4>${showView.stitle}</h4>
-		 	<div class="star">
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star"></span>
-				<span class="fa fa-star"></span>
-				<span>9.1</span>
-			</div>
+   <div id="wrapper" class="boardWrap">
+      <div class="board_title">
+          <h4>${showView.stitle}</h4>
+          <div class="star">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span>9.1</span>
+         </div>
+      </div>
+      <div class="show_detail">   
+          <div class="show_poster">
+             <!-- 포스터이미지 -->
+               <c:if test="${fileDto.fileextension =='jpg' or fileDto.fileextension =='png' or fileDto.fileextension =='bmp' or fileDto.fileextension =='gif'}">
+                 <img width="300" src="${pageContext.request.contextPath}/resources/uploadfiles/${fileDto.filename}">
+               </c:if>
+               <!--// 포스터이미지 -->
+               <a type="button" href="reviewlikeStar?snum=${showView.snum}"  class="btn btn-outline-danger" name="liker">
+			   		♥좋아요${showView.liker}<span class="badge text-bg-secondary" ></span>
+			   	</a> 
 		</div>
-		<div class="show_detail">	
-			 <div class="show_poster">
-			 	<!-- 포스터이미지 -->
-			      <c:if test="${fileDto.fileextension =='jpg' or fileDto.fileextension =='png' or fileDto.fileextension =='bmp' or fileDto.fileextension =='gif'}">
-		        	<img width="300" src="${pageContext.request.contextPath}/resources/uploadfiles/${fileDto.filename}">
-		         </c:if>
-		         <!--// 포스터이미지 -->
-		         
-		      <a type="button" href="reviewlikeStar?snum=${showView.snum}"  class="btn btn-outline-danger" name="liker">
-			   			♥좋아요${showView.liker}<span class="badge text-bg-secondary" ></span>
-			   			</a> 
-			   			
-				<ul class="likes">
-					<li><i class="material-icons">favorite</i></li>
-					<li>50</li>
-					<li>좋아요</li>
-				</ul>
-			</div>
-			
-			<form action="reservationOk" method="post" name="reservation_frm" novalidate>
-			<div class="pright-area">
-				 <ul class="show_text">
-					<li> 공연 종류 :<input class="input_type01" type="text" name="skind" value="${showView.skind}" readonly="readonly"></li>
-				 	<li> 공연 제목 : <input class="input_type01" type="text" name="stitle" value="${showView.stitle}" readonly="readonly"></li>
-				 	<li> 공연 위치 : <input class="input_type01" type="text" name="slocation" value="${showView.slocation}" readonly="readonly"></li>
-				 	<li> 공연 날짜 : <input class="input_type01" type="text" name="sdday" value="${showView.sdday}" readonly="readonly" style="width:75px"></li>
-				 	<li> 공연 시간 : <input class="input_type01" type="text" name="stime" value="${showView.stime}" readonly="readonly"></li>
-				 	<li> 공연 장소 : <input class="input_type01" type="text" name="sprice" value="${showView.sprice}" readonly="readonly"></li>
-				 	<li> 공연 나이 : <input class="input_type01" type="text" name="sage" value="${showView.sage}" readonly="readonly"></li>
-				 	<li style="display:none"> 아이디 : <input class="input_type01" type="text" name="userid" value="${memberId}" readonly="readonly"></li>
-		
-				 	<li>
-					 	<div>티켓 매수
-					 
-							<select class="form-select form-select-sm"  name="count">
-							  <option selected>장 수를 선택해 주세요</option>
-							  <option value="1">1</option>
-							  <option value="2">2</option>
-							  <option value="3">3</option>
-							  <option value="4">4</option>
-							  <option value="5">5</option>
-							  <option value="6">6</option>
-							  <option value="7">7</option>
-							  <option value="8">8</option>
-							  <option value="9">9</option>
-							  <option value="10">10</option> 
-							 </select>
-					
-						 </div>
-					</li>
-				 </ul>
-				
-				 <div class="ptselect_txt mgb40">10장이상 단체구매는 1500-3322에 문의하세요</div>
-				 <!-- 달력 -->
-				
-				
-				 
-			 </div>
-				 <!-- 달력 및 예약하기-->
-				<div class="floatR">
-					<div id="pickDate" class="mgb20"></div>
-					<!--  <button onclick="window.open('ticketMain')" type="submit" class="btn btn-warning" style="width: 100%;padding:8px 24px;font-size:20px">예약하기</button>
-					<button onclick="window.open('ticketMain', '_blank', 'width=500px,height=400px,toolbars=no,scrollbars=no'); return false;" type="submit" class="btn btn-warning" style="width: 100%;padding:8px 24px;font-size:20px">예약하기</button>-->
-					 <input class="btn btn-warning" type="submit" value="예매하기" style="width:100%" > 
-				</div>
-				 
-				<!-- //달력 -->
-				</form>
-			  </form>
-		 </div>
+         
+         <form action="reservationOk" method="post" name="reservation_frm" novalidate>
+         <div class="pright-area">
+             <ul class="show_text">
+               <li> 공연 종류 :<input class="input_type01" type="text" name="skind" value="${showView.skind}" readonly="readonly"></li>
+                <li> 공연 제목 : <input class="input_type01" type="text" name="stitle" value="${showView.stitle}" readonly="readonly"></li>
+                <li> 공연 위치 : <input class="input_type01" type="text" name="slocation" value="${showView.slocation}" readonly="readonly"></li>
+                <li> 공연 날짜 : <input class="input_type01" type="text" name="sdday" value="${showView.sdday}" readonly="readonly" style="width:75px">~ <input class="input_type01" type="text" name="sdday2" value="${showView.sdday}" readonly="readonly" style="width:80px"></li>
+                <li> 공연 시간 : <input class="input_type01" type="text" name="stime" value="${showView.stime}" readonly="readonly"></li>
+                <li> 공연 장소 : <input class="input_type01" type="text" name="sprice" value="${showView.sprice}" readonly="readonly"></li>
+                <li> 공연 나이 : <input class="input_type01" type="text" name="sage" value="${showView.sage}" readonly="readonly"></li>
+                <li style="display:none"> 아이디 : <input class="input_type01" type="text" name="userid" value="${memberId}" readonly="readonly"></li>
+      
+                <li>
+                   <div>티켓 매수
+                
+                     <select class="form-select form-select-sm"  name="count">
+                       <option selected>장 수를 선택해 주세요</option>
+                       <option value="1">1</option>
+                       <option value="2">2</option>
+                       <option value="3">3</option>
+                       <option value="4">4</option>
+                       <option value="5">5</option>
+                       <option value="6">6</option>
+                       <option value="7">7</option>
+                       <option value="8">8</option>
+                       <option value="9">9</option>
+                       <option value="10">10</option> 
+                      </select>
+               
+                   </div>
+               </li>
+             </ul>
+            <input type="text" id="pickDate" name="selectedDate" placeholder="예매날짜선택"><br>
+            
+             <div class="ptselect_txt mgb40">10장이상 단체구매는 1500-3322에 문의하세요</div>
+             <!-- 달력 -->
+            
+            
+             
+          </div>
+             <!-- 달력 및 예약하기
+            <div class="floatR">               
+               <!--  <button onclick="window.open('ticketMain')" type="submit" class="btn btn-warning" style="width: 100%;padding:8px 24px;font-size:20px">예약하기</button>
+               <button onclick="window.open('ticketMain', '_blank', 'width=500px,height=400px,toolbars=no,scrollbars=no'); return false;" type="submit" class="btn btn-warning" style="width: 100%;padding:8px 24px;font-size:20px">예약하기</button>
+               <input type="text" id="pickDate" name="selectedDate" placeholder="예매날짜선택"><br>
+                 
+            </div>
+            -->
+             
+            
+            
+       </div>
+       <div align="center">
+       <input class="btn btn-warning" type="submit" value="예매하기" style="width:50%" >
+       </div>
+       </form>
+           </form>
   <!-- tab컨텐츠 -->
-	<nav class="showview_tab clear mgt50">
-	  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-	    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">관람후기</button>
-	    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">캐스팅정보</button>
-	    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">판매정보</button>
-	    <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">공연정보</button>
-	  </div>
-	</nav>
-	<div class="tab-content" id="nav-tabContent">
-	  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-		관람후기
-	 </div>
-	  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">캐스팅정보</div>
-	  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">판매정보</div>
-	  <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">공연정보</div>
-	</div>
-	</div>
-	<!-- tab컨텐츠 -->
+   <nav class="showview_tab clear mgt50">
+     <div class="nav nav-tabs" id="nav-tab" role="tablist">
+       <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">관람후기</button>
+       <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">캐스팅정보</button>
+       <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">판매정보</button>
+       <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">공연정보</button>
+     </div>
+   </nav>
+   <div class="tab-content" id="nav-tabContent">
+     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+      관람후기
+    </div>
+     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">캐스팅정보</div>
+     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">판매정보</div>
+     <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">공연정보</div>
+   </div>
+   </div>
+   <!-- tab컨텐츠 -->
 
 </form>
 

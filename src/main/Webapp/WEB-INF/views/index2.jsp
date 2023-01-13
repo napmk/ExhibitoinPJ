@@ -3,7 +3,7 @@
   <meta charset="UTF-8">
   
 <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
-<meta name="apple-mobile-web-app-title" content="CodePen">
+
 
 <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
 
@@ -11,97 +11,96 @@
 
 
   
-  <title>CodePen - CSS effect for search input </title>
+  <title>CodePen - kakao heart animation</title>
   
   
   
   
 <style>
-
-
-/* Base styling */
-
-body {
-  
+.btn_like {
+  position: relative;
+  margin: 100px auto;
+  display: block;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #e8e8e8;
+  border-radius: 44px;
+  font-family: notokr-bold,sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  background-color: #fff;
+  color: #DD5D54;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.03);
+  transition: border .2s ease-out,box-shadow .1s ease-out,background-color .4s ease-out;
+  cursor: pointer;
 }
 
-.search__container {
-        padding-top: 64px;
-    }
+.btn_like:hover {
+  border: 1px solid rgba(228,89,89,0.3);
+  background-color: rgba(228,89,89,0.02);
+  box-shadow: 0 2px 4px 0 rgba(228,89,89,0.2);
+}
 
-.search__title {
-        font-size: 22px;
-        font-weight: 900;
-        text-align: center;
-        color: #ff8b88;
-    }
+.btn_unlike .img_emoti {
+    background-position: -30px -120px;
+}
 
-.search__input {
-        width: 100%;
-        padding: 12px 24px;
+.img_emoti {
+    display: inline-block;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    background: url(https://mk.kakaocdn.net/dn/emoticon/static/images/webstore/img_emoti.png?v=20180410) no-repeat;
+    text-indent: -9999px;
+    vertical-align: top;
+    width: 20px;
+    height: 17px;
+    margin-top: 1px;
+    background-position: 0px -120px;
+    text-indent: 0;
+}
 
-        background-color: transparent;
-        transition: transform 250ms ease-in-out;
-        font-size: 14px;
-        line-height: 18px;
-        
-        color: #575756;
-        background-color: transparent;
-/*         background-image: url(http://mihaeltomic.com/codepen/input-search/ic_search_black_24px.svg); */
- 
-      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-size: 18px 18px;
-        background-position: 95% center;
-        border-radius: 50px;
-        border: 1px solid #575756;
-        transition: all 250ms ease-in-out;
-        backface-visibility: hidden;
-        transform-style: preserve-3d;
-    }
+.btn_like .ani_heart_m {
+    margin: -63px 0 0 -63px;
+}
 
-.search__input::placeholder {
-            color: rgba(87, 87, 86, 0.8);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
+.ani_heart_m {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 125px;
+    height: 125px;
+    margin: -63px 0 0 -63px;
+    pointer-events: none;
+}
 
-.search__input:hover,
-        .search__input:focus {
-            padding: 12px 0;
-            outline: 0;
-            border: 1px solid transparent;
-            border-bottom: 1px solid #575756;
-            border-radius: 0;
-            background-position: 100% center;
-        }
+.ani_heart_m.hi {
+    background-image: url(https://mk.kakaocdn.net/dn/emoticon/static/images/webstore/retina/zzim_on_m.png);
+    -webkit-background-size: 9000px 125px;
+    background-size: 9000px 125px;
+    animation: on_m 1.06s steps(72);
+}
 
-.credits__container {
-        margin-top: 24px;
-    }
+.ani_heart_m.bye {
+    background-image: url(https://mk.kakaocdn.net/dn/emoticon/static/images/webstore/retina/zzim_off_m.png);
+    -webkit-background-size: 8250px 125px;
+    background-size: 8250px 125px;
+    animation: off_m 1.06s steps(66);
+}
 
-.credits__text {
-        text-align: center;
-        font-size: 13px;
-        line-height: 18px;
-    }
+@keyframes on_m {
+  from { background-position: 0 }
+  to { background-position: -9000px }
+}
 
-.credits__link {
-        color: #ff8b88;
-        text-decoration: none;
-        transition: color 250ms ease-in;
-    }
-
-.credits__link:hover,
-        .credits__link:focus {
-            color: rgb(191, 137, 135);
-        }
+@keyframes off_m {
+  from { background-position: 0 }
+  to { background-position: -8250px }
+}
 </style>
 
-  <script>
-  window.console = window.console || function(t) {};
-</script>
-
+  
   
   
   <script>
@@ -114,22 +113,34 @@ body {
 </head>
 
 <body translate="no">
-  <div class="search__container">
-    <p class="search__title">
-        Go ahead, hover over search
-    </p>
-    <input class="search__input" type="text" placeholder="Search">
-</div>
+  <button type="button" class="btn_like btn_unlike">
+  <span class="img_emoti">좋아요</span>
+  <span class="ani_heart_m hi"></span>
+</button>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
 
-<div class="credits__container">
-    <p class="credits__text">Background color: Pantone Color of the Year 2016 <a href="https://www.pantone.com/color-of-the-year-2016" class="credits__link">Rose Quartz</a></p>
-</div>
-  
-  
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script id="rendered-js">
+$('button').click(function () {
+  if ($(this).hasClass('btn_unlike')) {
+    $(this).removeClass('btn_unlike');
+    $('.ani_heart_m').removeClass('hi');
+    $('.ani_heart_m').addClass('bye');
+  } else
+  {
+    $(this).addClass('btn_unlike');
+    $('.ani_heart_m').addClass('hi');
+    $('.ani_heart_m').removeClass('bye');
+  }
+});
+//# sourceURL=pen.js
+    </script>
+
   
 
+  <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-550eae0ce567d3d9182e33cee4e187761056020161aa87e3ef74dc467972c555.js"></script>
 
 
 
  
+</body></html>

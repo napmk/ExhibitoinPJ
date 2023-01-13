@@ -62,7 +62,7 @@ public class MainController {
 	      model.addAttribute("showView",showdto);
 	      model.addAttribute("fileDto", fileDto);
 	      
-	      return "showview";
+	      return "reservation/showview";
 	   }
 	
 	
