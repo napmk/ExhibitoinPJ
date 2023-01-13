@@ -89,7 +89,7 @@ footer {margin-top: 0px!important;}
 				  <div class="tab-pane fade" id="musical-tab-pane" role="tabpanel" aria-labelledby="musical-tab" tabindex="0">
 					 <div class="container">
 						<ul class="reservationWrap">
-							<c:forEach items="${showList}" var="showDto" begin="0" end="3" step="1">
+							<c:forEach items="${showMusicalList}" var="showDto" begin="0" end="3" step="1">
 								<li>
 									<div class="img_title_wrap">
 										<p class="poster_title" style="display:none">${showDto.stitle}</p>
@@ -122,10 +122,150 @@ footer {margin-top: 0px!important;}
 						</ul>
 					</div>
 				  </div>
-				  <div class="tab-pane fade" id="classic-tab-pane" role="tabpanel" aria-labelledby="classic-tab" tabindex="0">.클래식만나오게.</div>
-				  <div class="tab-pane fade" id="concert-tab-pane" role="tabpanel" aria-labelledby="concert-tab" tabindex="0">.콘서트만나오게.</div>
-				  <div class="tab-pane fade" id="theater-tab-pane" role="tabpanel" aria-labelledby="theater-tab" tabindex="0">연극만나오게..</div>
-				  <div class="tab-pane fade" id="kids-tab-pane" role="tabpanel" aria-labelledby="kids-tab" tabindex="0">어린이만나오게..</div>
+				  <div class="tab-pane fade" id="classic-tab-pane" role="tabpanel" aria-labelledby="classic-tab" tabindex="0">
+					<div class="container">
+						<ul class="reservationWrap">
+							<c:forEach items="${showClassicList}" var="showDto" begin="0" end="3" step="1">
+								<li>
+									<div class="img_title_wrap">
+										<p class="poster_title" style="display:none">${showDto.stitle}</p>
+										
+										<!-- 포스터이미지 -->
+										<div class="exhiPoster">
+									      <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
+								        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
+								         </c:if>
+								        </div> 
+								         <!-- 포스터이미지 -->
+									</div>
+									<div class="rv_btnset">
+										<ul>
+											<li class="good-btn">
+											<button type="button" class="btn btn-outline-secondary">
+												<i class="material-icons" style="font-size: 16px;">favorite</i>
+													좋아요
+											</button>
+											</li>
+											<li>
+												<button style="background:#666;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												<!-- background:#8364c4;border-color:#a659bc-->
+											</li>
+										</ul>
+								
+									</div>
+								</li>
+							</c:forEach>	
+						</ul>
+					</div>
+				  </div>
+				  <div class="tab-pane fade" id="concert-tab-pane" role="tabpanel" aria-labelledby="concert-tab" tabindex="0">
+					<div class="container">
+						<ul class="reservationWrap">
+							<c:forEach items="${showConsertList}" var="showDto" begin="0" end="3" step="1">
+								<li>
+									<div class="img_title_wrap">
+										<p class="poster_title" style="display:none">${showDto.stitle}</p>
+										
+										<!-- 포스터이미지 -->
+										<div class="exhiPoster">
+									      <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
+								        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
+								         </c:if>
+								        </div> 
+								         <!-- 포스터이미지 -->
+									</div>
+									<div class="rv_btnset">
+										<ul>
+											<li class="good-btn">
+											<button type="button" class="btn btn-outline-secondary">
+												<i class="material-icons" style="font-size: 16px;">favorite</i>
+													좋아요
+											</button>
+											</li>
+											<li>
+												<button style="background:#666;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												<!-- background:#8364c4;border-color:#a659bc-->
+											</li>
+										</ul>
+								
+									</div>
+								</li>
+							</c:forEach>	
+						</ul>
+					</div>
+				  </div>
+				  <div class="tab-pane fade" id="theater-tab-pane" role="tabpanel" aria-labelledby="theater-tab" tabindex="0">
+					<div class="container">
+						<ul class="reservationWrap">
+							<c:forEach items="${showTheaterList}" var="showDto" begin="0" end="3" step="1">
+								<li>
+									<div class="img_title_wrap">
+										<p class="poster_title" style="display:none">${showDto.stitle}</p>
+										
+										<!-- 포스터이미지 -->
+										<div class="exhiPoster">
+									      <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
+								        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
+								         </c:if>
+								        </div> 
+								         <!-- 포스터이미지 -->
+									</div>
+									<div class="rv_btnset">
+										<ul>
+											<li class="good-btn">
+											<button type="button" class="btn btn-outline-secondary">
+												<i class="material-icons" style="font-size: 16px;">favorite</i>
+													좋아요
+											</button>
+											</li>
+											<li>
+												<button style="background:#666;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												<!-- background:#8364c4;border-color:#a659bc-->
+											</li>
+										</ul>
+								
+									</div>
+								</li>
+							</c:forEach>	
+						</ul>
+					</div>
+				 </div>
+				  <div class="tab-pane fade" id="kids-tab-pane" role="tabpanel" aria-labelledby="kids-tab" tabindex="0">
+					<div class="container">
+						<ul class="reservationWrap">
+							<c:forEach items="${showFamilyList}" var="showDto" begin="0" end="3" step="1">
+								<li>
+									<div class="img_title_wrap">
+										<p class="poster_title" style="display:none">${showDto.stitle}</p>
+										
+										<!-- 포스터이미지 -->
+										<div class="exhiPoster">
+									      <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
+								        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
+								         </c:if>
+								        </div> 
+								         <!-- 포스터이미지 -->
+									</div>
+									<div class="rv_btnset">
+										<ul>
+											<li class="good-btn">
+											<button type="button" class="btn btn-outline-secondary">
+												<i class="material-icons" style="font-size: 16px;">favorite</i>
+													좋아요
+											</button>
+											</li>
+											<li>
+												<button style="background:#666;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												<!-- background:#8364c4;border-color:#a659bc-->
+											</li>
+										</ul>
+								
+									</div>
+								</li>
+							</c:forEach>	
+						</ul>
+					</div>
+				  </div>
 				
 				</div>
 				

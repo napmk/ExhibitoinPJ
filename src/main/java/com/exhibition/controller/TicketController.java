@@ -46,6 +46,8 @@ public class TicketController {
 		FileDto fileDto = dao.getFileInfo(snum);
 		ShowDto showdto = dao.showView(snum);
 		
+	
+		
 		model.addAttribute("showView",showdto);
 		model.addAttribute("fileDto", fileDto);
 		
@@ -260,5 +262,7 @@ public class TicketController {
        return "boardList";
     }
 
+
+	
 	
 }

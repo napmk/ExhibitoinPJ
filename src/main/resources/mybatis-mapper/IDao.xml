@@ -260,6 +260,67 @@
       WHERE PAGE = #{pageNum}
    </select>
 	
+
+	<!-- 인덱스 공연 장르별 리스트 가져오기-->
+   <select id="showMusicalList" parameterType="com.exhibition.dto.ShowDto" resultMap="ShowDto2">
+      SELECT 
+         SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,SHOWTBL.skind,
+         SHOWFILES.filenum , SHOWFILES.sboardnum, SHOWFILES.fileoriname, SHOWFILES.filename,SHOWFILES.fileextension , SHOWFILES.fileurl 
+      FROM
+         SHOWTBL
+         JOIN SHOWFILES
+         ON SHOWTBL.snum = SHOWFILES.sboardnum
+      WHERE showtbl.skind = #{param1}
+      
+   </select>
+   <select id="showClassicList" parameterType="com.exhibition.dto.ShowDto" resultMap="ShowDto2">
+      
+      SELECT 
+         SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,SHOWTBL.skind,
+         SHOWFILES.filenum , SHOWFILES.sboardnum, SHOWFILES.fileoriname, SHOWFILES.filename,SHOWFILES.fileextension , SHOWFILES.fileurl 
+      FROM
+         SHOWTBL
+         JOIN SHOWFILES
+         ON SHOWTBL.snum = SHOWFILES.sboardnum
+      WHERE showtbl.skind = #{param1}
+      
+   </select>
+   <select id="showConsertList" parameterType="com.exhibition.dto.ShowDto" resultMap="ShowDto2">
+      
+      SELECT 
+         SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,SHOWTBL.skind,
+         SHOWFILES.filenum , SHOWFILES.sboardnum, SHOWFILES.fileoriname, SHOWFILES.filename,SHOWFILES.fileextension , SHOWFILES.fileurl 
+      FROM
+         SHOWTBL
+         JOIN SHOWFILES
+         ON SHOWTBL.snum = SHOWFILES.sboardnum
+      WHERE showtbl.skind = #{param1}
+      
+   </select>
+   <select id="showTheaterList" parameterType="com.exhibition.dto.ShowDto" resultMap="ShowDto2">
+      
+      SELECT 
+         SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,SHOWTBL.skind,
+         SHOWFILES.filenum , SHOWFILES.sboardnum, SHOWFILES.fileoriname, SHOWFILES.filename,SHOWFILES.fileextension , SHOWFILES.fileurl 
+      FROM
+         SHOWTBL
+         JOIN SHOWFILES
+         ON SHOWTBL.snum = SHOWFILES.sboardnum
+      WHERE showtbl.skind = #{param1}
+      
+   </select>
+   <select id="showFamilyList" parameterType="com.exhibition.dto.ShowDto" resultMap="ShowDto2">
+      
+      SELECT 
+         SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,SHOWTBL.skind,
+         SHOWFILES.filenum , SHOWFILES.sboardnum, SHOWFILES.fileoriname, SHOWFILES.filename,SHOWFILES.fileextension , SHOWFILES.fileurl 
+      FROM
+         SHOWTBL
+         JOIN SHOWFILES
+         ON SHOWTBL.snum = SHOWFILES.sboardnum
+      WHERE showtbl.skind = #{param1}
+      
+   </select>
 	
 	
 	

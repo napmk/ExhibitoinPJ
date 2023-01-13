@@ -53,6 +53,12 @@
 		        	<img width="300" src="${pageContext.request.contextPath}/resources/uploadfiles/${fileDto.filename}">
 		         </c:if>
 		         <!--// 포스터이미지 -->
+		         
+		         <!-- dlfeks wntjrcjfl
+		         <a type="button" href="reviewlikeStar?snum=${showView.snum}"  class="btn btn-outline-danger" name="liker">
+			   			♥좋아요${showView.liker}<span class="badge text-bg-secondary" ></span>
+			   			</a>   -->
+			   			
 				<ul class="likes">
 					<li><i class="material-icons">favorite</i></li>
 					<li>50</li>
@@ -66,7 +72,7 @@
 					<li> 공연 종류 :<input class="input_type01" type="text" name="skind" value="${showView.skind}" readonly="readonly"></li>
 				 	<li> 공연 제목 : <input class="input_type01" type="text" name="stitle" value="${showView.stitle}" readonly="readonly"></li>
 				 	<li> 공연 위치 : <input class="input_type01" type="text" name="slocation" value="${showView.slocation}" readonly="readonly"></li>
-				 	<li> 공연 날짜 : <input class="input_type01" type="text" name="sdday" value="${showView.sdday}" readonly="readonly" style="width:75px">~ <input class="input_type01" type="text" name="sdday2" value="${showView.sdday}" readonly="readonly" style="width:80px"></li>
+				 	<li> 공연 날짜 : <input class="input_type01" type="text" name="sdday" value="${showView.sdday}" readonly="readonly" style="width:75px"></li>
 				 	<li> 공연 시간 : <input class="input_type01" type="text" name="stime" value="${showView.stime}" readonly="readonly"></li>
 				 	<li> 공연 장소 : <input class="input_type01" type="text" name="sprice" value="${showView.sprice}" readonly="readonly"></li>
 				 	<li> 공연 나이 : <input class="input_type01" type="text" name="sage" value="${showView.sage}" readonly="readonly"></li>

@@ -82,8 +82,13 @@ public interface IDao {
 	      public ArrayList<ShowDto> ShowSearchSpriceList(Criteria3 cri);
 	      public ArrayList<ShowDto> ShowSearchSkindList(Criteria3 cri);
 	      
-		
-	
+		//인덱스 공연장르별 리스트 가져오기
+	      public ArrayList<ShowDto> showMusicalList(String musical);//뮤지컬 리스트 가져오기
+	      public ArrayList<ShowDto> showClassicList(String classic);//클래식 리스트 가져오기
+	      public ArrayList<ShowDto> showConsertList(String consert);//콘서트 리스트 가져오기
+	      public ArrayList<ShowDto> showTheaterList(String theater);//연극 리스트 가져오기
+	      public ArrayList<ShowDto> showFamilyList(String family);//아동/가족 리스트 가져오기
+	         
 		
 //		//리뷰에서 별점이랑 좋아요 보내보쟝
 //		public int rivewStar(String rating, String rid, String rcontent);

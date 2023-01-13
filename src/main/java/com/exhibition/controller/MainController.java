@@ -45,21 +45,45 @@ public class MainController {
 		return "redirect:index";
 	}
 
-	 @RequestMapping (value ="index") //인덱스 메인페이지
-	   public String home (Model model,HttpServletRequest request,HttpSession session, HttpServletResponse response) throws IOException {
+	
+	@RequestMapping (value ="index") //인덱스 메인페이지
+    public String home (Model model,HttpServletRequest request,HttpSession session, HttpServletResponse response) throws IOException {
 
-	      IDao dao = sqlSession.getMapper(IDao.class);
-	      List<ShowDto> showboardDtos = dao.showList2();
+       IDao dao = sqlSession.getMapper(IDao.class);
+       List<ShowDto> showboardDtos = dao.showList2();
+       List<ShowDto> musicalDtos = dao.showMusicalList("뮤지컬");
+       List<ShowDto> classicDtos = dao.showClassicList("클래식");
+       List<ShowDto> consertDtos = dao.showConsertList("콘서트");
+       List<ShowDto> theaterDtos = dao.showTheaterList("연극");
+       List<ShowDto> familyDtos = dao.showFamilyList("어린이/가족");
+       
+       List<EventBDto> eventboardDtos = dao.eventList();
+       model.addAttribute("showList",showboardDtos);
+        model.addAttribute("eventList",eventboardDtos);
+        model.addAttribute("showMusicalList",musicalDtos);
+        model.addAttribute("showClassicList",classicDtos);
+        model.addAttribute("showConsertList",consertDtos);
+        model.addAttribute("showTheaterList",theaterDtos);
+        model.addAttribute("showFamilyList",familyDtos);
 
-	      List<EventBDto> eventboardDtos = dao.eventList();
-
-
-
-	      model.addAttribute("showList",showboardDtos);
-          model.addAttribute("eventList",eventboardDtos);
-
-	      return "index";
-	   }
+       return "index";
+    }
+	
+//	 @RequestMapping (value ="index") //인덱스 메인페이지
+//	   public String home (Model model,HttpServletRequest request,HttpSession session, HttpServletResponse response) throws IOException {
+//
+//	      IDao dao = sqlSession.getMapper(IDao.class);
+//	      List<ShowDto> showboardDtos = dao.showList2();
+//
+//	      List<EventBDto> eventboardDtos = dao.eventList();
+//
+//
+//
+//	      model.addAttribute("showList",showboardDtos);
+//          model.addAttribute("eventList",eventboardDtos);
+//
+//	      return "index";
+//	   }
 	 
 	 @RequestMapping (value ="index2") //인덱스 메인페이지2
 	   public String index2 (Model model,HttpServletRequest request,HttpSession session, HttpServletResponse response) throws IOException {
