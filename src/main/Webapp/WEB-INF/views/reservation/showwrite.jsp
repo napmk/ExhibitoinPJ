@@ -47,7 +47,8 @@
 					 
 					  	<div class="input-group mb-3">
 						  <span class="input-group-text" id="basic-addon1">@</span>
-						   <input type="text" id="pickDate" name="sdday"  class="form-control" placeholder="공연날짜를 선택해주세요">
+						   <input type="text" id="startDate" name="sdday"  class="form-control" placeholder="공연날짜를 선택해주세요">
+						   <input type="text" id="endDate" name="sdday2"  class="form-control" placeholder="공연날짜를 선택해주세요">
 						</div>
 				</div>
 				<div class="mb-3">

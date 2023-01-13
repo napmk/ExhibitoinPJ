@@ -24,6 +24,7 @@
 <style>
 .input_type01{border: 0;}
 .likes{margin-top:12px}
+.ui-widget.ui-widget-content {border: 0;}
 </style>
 </head>
 
@@ -65,7 +66,7 @@
 					<li> 공연 종류 :<input class="input_type01" type="text" name="skind" value="${showView.skind}" readonly="readonly"></li>
 				 	<li> 공연 제목 : <input class="input_type01" type="text" name="stitle" value="${showView.stitle}" readonly="readonly"></li>
 				 	<li> 공연 위치 : <input class="input_type01" type="text" name="slocation" value="${showView.slocation}" readonly="readonly"></li>
-				 	<li> 공연 날짜 : <input class="input_type01" type="text" name="sdday" value="${showView.sdday}" readonly="readonly"></li>
+				 	<li> 공연 날짜 : <input class="input_type01" type="text" name="sdday" value="${showView.sdday}" readonly="readonly" style="width:75px">~ <input class="input_type01" type="text" name="sdday2" value="${showView.sdday}" readonly="readonly" style="width:80px"></li>
 				 	<li> 공연 시간 : <input class="input_type01" type="text" name="stime" value="${showView.stime}" readonly="readonly"></li>
 				 	<li> 공연 장소 : <input class="input_type01" type="text" name="sprice" value="${showView.sprice}" readonly="readonly"></li>
 				 	<li> 공연 나이 : <input class="input_type01" type="text" name="sage" value="${showView.sage}" readonly="readonly"></li>
