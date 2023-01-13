@@ -77,15 +77,19 @@ public class MainController {
        List<ShowDto> theaterDtos = dao.showTheaterList("연극");
        List<ShowDto> familyDtos = dao.showFamilyList("어린이/가족");
        
-       List<EventBDto> eventboardDtos = dao.eventList();
+       List<EventBDto> eventboardDtos = dao.eventList(); //이벤트
+       
+       
+       
        model.addAttribute("showList",showboardDtos);
-        model.addAttribute("eventList",eventboardDtos);
-        model.addAttribute("showMusicalList",musicalDtos);
-        model.addAttribute("showClassicList",classicDtos);
-        model.addAttribute("showConsertList",consertDtos);
-        model.addAttribute("showTheaterList",theaterDtos);
-        model.addAttribute("showFamilyList",familyDtos);
+       model.addAttribute("eventList",eventboardDtos);
+       model.addAttribute("showMusicalList",musicalDtos);
+       model.addAttribute("showClassicList",classicDtos);
+       model.addAttribute("showConsertList",consertDtos);
+       model.addAttribute("showTheaterList",theaterDtos);
+       model.addAttribute("showFamilyList",familyDtos);
 
+        	
        return "index";
     }
 	

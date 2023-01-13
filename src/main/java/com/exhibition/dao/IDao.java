@@ -64,7 +64,7 @@ public interface IDao {
 		
 		
 		//티켓팅
-		public int ticketing(String stitle, String slocation, String sdday, String stime , String sage,String sprice, String userid , String count,String skind);//예매
+		public int ticketing(String stitle, String slocation, String sdday, String stime , String sage,String sprice, String userid , String count,String skind, String selectedDate);//예매
 		//예매한 티켓 정보 가져오기//조인
 		public List<ShowDto2> ticketConfirm(String userid); //예매한 티켓 정보 가져오기//조인
 		//예매한 티켓 취소하기
@@ -99,5 +99,10 @@ public interface IDao {
 //		public List<ReviewStar> reviewList();
 //		
 		
+	    //공연 검색된 리스트의 총개수 
+	      public int searchTitleListCount(String title);//제목으로 찾은 모든 개수
+	      public int searchLocationListCount(String location);//장소로 찾은 모든 개수
+	      public int searchPriceListCount(String price);//가격으로 찾은 모든 개수
+	      public int searchKindListCount(String kind);//종류로 찾은 모든 개수
 
 }

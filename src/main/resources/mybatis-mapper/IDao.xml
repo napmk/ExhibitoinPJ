@@ -79,6 +79,8 @@
 			<result property="userid" column="userid"/>	
 			<result property="filecount" column="filecount"/>
 			<result property="skind" column="skind"/>	
+			
+			
 
 			<collection property="fileDto" resultMap="FileDto2"></collection>
 		</resultMap>
@@ -246,13 +248,7 @@
       WHERE PAGE = #{pageNum}      
    </select>
    
-   <select id="ShowSearchSpriceList" parameterType="com.exhibition.dto.Criteria3" resultType="com.exhibition.dto.ShowDto">
-      SELECT * FROM
-         (SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
-         FROM
-         (SELECT * FROM SHOWTBL WHERE sprice LIKE '%' || #{searchKey} || '%' ORDER BY snum DESC)A)
-      WHERE PAGE = #{pageNum}
-   </select>
+
    
    <select id="ShowSearchSkindList" parameterType="com.exhibition.dto.Criteria3" resultType="com.exhibition.dto.ShowDto">
       SELECT * FROM
@@ -324,8 +320,30 @@
       
    </select>
 	
-	
-	
+	<select id="ShowSearchSpriceList" parameterType="com.exhibition.dto.Criteria3" resultType="com.exhibition.dto.ShowDto">
+      SELECT * FROM
+         (SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
+         FROM
+         (SELECT * FROM SHOWTBL WHERE sprice = #{searchKey} ORDER BY snum DESC   )A)
+      WHERE PAGE = #{pageNum}
+   </select>
+   
+   <!-- 검색된 리스트 총개수 불러오기 -->
+   <select id="searchTitleListCount" resultType="int">
+         SELECT COUNT(*) FROM showtbl WHERE stitle LIKE '%' || #{param1} || '%'
+   </select>
+   
+   <select id="searchLocationListCount" resultType="int">
+         SELECT COUNT(*) FROM showtbl WHERE slocation LIKE '%' || #{param1} || '%'
+   </select>
+   
+    <select id="searchPriceListCount" resultType="int">
+         SELECT COUNT(*) FROM showtbl WHERE sprice = #{param1}
+   </select>
+   
+    <select id="searchKindListCount" resultType="int">
+         SELECT COUNT(*) FROM showtbl WHERE skind = #{param1}
+   </select>
 	
 	</mapper>
 	

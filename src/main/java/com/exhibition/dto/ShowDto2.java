@@ -23,6 +23,7 @@ public class ShowDto2 {//SHOWTBL2 예매한 티켓정보
 	private String skind;//공연종류
 	private int liker;
 	
+	
 	private MemberDto memberDto;// 조인
 	
 }

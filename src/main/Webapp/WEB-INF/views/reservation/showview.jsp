@@ -53,9 +53,11 @@
                  <img width="300" src="${pageContext.request.contextPath}/resources/uploadfiles/${fileDto.filename}">
                </c:if>
                <!--// 포스터이미지 -->
-               <a type="button" href="reviewlikeStar?snum=${showView.snum}"  class="btn btn-outline-danger" name="liker">
-			   		♥좋아요${showView.liker}<span class="badge text-bg-secondary" ></span>
-			   	</a> 
+               <div class="like">
+	               <a type="button" href="reviewlikeStar?snum=${showView.snum}"  class="btn btn-outline-danger" name="liker">
+				   		♥좋아요${showView.liker}<span class="badge text-bg-secondary" ></span>
+				   	</a> 
+			   	</div>
 		</div>
          
          <form action="reservationOk" method="post" name="reservation_frm" novalidate>
@@ -64,18 +66,20 @@
                <li> 공연 종류 :<input class="input_type01" type="text" name="skind" value="${showView.skind}" readonly="readonly"></li>
                 <li> 공연 제목 : <input class="input_type01" type="text" name="stitle" value="${showView.stitle}" readonly="readonly"></li>
                 <li> 공연 위치 : <input class="input_type01" type="text" name="slocation" value="${showView.slocation}" readonly="readonly"></li>
-                <li> 공연 날짜 : <input class="input_type01" type="text" name="sdday" value="${showView.sdday}" readonly="readonly" style="width:75px">~ <input class="input_type01" type="text" name="sdday2" value="${showView.sdday}" readonly="readonly" style="width:80px"></li>
+                <li> 공연 기간 : <input class="input_type01" type="text" name="sdday" value="${showView.sdday}"  style="width:75px"> ~<input class="input_type01" type="text" name="sdday" value="${showView.sdday}"  style="width:75px"></li>
+                <li> <span class="title">공연 날짜 :</span> <input class="form-control form-control-sm stdate" type="text" id="pickDate" name="selectedDate" placeholder="예매날짜선택" style="width: 200px;display: inline-block;"><i class="material-icons" style="font-size: 24px;">today</i></li>
                 <li> 공연 시간 : <input class="input_type01" type="text" name="stime" value="${showView.stime}" readonly="readonly"></li>
                 <li> 공연 장소 : <input class="input_type01" type="text" name="sprice" value="${showView.sprice}" readonly="readonly"></li>
                 <li> 공연 나이 : <input class="input_type01" type="text" name="sage" value="${showView.sage}" readonly="readonly"></li>
                 <li style="display:none"> 아이디 : <input class="input_type01" type="text" name="userid" value="${memberId}" readonly="readonly"></li>
+               
       
                 <li>
                    <div>티켓 매수
                 
                      <select class="form-select form-select-sm"  name="count">
-                       <option selected>장 수를 선택해 주세요</option>
-                       <option value="1">1</option>
+                       <option>장 수를 선택해 주세요</option>
+                       <option selected value="1">1</option>
                        <option value="2">2</option>
                        <option value="3">3</option>
                        <option value="4">4</option>
@@ -90,12 +94,13 @@
                    </div>
                </li>
              </ul>
-            <input type="text" id="pickDate" name="selectedDate" placeholder="예매날짜선택"><br>
             
              <div class="ptselect_txt mgb40">10장이상 단체구매는 1500-3322에 문의하세요</div>
              <!-- 달력 -->
             
-            
+            <div align="left">
+		       <input class="btn btn-warning" type="submit" value="예매하기" style="width:100%" >
+		    </div>
              
           </div>
              <!-- 달력 및 예약하기
@@ -110,9 +115,7 @@
             
             
        </div>
-       <div align="center">
-       <input class="btn btn-warning" type="submit" value="예매하기" style="width:50%" >
-       </div>
+       
        </form>
            </form>
   <!-- tab컨텐츠 -->

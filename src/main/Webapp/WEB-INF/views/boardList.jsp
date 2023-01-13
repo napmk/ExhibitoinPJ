@@ -93,6 +93,9 @@
 				</tbody>
 		</table>
 		
+		
+		 
+		 
 		<!-- 페이징 -->
 		<div class="paging">
 			<c:if test="${pageMaker.prev }">
@@ -104,7 +107,7 @@
 						<u>${snum}</u>&nbsp;&nbsp;&nbsp;
 					</c:when>
 					<c:otherwise>
-									<a href="boardList?pageNum=${snum}">${snum}</a>&nbsp;&nbsp;&nbsp;
+						 <a href="boardList?pageNum=${snum}&searchKey=${searchKeyValue}&searchOption=${searchKeyOption}">${snum}</a>
 					</c:otherwise>
 				</c:choose>																					
 			</c:forEach>
@@ -114,7 +117,7 @@
 		</div>
 		<!-- //페이징 -->
 	
-	
+	</div>
 	<%@ include file="inc/footer.jsp" %>
 </body>
 </html>

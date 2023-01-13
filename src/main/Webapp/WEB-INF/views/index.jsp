@@ -20,6 +20,183 @@ footer {margin-top: 0px!important;}
 
 	<%@ include file="inc/header.jsp" %>
 <div id="wrapper" >		
+
+<!-- 배경 사진을 img tag로 표현했을 때 -->
+
+<style>
+
+.banner_img, .banner_bg{
+  display:inline-block;
+  position: relative;
+}
+.banner_img:hover:after,
+.banner_img:hover > .hover_text,
+.banner_bg:hover:after,
+.banner_bg:hover > .hover_text
+{
+  display:block;
+}
+.banner_img:after,.banner_bg:after,.hover_text{
+  display:none;
+}
+.banner_img:after,.banner_bg:after{
+  content:'';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+.banner_img {
+  overflow: hidden;
+}
+.banner_img img{
+  height: 340px;
+}
+.banner_img:hover img{
+  transform: scale(1.2);
+  transition: 1s;
+}
+.hover_text {
+  position: absolute;
+  top: 140px;
+  left: 25px;
+  color: #fff;
+  z-index: 20;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/*퀵메뉴*/
+#quick {
+  position: absolute;
+  right: 0;
+  top: 100px;
+  height: 200px;
+  background: #cfa;
+  z-index: 2;
+}
+
+#footer {
+  background: black;
+  opacity: .5;
+  color: #fff;
+  height: 40px;
+  margin-top: 0;
+}
+
+#sample_page {
+  margin-top: 0
+}
+
+.po {
+  border: 1px solid blue;
+  position: relative;
+}
+
+.por {
+  position: relative;
+}
+
+.btn_top {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  width: 50px;
+  height: 50px;
+  background: #555;
+  color: #fff;
+  line-height: 50px;
+  display: none
+}
+
+.btn_top a {
+  color: #fff;
+  display: block;
+  text-align: center;
+  font-size: 20px;
+}
+}
+
+</style>
+<script type="text/javascript">
+$(function() {
+
+	  var UI = {
+	    init: function() {
+	      this.quickMenuFn();
+	      this.topBtn();
+	    },
+
+	    initialize: function() {
+	      this.id = {
+	        target: {
+	          quick: '#quick',
+	          stickyTop: '#footer'
+	        },
+	        topBtnClass: 'btn_top'
+	      };
+	      this.init();
+	    },
+
+	    quickMenuFn: function() {
+	      var quick = $(this.id.target.quick);
+	      var qTop = parseInt(quick.css('top'));
+
+	      $(window).scroll(function() {
+	        var winTop = $(window).scrollTop();
+
+	        quick.stop().animate({
+	          top: winTop + qTop
+	        }, 400);
+
+	      })
+	    },
+
+	    topBtn: function() {
+	      var btnLocation = $('.' + this.id.topBtnClass);
+	      var timerId = 0;
+
+	      $(window).on('scroll', function() {
+	        var winTop = $(window).scrollTop();
+	        if (winTop > 200) {
+	          btnLocation.fadeIn();
+	          clearInterval(timerId);
+	          timerId = setInterval(btnEffet, 2000);
+	        } else {
+	          btnLocation.fadeOut();
+	          clearInterval(timerId);
+	        }
+
+	      });
+
+	      function btnEffet() {
+	        btnLocation.fadeTo('300', 0.3).fadeTo('300', 1);
+	      }
+
+	      this.scrollTop(btnLocation);
+	    },
+
+	    scrollTop: function(eTarget, speed) {
+	      var speed = speed || null;
+	      eTarget.on('click', function() {
+	        $('html, body').animate({
+	          scrollTop: $("body").offset().top
+	        }, speed)
+	      })
+	    }
+
+	  };
+
+	  $(function() {
+	    UI.initialize();
+	  })
+
+	})
+</script>
+<div id="quick">스크롤 퀵 메뉴</div>
    	<!-- tab 메뉴-->
    	<div>
 		   	<div id="exhiPosterWrap">
@@ -60,22 +237,38 @@ footer {margin-top: 0px!important;}
 										
 										<!-- 포스터이미지 -->
 										<div class="exhiPoster">
-									      <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
-								        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
-								         </c:if>
+									      <a href="showview?snum=${showDto.snum}" class="banner_img">
+										     <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
+									        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
+									         </c:if>
+									         <div class="hover_text">
+									         	<ul>
+									         		<li>${showDto.stitle}</li>
+									         		<li>${showDto.sdday}</li>
+									         		<li>${showDto.sprice}</li>
+									         		<li>${showDto.sage}</li>
+									         	</ul>
+									         </div>
+								          </a>
 								        </div> 
 								         <!-- 포스터이미지 -->
 									</div>
 									<div class="rv_btnset">
 										<ul>
 											<li class="good-btn">
-											<button type="button" class="btn btn-outline-secondary">
+											<div class="like">
+								               <a type="button"  class="btn btn-outline-danger" name="liker">
+											   		♥좋아요${showView.liker}<span class="badge text-bg-secondary" ></span>
+											   	</a> 
+										   	</div>
+			   	
+											<button type="button" class="btn btn-outline-secondary" style="display:none">
 												<i class="material-icons" style="font-size: 16px;">favorite</i>
 													좋아요
 											</button>
 											</li>
 											<li>
-												<button style="background:#666;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												<button style="background:#212529;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
 												<!-- background:#8364c4;border-color:#a659bc-->
 											</li>
 										</ul>
@@ -304,7 +497,7 @@ footer {margin-top: 0px!important;}
 					<div class="cont_wrap mobile_none">
 						<div class="search_wrap">
 							<input type="text" id="search_prd" class="input_search" placeholder="좋아하는 장르를 검색해보세요!">
-							<a href="javascript:search();" class="btn_search"></a>
+							<a onclick="script:window.location='boardList'"  class="btn_search"></a>
 						</div>
 					</div>
 				</div>

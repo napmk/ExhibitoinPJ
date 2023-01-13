@@ -71,10 +71,11 @@ public class TicketController {
 		String userid = request.getParameter("userid");
 		String count = request.getParameter("count");
 		String skind = request.getParameter("skind");
+		String selectedDate = request.getParameter("selectedDate");
 		 
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		int joinFlag = dao.ticketing(stitle, slocation, sdday, stime, sage, sprice, userid, count, skind);
+		int joinFlag = dao.ticketing(stitle, slocation, sdday, stime, sage, sprice, userid, count, skind ,selectedDate);
 		
 		model.addAttribute("stitle", stitle);
 		model.addAttribute("slocation", slocation);
@@ -85,6 +86,7 @@ public class TicketController {
 		model.addAttribute("userid", userid);
 		model.addAttribute("count",count);
 		model.addAttribute("skind",skind);
+		model.addAttribute("selectedDate",selectedDate);
 		
 //		String sessionId = (String) session.getAttribute("memberId");
 //		if(sessionId == null) {//참이면 로그인이 안된 상태
@@ -139,8 +141,8 @@ public class TicketController {
        
        String searchKey = request.getParameter("searchKey");
        
-       if(searchKey != null) {
-          
+       if(searchKey != null && searchKey.length() !=0) {
+          System.out.println("hi:"+searchKey);
           cri3.setSearchKey(searchKey);
           
           String searchOption = request.getParameter("searchOption");      
@@ -154,6 +156,9 @@ public class TicketController {
           int totalRecord = 0;
           
           PageDto3 pageDto = null;
+          
+          model.addAttribute("searchKeyValue", searchKey);
+          model.addAttribute("searchKeyOption", searchOption);
           
           if(request.getParameter("pageNum") == null) {
               pageNumInt =1;//1페이지부터 시작
@@ -169,7 +174,7 @@ public class TicketController {
              
              showDto = dao.ShowSearchTitleList(cri3);
              
-             totalRecord = showDto.size();//총 게시글수
+             totalRecord = dao.searchTitleListCount(searchKey);//총 게시글수
              
              pageDto = new PageDto3(cri3, totalRecord); 
              
@@ -182,7 +187,9 @@ public class TicketController {
              
              showDto = dao.ShowSearchLocarionList(cri3);
              
-             totalRecord = showDto.size();
+             totalRecord = dao.searchLocationListCount(searchKey);//총 게시글수
+             
+             System.out.println("검색된 총게시글수:"+totalRecord+" / 검색어:"+searchKey);
              
              pageDto = new PageDto3(cri3, totalRecord);
              
@@ -194,27 +201,28 @@ public class TicketController {
              
              showDto = dao.ShowSearchSpriceList(cri3);
              
-             totalRecord = showDto.size();
+             totalRecord = dao.searchPriceListCount(searchKey);//총 게시글수
              
              pageDto = new PageDto3(cri3, totalRecord);
-        
           
-	       } else if(searchOption.equals("skind")) {
-	           
-	           cri3.setStartNum(cri.getPageNum()-1 * cri.getAmount());
-	           
-	           showDto = dao.ShowSearchSkindList(cri3);
-	           
-	           totalRecord = showDto.size();
-	           
-	           pageDto = new PageDto3(cri3, totalRecord);
-	        }
-       
+          } else if(searchOption.equals("skind")) {
+              
+              cri3.setStartNum(cri.getPageNum()-1 * cri.getAmount());
+              
+              //showDto = dao.ShowSearchTitleList(cri3);
+              
+              showDto = dao.ShowSearchSkindList(cri3);
+              
+              totalRecord = dao.searchKindListCount(searchKey);//총 게시글수
+              
+              pageDto = new PageDto3(cri3, totalRecord);
+           }
+          
           System.out.println("pagenumint:"+pageNumInt);         
           
           model.addAttribute("pageMaker", pageDto);//pageMaker = pageDto
           model.addAttribute("qdtos", showDto);
-          model.addAttribute("boardCount", showDto.size());      
+          model.addAttribute("boardCount", totalRecord);      
           model.addAttribute("currPage", pageNumInt );
           
           
@@ -262,8 +270,6 @@ public class TicketController {
 
        return "boardList";
     }
-
-
 	
 	
 }
