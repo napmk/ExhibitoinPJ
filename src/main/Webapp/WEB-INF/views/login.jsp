@@ -12,7 +12,7 @@ nav{display:none}
 <body>
 	<%@ include file="inc/header.jsp" %>
 		<div id="loginWrap" class="mgt100">
-			<a href="/" class="center">Ticketaid</a>
+			<a class="mgb20 center" href="/" ><img src="${pageContext.request.contextPath}/resources/image/logo5.jpg" style="width: 150px;"></a>
 			<form action="loginOk" method="post" class="mgt20">
 				<div>
 					<label class="form-label" placeholder="아이디를 입력해주세요">아이디</label>

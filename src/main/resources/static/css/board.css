@@ -2,7 +2,7 @@
 
 .boardWrap{margin-top:50px!important}
 .boardWrap .board_title{border-bottom: 2px solid #212529}
-.boardWrap h4{font-size:24px; margin-bottom:5px}
+.boardWrap h4{font-size:24px; margin-bottom:5px;font-weight: 700;}
 .boardWrap .star{margin-bottom:4px}
 .boardWrap .show_detail{clear:both; display:block;margin-top: 50px;overflow: auto;}
 .boardWrap .show_detail .show_poster{ float:left}
@@ -13,6 +13,7 @@
 .boardWrap .show_detail .pright-area.boardWrap .show_detail .pright-area .show_text li input.stdate{float:left!important; width:70px}
 .boardWrap .show_detail .pright-area .show_text{margin-bottom:10px}
 .boardWrap .show_detail .pright-area .show_text li{line-height:35px }
+
 
 /*showlist*/
 #search{float:right;width: 400px;  }

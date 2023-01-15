@@ -14,6 +14,7 @@
 .tabmenu_cm .more:hover{color:#000}
 footer {margin-top: 0px!important;}
 
+
 </style>
 </head>
 <body>
@@ -23,180 +24,16 @@ footer {margin-top: 0px!important;}
 
 <!-- 배경 사진을 img tag로 표현했을 때 -->
 
-<style>
 
-.banner_img, .banner_bg{
-  display:inline-block;
-  position: relative;
-}
-.banner_img:hover:after,
-.banner_img:hover > .hover_text,
-.banner_bg:hover:after,
-.banner_bg:hover > .hover_text
-{
-  display:block;
-}
-.banner_img:after,.banner_bg:after,.hover_text{
-  display:none;
-}
-.banner_img:after,.banner_bg:after{
-  content:'';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 10;
-}
-.banner_img {
-  overflow: hidden;
-}
-.banner_img img{
-  height: 340px;
-}
-.banner_img:hover img{
-  transform: scale(1.2);
-  transition: 1s;
-}
-.hover_text {
-  position: absolute;
-  top: 140px;
-  left: 25px;
-  color: #fff;
-  z-index: 20;
-  font-weight: 600;
-  font-size: 20px;
-}
 
-/*퀵메뉴*/
-#quick {
-  position: absolute;
-  right: 0;
-  top: 100px;
-  height: 200px;
-  background: #cfa;
-  z-index: 2;
-}
 
-#footer {
-  background: black;
-  opacity: .5;
-  color: #fff;
-  height: 40px;
-  margin-top: 0;
-}
+<div id="floatdiv">
+	<div id="floatContent">
+		<a href=""> <img src="${pageContext.request.contextPath }/resources/image/22012659_p.gif" width="110" height="130"></a>
+	 </div>
+</div>
 
-#sample_page {
-  margin-top: 0
-}
-
-.po {
-  border: 1px solid blue;
-  position: relative;
-}
-
-.por {
-  position: relative;
-}
-
-.btn_top {
-  position: fixed;
-  right: 50px;
-  bottom: 50px;
-  width: 50px;
-  height: 50px;
-  background: #555;
-  color: #fff;
-  line-height: 50px;
-  display: none
-}
-
-.btn_top a {
-  color: #fff;
-  display: block;
-  text-align: center;
-  font-size: 20px;
-}
-}
-
-</style>
-<script type="text/javascript">
-$(function() {
-
-	  var UI = {
-	    init: function() {
-	      this.quickMenuFn();
-	      this.topBtn();
-	    },
-
-	    initialize: function() {
-	      this.id = {
-	        target: {
-	          quick: '#quick',
-	          stickyTop: '#footer'
-	        },
-	        topBtnClass: 'btn_top'
-	      };
-	      this.init();
-	    },
-
-	    quickMenuFn: function() {
-	      var quick = $(this.id.target.quick);
-	      var qTop = parseInt(quick.css('top'));
-
-	      $(window).scroll(function() {
-	        var winTop = $(window).scrollTop();
-
-	        quick.stop().animate({
-	          top: winTop + qTop
-	        }, 400);
-
-	      })
-	    },
-
-	    topBtn: function() {
-	      var btnLocation = $('.' + this.id.topBtnClass);
-	      var timerId = 0;
-
-	      $(window).on('scroll', function() {
-	        var winTop = $(window).scrollTop();
-	        if (winTop > 200) {
-	          btnLocation.fadeIn();
-	          clearInterval(timerId);
-	          timerId = setInterval(btnEffet, 2000);
-	        } else {
-	          btnLocation.fadeOut();
-	          clearInterval(timerId);
-	        }
-
-	      });
-
-	      function btnEffet() {
-	        btnLocation.fadeTo('300', 0.3).fadeTo('300', 1);
-	      }
-
-	      this.scrollTop(btnLocation);
-	    },
-
-	    scrollTop: function(eTarget, speed) {
-	      var speed = speed || null;
-	      eTarget.on('click', function() {
-	        $('html, body').animate({
-	          scrollTop: $("body").offset().top
-	        }, speed)
-	      })
-	    }
-
-	  };
-
-	  $(function() {
-	    UI.initialize();
-	  })
-
-	})
-</script>
-<div id="quick">스크롤 퀵 메뉴</div>
+<!-- //floatMenu -->
    	<!-- tab 메뉴-->
    	<div>
 		   	<div id="exhiPosterWrap">
@@ -243,10 +80,9 @@ $(function() {
 									         </c:if>
 									         <div class="hover_text">
 									         	<ul>
-									         		<li>${showDto.stitle}</li>
-									         		<li>${showDto.sdday}</li>
-									         		<li>${showDto.sprice}</li>
-									         		<li>${showDto.sage}</li>
+									         		<li class="ht_title">${showDto.stitle}</li>
+									         		<li class="ht_location">${showDto.slocation}</li>
+									         		<li class="ht_price">${showDto.sprice}</li>
 									         	</ul>
 									         </div>
 								          </a>
@@ -289,9 +125,18 @@ $(function() {
 										
 										<!-- 포스터이미지 -->
 										<div class="exhiPoster">
-									      <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
-								        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
-								         </c:if>
+									      <a href="showview?snum=${showDto.snum}" class="banner_img">
+										     <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
+									        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
+									         </c:if>
+									         <div class="hover_text">
+									         	<ul>
+									         		<li class="ht_title">${showDto.stitle}</li>
+									         		<li class="ht_location">${showDto.slocation}</li>
+									         		<li class="ht_price">${showDto.sprice}</li>
+									         	</ul>
+									         </div>
+								          </a>
 								        </div> 
 								         <!-- 포스터이미지 -->
 									</div>
@@ -325,9 +170,18 @@ $(function() {
 										
 										<!-- 포스터이미지 -->
 										<div class="exhiPoster">
-									      <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
-								        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
-								         </c:if>
+									      <a href="showview?snum=${showDto.snum}" class="banner_img">
+										     <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
+									        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
+									         </c:if>
+									         <div class="hover_text">
+									         	<ul>
+									         		<li class="ht_title">${showDto.stitle}</li>
+									         		<li class="ht_location">${showDto.slocation}</li>
+									         		<li class="ht_price">${showDto.sprice}</li>
+									         	</ul>
+									         </div>
+								          </a>
 								        </div> 
 								         <!-- 포스터이미지 -->
 									</div>
@@ -361,9 +215,18 @@ $(function() {
 										
 										<!-- 포스터이미지 -->
 										<div class="exhiPoster">
-									      <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
-								        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
-								         </c:if>
+									      <a href="showview?snum=${showDto.snum}" class="banner_img">
+										     <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
+									        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
+									         </c:if>
+									         <div class="hover_text">
+									         	<ul>
+									         		<li class="ht_title">${showDto.stitle}</li>
+									         		<li class="ht_location">${showDto.slocation}</li>
+									         		<li class="ht_price">${showDto.sprice}</li>
+									         	</ul>
+									         </div>
+								          </a>
 								        </div> 
 								         <!-- 포스터이미지 -->
 									</div>
@@ -397,9 +260,18 @@ $(function() {
 										
 										<!-- 포스터이미지 -->
 										<div class="exhiPoster">
-									      <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
-								        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
-								         </c:if>
+									      <a href="showview?snum=${showDto.snum}" class="banner_img">
+										     <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
+									        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
+									         </c:if>
+									         <div class="hover_text">
+									         	<ul>
+									         		<li class="ht_title">${showDto.stitle}</li>
+									         		<li class="ht_location">${showDto.slocation}</li>
+									         		<li class="ht_price">${showDto.sprice}</li>
+									         	</ul>
+									         </div>
+								          </a>
 								        </div> 
 								         <!-- 포스터이미지 -->
 									</div>
@@ -433,9 +305,18 @@ $(function() {
 										
 										<!-- 포스터이미지 -->
 										<div class="exhiPoster">
-									      <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
-								        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
-								         </c:if>
+									      <a href="showview?snum=${showDto.snum}" class="banner_img">
+										     <c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
+									        	<img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
+									         </c:if>
+									         <div class="hover_text">
+									         	<ul>
+									         		<li class="ht_title">${showDto.stitle}</li>
+									         		<li class="ht_location">${showDto.slocation}</li>
+									         		<li class="ht_price">${showDto.sprice}</li>
+									         	</ul>
+									         </div>
+								          </a>
 								        </div> 
 								         <!-- 포스터이미지 -->
 									</div>

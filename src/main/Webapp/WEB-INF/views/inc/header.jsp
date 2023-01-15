@@ -54,8 +54,7 @@
 			    		<li><a href="showlist">예매</a></li>
 			    		<li><a href="event">이벤트</a></li>
 			    		<li><a href="void(0);" onclick="alert('준비중입니다.');return false;">랭킹</a></li>
-			    		<li><a href="void(0);" onclick="alert('준비중입니다.');return false;">
-혜택/할인</a></li>
+			    		<li><a href="guide">이용안내</a></li>
 			    	</ul>
 			    	<!-- 검색 -->
 			    	<div class="menutop_search dodbogi" >

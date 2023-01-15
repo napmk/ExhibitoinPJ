@@ -37,23 +37,39 @@
 					<div class="img_title_wrap">
 						<p class="poster_title">${showDto.stitle}</p>
 							<!-- 포스터이미지 -->
-							<div class="exhiPoster">
-								<c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
-								  <img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
-							   </c:if>
-							</div> 
-							<!-- 포스터이미지 -->
+								<div class="exhiPoster">
+									<a href="showview?snum=${showDto.snum}" class="banner_img">
+										<c:if test="${showDto.fileDto.fileextension =='jpg' or showDto.fileDto.fileextension =='png' or showDto.fileDto.fileextension =='bmp' or showDto.fileDto.fileextension =='gif'}">
+									        <img width="280"  height="360" src="${pageContext.request.contextPath}/resources/uploadfiles/${showDto.fileDto.filename}">
+									    </c:if>
+									     <div class="hover_text">
+									        <ul>
+									            <li class="ht_title">${showDto.stitle}</li>
+									         	<li class="ht_location">${showDto.slocation}</li>
+									         	<li class="ht_price">${showDto.sprice}</li>
+									         </ul>
+									     </div>
+								    </a>
+								</div> 
+						   <!-- 포스터이미지 -->
 					</div>
 					<div class="rv_btnset">
 						<ul>
-							<li>
-								<button type="button" class="btn btn-outline-secondary">
+							<li class="good-btn">
+								<div class="like">
+								    <a type="button"  class="btn btn-outline-danger" name="liker">
+										♥좋아요${showView.liker}<span class="badge text-bg-secondary" ></span>
+									</a> 
+								</div>
+			   	
+								<button type="button" class="btn btn-outline-secondary" style="display:none">
 									<i class="material-icons" style="font-size: 16px;">favorite</i>
-													좋아요
+								좋아요
 								</button>
 							</li>
 							<li>
-								<button type="button" class="btn btn-primary" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+								<button style="background:#212529;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+								<!-- background:#8364c4;border-color:#a659bc-->
 							</li>
 						</ul>
 								

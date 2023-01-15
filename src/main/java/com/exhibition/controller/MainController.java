@@ -44,6 +44,12 @@ public class MainController {
 		
 		return "redirect:index";
 	}
+	
+	@RequestMapping (value ="guide") 
+	public String guide () {
+		
+		return "customer/guide";
+	}
 
 	
 	@RequestMapping (value ="reviewlikeStar")
@@ -128,7 +134,7 @@ public class MainController {
 	@RequestMapping (value ="join") //회원가입페이지
 	public String join () {
 		
-		return "redirect:index";
+		return "join_form";
 	}
 	
 	@RequestMapping (value ="joinOk")

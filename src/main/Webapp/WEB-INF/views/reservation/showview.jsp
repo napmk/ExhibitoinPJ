@@ -44,7 +44,9 @@
             <span class="fa fa-star"></span>
             <span class="fa fa-star"></span>
             <span>9.1</span>
+            <span style="margin-left:15px; color:#999">${showView.slocation} <i class="material-icons" style="font-size: 24px;">place</i></span>
          </div>
+         <div></div>
       </div>
       <div class="show_detail">   
           <div class="show_poster">

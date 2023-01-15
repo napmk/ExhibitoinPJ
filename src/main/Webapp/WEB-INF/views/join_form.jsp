@@ -5,14 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+
 <style>
 nav{display:none}
+
 </style>
 </head>
 <body>
 	<%@ include file="inc/header.jsp" %>
 	<div id="loginWrap" class="mgt100">
-		<a href="/" class="center">Ticketaid</a>
+		<a class="mgb20 center" href="/" ><img src="${pageContext.request.contextPath}/resources/image/logo5.jpg" style="width: 150px;"></a>
 		<form action="joinOk" method="post" name="join_frm">
 	
 			<div>
