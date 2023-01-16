@@ -9,6 +9,9 @@
 <body>
 	<%@ include file="../inc/header.jsp" %>
 	<div id="wrapper" class="mgt50">
+	<div style="text-align:right; margin-bottom:20px">
+		<button type="button" class="btn btn-dark" onclick="location.href='showwrite' ">공연등록하기</button>
+	</div>
 		<table class="table">
 			  <thead>
 			    <tr>
@@ -31,7 +34,7 @@
 			  </c:forEach> 
 			  </tbody>
 		</table>
-		<button type="button" class="btn btn-dark" onclick="location.href='showwrite' ">공연등록하기</button>
+		
 	</div>
 	<%@ include file="../inc/footer.jsp" %>
 

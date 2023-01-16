@@ -27,9 +27,9 @@ footer {margin-top: 0px!important;}
 
 
 
-<div id="floatdiv">
+<div id="floatdiv" style="z-index: 10;">
 	<div id="floatContent">
-		<a href=""> <img src="${pageContext.request.contextPath }/resources/image/22012659_p.gif" width="110" height="130"></a>
+		<a href="/showview?snum=14"> <img src="${pageContext.request.contextPath }/resources/image/22012659_p.gif" width="110" height="130"></a>
 	 </div>
 </div>
 

@@ -51,6 +51,11 @@ public class MainController {
 		return "customer/guide";
 	}
 
+	@RequestMapping (value ="ranking") 
+	public String ranking () {
+		
+		return "customer/ranking";
+	}
 	
 	@RequestMapping (value ="reviewlikeStar")
 	   public String showview (HttpServletRequest request, Model model, HttpSession session) {

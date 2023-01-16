@@ -13,26 +13,26 @@
 .guide-division{width:auto; font-size:0;margin-bottom:70px;}
 .guide-division a{display:inline-block;box-sizing:border-box;border:1px solid #ddd;border-right:0 none;width:14.2857%;height:68px;line-height:68px;text-align:center;font-size:16px;color:#333;}
 .guide-division a:last-child{border-right:1px solid #ddd;}
-.guide-division a.on{background:#ec7d2c;border-color:#ec7d2c;color:#fff;font-weight:bold;}
+.guide-division a.on{background:#ffc107;border-color:#ffc107;color:#fff;font-weight:bold;}
 .brochure{width:1400px;margin:0 auto 80px 0;height:240px;background:#f6f6f6;overflow:hidden;}
-.brochure > div{float:left;width:420px;height:240px;}
+.brochure > div{float:left;width:590px;height:240px;}
 .brochure > div:nth-child(1){padding-left:180px;background:url('http://tkfile.yes24.com/imgNew/guide/brochure-bg-01.png')no-repeat left 60px;}
 .brochure > div:nth-child(2){padding-left:140px;background:url('http://tkfile.yes24.com/imgNew/guide/brochure-bg-02.png')no-repeat left 60px;}
-.brochure div p:nth-child(1){font-size:20px;color:#333;padding:64px 0 10px 0;position:relative;font-family:'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;}
-.brochure div p:nth-child(1):after{content:"";display:block; width:36px;height:3px;background:#ec7d2c;position:absolute;bottom:0;left:0;}
-.brochure div p a{display:inline-block;width:78px;height:32px;line-height:32px;text-align:center;font-size:13px;color:#ec7d2c;border:1px solid #ec7d2c;position:absolute; top:61px;left:84px;}
+.brochure div p:nth-child(1){font-size:20px;color:#333;padding:64px 0 10px 0;position:relative;font-weight:700}
+.brochure div p:nth-child(1):after{content:"";display:block; width:36px;height:3px;background:#ffc107;position:absolute;bottom:0;left:0;}
+.brochure div p a{display:inline-block;width:78px;height:32px;text-align:center;font-size:13px;position:absolute;left:84px;}
 .brochure div dl{overflow:hidden;font-size:15px;color:#666;line-height:25px;padding-top:14px;}
 .brochure div dl dt{float:left;}
 .brochure div dl dd{clear:right;margin-left:64px;}
 .brochure div p:nth-child(2){font-size:15px;color:#666;line-height:25px;padding-top:14px;letter-spacing:-0.03em;}
-.brochure div p:nth-child(2) span{font-size:15px;color:#ec7d2c;text-decoration:underline;position:relative;padding-left:23px;}
+.brochure div p:nth-child(2) span{font-size:15px;color:#000;text-decoration:underline;position:relative;padding-left:23px;}
 .brochure div p:nth-child(2) span:before{content:"";display:block;width:20px;height:18px;position:absolute;left:0;top:-2px;background:url('http://tkfile.yes24.com/imgNew/common/ico-brochure.png')no-repeat;}
 .guidebox{display:none;width:1400px; padding-bottom:150px;}
 .gb01 > div{padding:66px 0 80px 0;}
 .gb01-con{text-align:center;border-bottom:1px solid #ddd;}
 .gb01-con:last-child{border:0 none;}
 .gb01-con img{margin-top:60px;}
-.gb01-con-tit{font-size:30px;font-weight:bold;color:#333;margin-bottom:42px;font-family:'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;}
+.gb01-con-tit{font-size:30px;font-weight:bold;color:#333;margin-bottom:42px;}
 .gb01-con-txt{font-size:14px;color:#666;line-height:24px;}
 .gb01-con-txt span{color:#f43142;}
 .gb01-con-2way{overflow:hidden;display:table;width:100%;text-align:left;margin-top:54px;}
@@ -47,7 +47,7 @@
 .gb02-list li:before{content:"";display:block;width:3px;height:3px;background:#999;position:absolute;top:10px;left:4px;border-radius:50%;}
 .gbnm-con{overflow:hidden;}
 .gbnm-con > div{float:left;}
-.gbnm-con .gbnm-con-tit{width:242px;font-size:30px;font-weight:bold;letter-spacing:-0.03em;line-height:40px;font-family:'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;}
+.gbnm-con .gbnm-con-tit{width:242px;font-size:30px;font-weight:bold;letter-spacing:-0.03em;line-height:40px;}
 .gbnm-con .gbnm-con-box{width:calc(100% - 242px);margin-top:5px;border-top:1px solid #333;padding:35px 0 70px 0;}
 .gbnm-con-txt{font-size:14px;color:#333;line-height:28px;}
 .gbnm-con-txt span{color:#f43142;}
@@ -78,7 +78,7 @@
 .guide-faq-srch a{display:block;width:58px;height:56px;background:url('http://tkfile.yes24.com/imgNew/common/ico-guide-srch.png')no-repeat 8px center;position:absolute;top:2px;right:2px;}
 .guide-faq-btns{font-size:0;margin-bottom:83px;}
 .guide-faq-btns a{display:inline-block;width:14.2857%;height:62px;line-height:62px;border-bottom:2px solid #333;font-size:16px;color:#333;text-align:center;}
-.guide-faq-btns a.on{color:#ec7d2c;border-bottom:2px solid #ec7d2c;}
+.guide-faq-btns a.on{color:#ffc107;border-bottom:2px solid #ffc107;}
 .guide-faq-list{border-top:1px solid #999;border-bottom:1px solid #999;margin-bottom:30px;}
 .guide-faq-list > a{display:block;width:100%;height:49px;line-height:49px;border-bottom:1px solid #ddd;font-size:14px;color:#333;}
 .guide-faq-list > a span{display:inline-block;width:184px;text-align:center;margin-right:46px;}
@@ -94,12 +94,12 @@
 .guide-faq-pager div{display:inline-block; margin:0 14px;}
 .guide-faq-result{position:relative;}
 .guide-faq-result p{position:absolute;left:0;top:-30px;font-size:14px;color:#999;}
-.guide-faq-result p span{color:#ec7d2c;}
+.guide-faq-result p span{color:#ffc107;}
 .guide-faq-result p em{color:#333;}
 .guide-faq-nolist{height:179px;border-top:1px solid #999;border-bottom:1px solid #999;text-align:center;font-size:14px;color:#ccc;line-height:24px;}
 .guide-faq-nolist span{display:inline-block;color:#333;margin:48px 0 20px 0;}
-.gb07box{background:#fdf2ea;padding:50px 52px 40px 52px;margin-bottom:50px;}
-.gb07box p{display:inline-block;font-size:30px;color:#333;font-weight:bold;border-bottom:3px solid #ec7d2c;padding-bottom:10px;margin-bottom:22px;letter-spacing:-0.03em;font-family:'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;}
+.gb07box{background:#f6f6f6;padding:50px 52px 40px 52px;margin-bottom:50px;}
+.gb07box p{display:inline-block;font-size:30px;color:#333;font-weight:bold;border-bottom:3px solid #ffc107;padding-bottom:10px;margin-bottom:22px;letter-spacing:-0.03em;}
 .gb07box ul li{font-size:14px;color:#555;line-height:28px;padding-left:8px;position:relative;}
 .gb07box ul li:before{content:""; display:block;width:3px;height:3px;background:#999;border-radius:50%;position:absolute;top:12px;left:0;}
 .bg07btns{margin-top:100px;overflow:hidden;padding-left:1px;}
@@ -107,8 +107,8 @@
 .bg07btns li:nth-child(1){padding:59px 0 0 165px;background:url('http://tkfile.yes24.com/imgNew/guide/ico-bg07btns1.jpg')no-repeat 49px center;}
 .bg07btns li:nth-child(2){padding:59px 0 0 172px;background:url('http://tkfile.yes24.com/imgNew/guide/ico-bg07btns2.jpg')no-repeat 63px center;}
 .bg07btns li:nth-child(3){padding:59px 0 0 169px;background:url('http://tkfile.yes24.com/imgNew/guide/ico-bg07btns3.jpg')no-repeat 44px center;}
-.bg07btns li p{font-size:20px;color:#333;font-family:'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;}
-.bg07btns li a{display:block;width:78px;height:32px;line-height:32px;text-align:center;font-size:13px;color:#ec7d2c;border:1px solid #ec7d2c;margin-top:13px;}
+.bg07btns li p{font-size:20px;color:#333;font-weight:700}
+.bg07btns li a{display:block;width:78px;height:32px;line-height:32px;text-align:center;font-size:13px;color:#ffc107;border:1px solid #ffc107;margin-top:13px;}
 
 
 </style>
@@ -129,7 +129,7 @@
 			    </dl>
 		    </div>
 		    <div>
-			    <p><span>1:1문의</span><a href="/" target="_blank">문의하기</a></p>
+			    <p><span>1:1문의</span><a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ourModal">문의하기</a></p>
 			    <p>
 				    평일 오후 5시 이후 문의는 당일 답변이 어려울 수 있습니다.<br>
 				    토,일요일/공휴일 문의는 운영 시간 내 순차적으로 답변 드리겠습니다.<br>
@@ -281,7 +281,7 @@
 		    <div class="gb07box">
 			    <p>판매 상담 및 계약</p>
 			    <ul>
-				    <li>판매 대행 의뢰할 공연에 대한 개요를 대표 E-mail 로 발송해주시면, 담당자가 확인 후 기획사 담당자에게 연락을 드립니다. yesticket@yes24.com</li>
+				    <li>판매 대행 의뢰할 공연에 대한 개요를 대표 E-mail 로 발송해주시면, 담당자가 확인 후 기획사 담당자에게 연락을 드립니다. yesticket@ticketMarket.com</li>
 				    <li>담당자와 공연 판매 대행 관련 상담 및 계약을 진행합니다. </li>
 				    <li>연간계약과 단일계약 중 선택하여 계약하고 관련 서류 작업을 완료합니다.</li>
 			    </ul>
@@ -289,7 +289,7 @@
 		    <div class="gb07box">
 			    <p>공연/상품 등록</p>
 			    <ul>
-				    <li>공연 등록 의뢰서 작성 후 각 담당자 E-mail 또는 yesticket@yes24.com 로 보내주세요. </li>
+				    <li>공연 등록 의뢰서 작성 후 각 담당자 E-mail 또는 yesticket@ticketMarket.com 로 보내주세요. </li>
 				    <li>공연 등록에 필요한 이미지, 좌석배치도 등과 함께 사업자등록증, 통장 사본을 전달주시면 더욱 빠르게 처리 가능합니다.</li>
 				    <li>등록 자료 접수 후 영업일 기준 3~4일 이내에 등록됩니다.</li>
 				    <li>필요한 경우 티켓 오픈 관련 공지사항을 게시할 수 있습니다. </li>
@@ -299,10 +299,10 @@
 			    <p>판매/마케팅</p>
 			    <ul>
 				    <li>판매는 티켓마켓를 비롯하여 제휴사에서도 함께 판매됩니다. </li>
-				    <li>판매 현황은 어드민을 통해 확인하실 수 있습니다.   ▶ 기획사 어드민: tms.yes24.com</li>
-				    <li>초대권 등 티켓 발권은 대표 E-mail (yesticket@yes24.com) 으로 신청 가능합니다. </li>
+				    <li>판매 현황은 어드민을 통해 확인하실 수 있습니다.   ▶ 기획사 어드민: tms.ticketMarket.com</li>
+				    <li>초대권 등 티켓 발권은 대표 E-mail (yesticket@ticketMarket.com) 으로 신청 가능합니다. </li>
 				    <li>공연 당일 해당 티켓 발송 또는 판매담당자 지원 가능합니다. 사전에 담당자와 협의해주시기 바랍니다. </li>
-				    <li>마케팅은 영업 담당자와 협의하시거나 tikcketmd@yes24.com 로 메일로 보내주시면 됩니다. </li>
+				    <li>마케팅은 영업 담당자와 협의하시거나 tikcketmd@ticketMarket.com 로 메일로 보내주시면 됩니다. </li>
 			    </ul>
 		    </div>
 		    <div class="gb07box">

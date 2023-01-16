@@ -15,11 +15,61 @@
 	<!--     Fonts and icons     -->
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+<!--     Modal popup     -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
 <title>sEEvisit</title>
 
 </head>
 
 <body>
+
+			<!-- Modal -->
+				<div class="modal fade" id="ourModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="ourModalLabel" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered modal-lg">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h1 class="modal-title fs-5" id="ourModalLabel">메일 문의</h1>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				       	<form action="">
+				       		<div class="mb-3">
+				       			<label for="yourName" class="form-label">이름</label>
+				       			<input type="text" id="yourName" class="form-control" placeholder="이름을 입력해주세요">
+				       		</div>
+				       		<div class="row">
+				       			<div class="col-md-6 mb-3">
+				       				<label for="yourPhone" class="form-label">연락처</label>
+				       				<input type="tel"  id="yourPhone" class="form-control" placeholder="ex)010-1234-5678">
+				       			</div>
+				       			<div class="col-md-6 mb-3">
+				       				<label for="yourEmail" class="form-label">이메일</label>
+				       				<input type="email"  id="yourEmail" class="form-control" placeholder="ex)you@email.com">
+				       			</div>
+				       		</div>
+				       			<div class="mb-3">
+				       				<label for="yourTextarea" class="form-label">문의내용</label>
+				       				<textarea rows="3" cols="30" name="" id="yourTextarea" class="form-control" placeholder="문의 내용을 입력해 주세요"></textarea>
+				       			</div>
+				       			<div class="form-check mb-3">
+				       				<input type="checkbox" id="yourFormCheck" class="form-check-input">
+				       				<label for="yourFormCheck" class="form-check-label">
+				       					개인정보 확인
+				       				</label>
+				       			</div>
+				       			<button class="btn btn-secondary" type="submit">메일전송</button>
+				       	</form>
+				       
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<!--// Modal -->
 	<% 
 		String sessionId = (String) session.getAttribute("memberId");
 		//로그인중이라면 로그인한 아이디가 저장되고 비로그인 중이면 sessionId==null 임
@@ -53,8 +103,9 @@
 			    	<ul>
 			    		<li><a href="showlist">예매</a></li>
 			    		<li><a href="event">이벤트</a></li>
-			    		<li><a href="void(0);" onclick="alert('준비중입니다.');return false;">랭킹</a></li>
+			    		<li><a href="ranking">랭킹</a></li>
 			    		<li><a href="guide">이용안내</a></li>
+			    		<li><a data-bs-toggle="modal" data-bs-target="#ourModal">메일문의</a></li>
 			    	</ul>
 			    	<!-- 검색 -->
 			    	<div class="menutop_search dodbogi" >
