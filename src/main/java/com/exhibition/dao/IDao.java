@@ -25,7 +25,8 @@ public interface IDao {
 		public int checkIdAndPW(String mid,String mpw);//아이디와 비밀번호의 존재 및 일치 여부 SELECT 
 		public MemberDto getMemberInfo(String mid);//아이디로 조회하여 회원정보 가져오기 SELECT
 		public void memberModify(String mid, String mpw, String mname, String meamil);//아이디로 조회하여 회원정보 수정하기 UPDATE
-
+		public void memberDelete(String mid, String mpw);//회원 탈퇴 delete
+		
 	    //공연정보게시판
 		public int showWrite(String stitle, String slocation, String sdday, String stime, String sage, String sprice ,String userid,int filecount, String skind); //공연등록
 		//public int rfbwrite(String rfbname, String rfbtitle, String rfbcontent, String rfbid, int filecount);//insert
