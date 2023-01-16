@@ -71,7 +71,7 @@
                 <li> 공연 기간 : <input class="input_type01" type="text" name="sdday" value="${showView.sdday}"  style="width:75px"> ~<input class="input_type01" type="text" name="sdday" value="${showView.sdday}"  style="width:75px"></li>
                 <li> <span class="title">공연 날짜 :</span> <input class="form-control form-control-sm stdate" type="text" id="pickDate" name="selectedDate" placeholder="예매날짜선택" style="width: 200px;display: inline-block;"><i class="material-icons" style="font-size: 24px;">today</i></li>
                 <li> 공연 시간 : <input class="input_type01" type="text" name="stime" value="${showView.stime}" readonly="readonly"></li>
-                <li> 공연 장소 : <input class="input_type01" type="text" name="sprice" value="${showView.sprice}" readonly="readonly"></li>
+                <li> 공연 가격 : <input class="input_type01" type="text" name="sprice" value="${showView.sprice}" readonly="readonly"></li>
                 <li> 공연 나이 : <input class="input_type01" type="text" name="sage" value="${showView.sage}" readonly="readonly"></li>
                 <li style="display:none"> 아이디 : <input class="input_type01" type="text" name="userid" value="${memberId}" readonly="readonly"></li>
                
