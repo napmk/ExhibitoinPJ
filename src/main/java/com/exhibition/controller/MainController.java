@@ -211,7 +211,7 @@ public class MainController {
 			model.addAttribute("mid",mid);
 		}
 
-		return "redirect:index";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/mypage")
@@ -295,7 +295,7 @@ public class MainController {
 	@RequestMapping (value ="memberDelete")
 	public String memberDelete () {
 		
-		return "memberDelete";
+		return "/member/memberDelete";
 	}
 	
 	

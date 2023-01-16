@@ -38,3 +38,14 @@ function purchasesNum(){
 	document.purchases_num.submit();
 	
 }
+
+
+function loginCheck(){
+	
+	if(document.login_check.mid.value.length == 0) {
+		alert("아이디를 입력해주세요 ");
+		return;
+	}
+	document.login_check.submit();
+	
+}

@@ -110,7 +110,8 @@
 			    	</ul>
 			    	<!-- 검색 -->
 			    	<div class="menutop_search dodbogi" >
-			    	 	<a  href="boardList"><i class="material-icons" style="font-size: 24px;">search</i></a>
+			    	<div class="input-search"><input class="search__input" type="text" name="searchKey" placeholder="Search" onclick="location.href='boardList' " style="cursor: pointer;"></div>
+			    	 <!--  	<a  href="boardList"><i class="material-icons" style="font-size: 24px;">search</i></a>-->
 			    	</div>
 			    	<!-- //검색 -->
 		    </div>

@@ -67,53 +67,108 @@
 </head>
 <body>
 <%@ include file="../inc/header.jsp" %>
-	<div id="wrapper">
-	 <div class="tit-util mt70" style="display:none">
-	 
-	 <div class="c_check_warp">
-				<div class="c_box qna_search">
-					<strong class="c_tit">자주찾는 질문 빠른검색</strong>
-					<legend><label for="searchtext">검색</label></legend>
-					<div class="search_box">
-						<input id="searchtext" type="text" title="검색어 입력" placeholder="검색어를 입력해 주세요.">
-						<button type="button" class="btn_search" title="검색하기" id="btn_search">검색</button>
-					</div>
-					<div class="c_qu">
-                       
-						    <a href="#none">현금영수증</a>                       
-                        
-						    <a href="#none">관람권</a>                       
-                        
-						    <a href="#none">예매</a>                       
-                        
-						    <a href="#none">환불</a>                       
-                        
-						    <a href="#none">취소</a>                       
-                        
-						    <a href="#none"></a>                       
-                        
-					</div>
-				</div>
-                <div class="c_box talk_inquiry" style="cursor:pointer;">
-                    <strong class="c_tit">상담톡 이용</strong>
-                    <span class="c_txt">상담 톡을 이용해보세요.</span>
-                    <a href="javascript:;">문의하기</a>
-                </div>
-				<div class="c_box email_inquiry" style="cursor:pointer;">
-					<strong class="c_tit">이메일 문의</strong>
-					<span class="c_txt">24시간 365일 언제든지 문의해주세요.</span>
-					<a href="/support/qna/default.aspx">문의하기</a>
-                </div>
-				<div class="c_box my_advice" style="cursor:pointer;">
-					<strong class="c_tit">내 상담 내역 확인</strong>
-					<span class="c_txt">문의하신 내용을 확인하실 수 있습니다.</span>
-					<a href="/user/mycgv/inquiry/qna/list.aspx?g=1#contaniner" target="_blank" title="새창열기">문의내역 조회</a>
-                </div>
-			</div>
-			
-	
-		
-	</div>
+	<div id="wrapper" class="mgt50">
+		<div class="eventList_wrapper">
+		<h4>FAQ TOP 5</h4>
+		<div class="accordion" id="accordionExample">
+		  <div class="accordion-item">
+		    <h2 class="accordion-header" id="headingOne">
+		      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		        [티켓결제] 예매한 티켓의 결제 수단을 변경할 수 있나요?
+		      </button>
+		    </h2>
+		    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+		      <div class="accordion-body">
+		        '무통장입금'을 선택하여 예매한 경우 입금 완료 전 신용카드로 결제 수단을 변경할 수 있습니다.<br><br>
+				PC>MY공연>예매확인/취소 상세에서 직접 변경하시거나<br>
+				고객센터 전화(1544-6399) 또는 일대일문의를 남겨주시면 처리 가능합니다.<br><br>
+				단, 신용카드로 결제한 경우 다른 카드로 변경 또는 할부 개월 수 변경 등은 하실 수 없으니 카드 결제 시 유의해 주시기 바랍니다.<br>
+				* 공연에 따라 결제 수단 변경이 불가할 수 있으므로 공지 및 공연 상품 상세 정보에서 확인해 주시기 바랍니다.<br>
+
+		      </div>
+		    </div>
+		  </div>
+		  <div class="accordion-item">
+		    <h2 class="accordion-header" id="headingTwo">
+		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+		        [티켓결제] 무통장입금의 입금은행을 변경하고 싶습니다.
+		      </button>
+		    </h2>
+		    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+		      <div class="accordion-body">
+		       입금은행 변경을 원하시는 경우, 번거로우시겠지만 이전 주문을 취소하고 새로 주문을 해주셔야 합니다.<br>
+				입금은행을 변경하여 입금하신 후, 3~4시간 후에도 입금확인 메일이 도착하지 않은 경우 1:1 문의를 통해 연락주시면 확인해드리겠습니다.
+		        </div>
+		    </div>
+		  </div>
+		  <div class="accordion-item">
+		    <h2 class="accordion-header" id="headingThree">
+		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+		       [티켓결제] 무통장입금 결제는 어떻게 이용하나요?
+		      </button>
+		    </h2>
+		    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+		      <div class="accordion-body">
+		      예매 시 '무통장입금'을 선택하시면 가상계좌를 발급해드립니다.<br>
+
+발급된 가상 계좌로 예매 후 익일 오후 11시 29분까지 입금해주셔야 예매가 완료됩니다.<br>
+
+단, 상품에 따라 예매 당일 밤 11시 29분에 마감되는 경우가 있으니 예매 전후 반드시 확인해주시기 바랍니다.<br><br>
+
+ 
+
+* 이용 가능 은행: 우리, 국민, 농협, 신한, KEB하나, 기업, SC제일, 우체국<br>
+
+ 
+
+'무통장입금'  결제 수단은 관람일 4일 전 예매 시 까지만 이용할 수 있으나, 특정 공연, 특정 기간 동안 해당 결제 수단 사용 제한이 있을 수 있습니다.<br><br>
+
+ 
+
+ATM 기기기로는 가상계좌 입금이 안 되는 경우가 있으니 가급적 인터넷 뱅킹, 모바일 뱅킹 등을 이용해주시고, 은행마다 은행 이용 마감 시간 또는 점검으로 인해 입금 처리가 안 될 수 있으니 은행별 이용 가능 시간을 꼭 확인해주시기 바랍니다.<br>
+		       </div>
+		    </div>
+		  </div>
+		  
+		   <div class="accordion-item">
+		    <h2 class="accordion-header" id="headingFour">
+		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+		       [티켓결제] 현금 영수증은 어떻게 발급 받나요?
+		      </button>
+		    </h2>
+		    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+		      <div class="accordion-body">
+		    무통장입금, 공연예매권, YES상품권, 예치금 등을 사용하신 결제 금액에 대해 현금 영수증 발급 신청이 가능합니다.<br>
+
+ 
+
+ * MY공연>예매확인/취소 에서 직접 현금영수증 발급 신청    (예매일 ~ 공연관람일 이후 1년간 발급 신청 가능합니다.)<br>
+
+ 
+
+※ 네이버페이 결제 건의 경우,티켓마켓 고객센터로 문의 후 발급 가능합니다.<br>
+
+ 
+
+ 발급 후 영수증 확인은 국세청 홈페이지에서 3~4일 이내에 확인하실 수 있습니다.</div>
+		    </div>
+		  </div>
+		  
+		  <div class="accordion-item">
+		    <h2 class="accordion-header" id="headingFive">
+		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+		       [티켓결제] 문화상품권으로 결제가 가능한가요?FAQ 보기/감추기
+
+		      </button>
+		    </h2>
+		    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+		      <div class="accordion-body">
+		   문화진흥원에서 발행한 문화상품권(컬쳐캐쉬)은  티켓 결제가 불가합니다.</div>
+		    </div>
+		  </div>
+		  
+	   </div>
+</div>
 </div>
 	
 

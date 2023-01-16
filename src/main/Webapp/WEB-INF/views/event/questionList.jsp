@@ -21,7 +21,7 @@
 				<li>
 					<a href="questionView?qnum=${qdto.qnum }">
 					<div class="card" style="width: 18rem;">
-					  <img src="..." class="card-img-top" alt="...">
+					  <img src="/resources/image/no-image.jpg" class="card-img-top" alt="...">
 					  <div class="card-body">
 					    <p class="event-text">
 							

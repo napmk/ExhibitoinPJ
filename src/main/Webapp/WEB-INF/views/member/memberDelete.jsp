@@ -9,25 +9,27 @@
 <body>
 
 	<%@ include file="../inc/header.jsp" %>
-	    
+	    <div id="loginWrap" class="mgt100">
+			<h3 class="mgb20">회원탈퇴</h3>
 	    	<form action="memberDeleteOk" method="post">
-		       	<div class="input-form-box">
-		       		<span class="content_text01">아이디 </span>
-		   			<input type="text" class="form-control" value="${memberId }" name="mid" style="width:30%">
+		       	<div>
+		       		<label class="form-label">아이디 </label>
+		   			<input type="text" class="form-control" value="${memberId }" name="mid" readonly="readonly" >
 				</div>
-				<div class="input-form-box">
+				<div class="mgt8">
 					<span class="content_text01">비밀번호 </span>
-					<input type="password" name="mpw" class="form-control" style="width:30%">
+					<input type="password" name="mpw" class="form-control">
 				</div>
-				<div class="button-login-box" >
-					<input type="submit" class="btn btn-dark btn-xs" 
-					style="width:30%" value="회원탈퇴">
-					
-					<input type="button" class="btn btn-dark btn-xs" 
-					style="width:30%" value="돌아가기" onclick="script:window.location='index'">
-				</div>
-	        </form>
 				
+				<div class="btn2set mgt20">
+					<div class="firbtn"><input type="submit" class="btn btn btn-secondary"  value="회원탈퇴"></div>
+					<div class="secbtn"><input type="button" class="btn btn-dark" value="돌아가기" onclick="script:window.location='index'"></div>
+			   </div>
+			   
+			   
+
+	        </form>
+		</div>	
 <%@ include file="../inc/footer.jsp" %>	
 </body>
 </html>
