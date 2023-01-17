@@ -17,7 +17,7 @@
 			<h2>${qdto.qcontent}</h2>
 			<p>이벤트 기간 : ${qdto.qdate }</p>
 		</div>
-		<div class="eventdt-img">이미지를 넣고 싶음</div>
+		<div class="eventdt-img">${qdto.qemail }</div>
 		</form>
 		<div class="mgt50">
 			<input value="목록" class="btn btn-warning my-2" onclick="script:window.location='event'">

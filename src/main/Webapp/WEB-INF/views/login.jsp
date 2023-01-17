@@ -32,7 +32,7 @@ nav{display:none}
 					<li><a href="join">회원가입</a></li>
 				</ul>
 			</div>
-			<a class="login_banner" href="/showview?snum=12">
+			<a class="login_banner" href="/showview?snum=10">
 				<img src="${pageContext.request.contextPath}/resources/image/banner01.jpg">
 			</a>
 		</div>

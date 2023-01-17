@@ -32,6 +32,26 @@
 
 <%@ include file="../inc/header.jsp" %>
   
+  	<!-- Modal -->
+				<div class="modal fade" id="ourModal2" data-bs-backdrop="static" tabindex="-1" aria-labelledby="ourModalLabel" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered modal-lg">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h1 class="modal-title fs-5" id="ourModalLabel">위치정보</h1>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				      
+				      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1584.382627667709!2d126.67702577611546!3d37.419023025177516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b79e916127a0d%3A0x71d4cbf558b8f754!2z64yA7ZWc66-86rWtIOyduOyynOq0keyXreyLnCDsl7DsiJjqtawg7Jew7IiY64-ZIO2VqOuwleurvOuhnDUw67KI6ri4IDk1!5e0!3m2!1sko!2sus!4v1563154457745!5m2!1sko!2sus" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+			
+				       
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<!--// Modal -->
+				
+				
   <form action ="ticketingOk?snum=${param.snum}" method="post">  
    <input type="hidden" value="${showView.snum }" name="snum">
    <div id="wrapper" class="boardWrap">
@@ -44,7 +64,10 @@
             <span class="fa fa-star"></span>
             <span class="fa fa-star"></span>
             <span>9.1</span>
-            <span style="margin-left:15px; color:#999">${showView.slocation} <i class="material-icons" style="font-size: 24px;">place</i></span>
+            <span style="margin-left:15px; color:#999">${showView.slocation} 
+            	
+            	<a data-bs-toggle="modal" data-bs-target="#ourModal2"><i class="material-icons" style="font-size: 24px;">place</i></a>
+            </span>
          </div>
          <div></div>
       </div>

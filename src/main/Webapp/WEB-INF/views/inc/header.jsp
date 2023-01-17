@@ -22,11 +22,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<title>sEEvisit</title>
+<title>티켓마켓</title>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/css/favicon.ico">
 
 </head>
 
 <body>
+
+<!-- floatMenu -->
+<div id="floatdiv" style="z-index: 10;right: -100px;">
+	<div id="floatContent">
+		<a href="/showview?snum=14"> <img src="${pageContext.request.contextPath }/resources/image/22012659_p.gif" width="110" height="130"></a>
+	 </div>
+</div>
+
+<!-- //floatMenu -->
 
 			<!-- Modal -->
 				<div class="modal fade" id="ourModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="ourModalLabel" aria-hidden="true">
@@ -49,7 +59,7 @@
 				       			</div>
 				       			<div class="col-md-6 mb-3">
 				       				<label for="yourEmail" class="form-label">이메일</label>
-				       				<input type="email"  id="yourEmail" class="form-control" placeholder="ex)you@email.com">
+				       				<input type="email"  id="yourEmail" class="form-control" placeholder="ex)ticketMarket@email.com">
 				       			</div>
 				       		</div>
 				       			<div class="mb-3">
@@ -88,7 +98,7 @@
 		            <a><%= sessionId %>님 <i class="material-icons" style="font-size: 16px;">face</i></a>
 		            <a href="logout" title="로그아웃">로그아웃</a>
 		            <a href="mypage" title="내정보수정">내정보수정</a>
-		            <a href="memberDelete" title="회원탈퇴">회원탈퇴</a>
+		           <!-- <a href="memberDelete" title="회원탈퇴">회원탈퇴</a>-->
 	                <a href="ticketConfirm" title="예매확인/취소">예매확인/취소</a>
 	                
 	           
@@ -110,7 +120,7 @@
 			    	</ul>
 			    	<!-- 검색 -->
 			    	<div class="menutop_search dodbogi" >
-			    	<div class="input-search"><input class="search__input" type="text" name="searchKey" placeholder="Search" onclick="location.href='boardList' " style="cursor: pointer;"></div>
+			    	<div class="input-search"><input class="search__input" type="text" name="searchKey" placeholder="공연을 검색해주세요" onclick="location.href='boardList' " style="cursor: pointer;"></div>
 			    	 <!--  	<a  href="boardList"><i class="material-icons" style="font-size: 24px;">search</i></a>-->
 			    	</div>
 			    	<!-- //검색 -->
@@ -120,54 +130,6 @@
 		    </div> -->
 	    </div>
    </nav> 
-   
-    
-	
-	<nav class="navbar navbar-expand-lg bg-light" style="display:none">
-	      <div class="container-fluid">
-	        <a class="navbar-brand" href="/">Seevisit</a>
-	        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-	          <span class="navbar-toggler-icon"></span>
-	        </button>
-	        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-	            <li class="nav-item">
-	              <a class="nav-link active" aria-current="page" href="#">예매</a>
-	            </li>
-	            <li class="nav-item">
-	              <a class="nav-link" href="#">스토어</a>
-	            </li>
-	            <li class="nav-item">
-	              <a class="nav-link" href="event">이벤트</a>
-	            </li>
-	            <li class="nav-item">
-	            <% if(sessionId == null) { %>
-	              <a class="nav-link" sec:authorize="isAnonymous()"  href="login">
-	              	로그인
-	              </a>
-	             <% } else { %> 
-	              <a class="nav-link" sec:authorize="isAuthenticated()" href="logout">로그아웃</a>
-	             <% } %> 
-	            </li>
-	            <% if(sessionId == null) { %>
-	            <li class="nav-item">
-             		<a class="nav-link" sec:authorize="isAnonymous()"  href="join">회원가입</a>
-          		</li>
-          		<% } else { %> 
-          		<li class="nav-item">
-             		<a class="nav-link" sec:authorize="isAnonymous()"  href="mypage">예매확인/취소</a>
-          		</li>
-          		<li class="nav-item">
-             		<a class="nav-link" sec:authorize="isAnonymous()"  href="mypage">마이페이지</a>
-          		</li>
-          		<% } %>	
-	          </ul>
-	          <form class="d-flex" role="search">
-	            <input class="form-control me-2" type="search" placeholder="Search" aria-label="검색해주세요">
-	            <button class="btn btn-outline-success" type="submit">search</button>
-	          </form>
-	        </div>
-	      </div>
-    </nav>
+
 </body>
 </html>

@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>index</title>
+<title>티켓마켓</title>
 <style>
 
 
@@ -16,24 +16,14 @@ footer {margin-top: 0px!important;}
 
 
 </style>
+
 </head>
 <body>
 
-	<%@ include file="inc/header.jsp" %>
+<%@ include file="inc/header.jsp" %>
 <div id="wrapper" >		
 
-<!-- 배경 사진을 img tag로 표현했을 때 -->
 
-
-
-
-<div id="floatdiv" style="z-index: 10;">
-	<div id="floatContent">
-		<a href="/showview?snum=14"> <img src="${pageContext.request.contextPath }/resources/image/22012659_p.gif" width="110" height="130"></a>
-	 </div>
-</div>
-
-<!-- //floatMenu -->
    	<!-- tab 메뉴-->
    	<div>
 		   	<div id="exhiPosterWrap">
@@ -143,13 +133,19 @@ footer {margin-top: 0px!important;}
 									<div class="rv_btnset">
 										<ul>
 											<li class="good-btn">
-											<button type="button" class="btn btn-outline-secondary">
+											<div class="like">
+								               <a type="button"  class="btn btn-outline-danger" name="liker">
+											   		♥좋아요${showView.liker}<span class="badge text-bg-secondary" ></span>
+											   	</a> 
+										   	</div>
+			   	
+											<button type="button" class="btn btn-outline-secondary" style="display:none">
 												<i class="material-icons" style="font-size: 16px;">favorite</i>
 													좋아요
 											</button>
 											</li>
 											<li>
-												<button style="background:#666;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												<button style="background:#212529;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
 												<!-- background:#8364c4;border-color:#a659bc-->
 											</li>
 										</ul>
@@ -188,13 +184,19 @@ footer {margin-top: 0px!important;}
 									<div class="rv_btnset">
 										<ul>
 											<li class="good-btn">
-											<button type="button" class="btn btn-outline-secondary">
+											<div class="like">
+								               <a type="button"  class="btn btn-outline-danger" name="liker">
+											   		♥좋아요${showView.liker}<span class="badge text-bg-secondary" ></span>
+											   	</a> 
+										   	</div>
+			   	
+											<button type="button" class="btn btn-outline-secondary" style="display:none">
 												<i class="material-icons" style="font-size: 16px;">favorite</i>
 													좋아요
 											</button>
 											</li>
 											<li>
-												<button style="background:#666;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												<button style="background:#212529;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
 												<!-- background:#8364c4;border-color:#a659bc-->
 											</li>
 										</ul>
@@ -233,13 +235,19 @@ footer {margin-top: 0px!important;}
 									<div class="rv_btnset">
 										<ul>
 											<li class="good-btn">
-											<button type="button" class="btn btn-outline-secondary">
+											<div class="like">
+								               <a type="button"  class="btn btn-outline-danger" name="liker">
+											   		♥좋아요${showView.liker}<span class="badge text-bg-secondary" ></span>
+											   	</a> 
+										   	</div>
+			   	
+											<button type="button" class="btn btn-outline-secondary" style="display:none">
 												<i class="material-icons" style="font-size: 16px;">favorite</i>
 													좋아요
 											</button>
 											</li>
 											<li>
-												<button style="background:#666;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												<button style="background:#212529;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
 												<!-- background:#8364c4;border-color:#a659bc-->
 											</li>
 										</ul>
@@ -278,13 +286,19 @@ footer {margin-top: 0px!important;}
 									<div class="rv_btnset">
 										<ul>
 											<li class="good-btn">
-											<button type="button" class="btn btn-outline-secondary">
+											<div class="like">
+								               <a type="button"  class="btn btn-outline-danger" name="liker">
+											   		♥좋아요${showView.liker}<span class="badge text-bg-secondary" ></span>
+											   	</a> 
+										   	</div>
+			   	
+											<button type="button" class="btn btn-outline-secondary" style="display:none">
 												<i class="material-icons" style="font-size: 16px;">favorite</i>
 													좋아요
 											</button>
 											</li>
 											<li>
-												<button style="background:#666;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												<button style="background:#212529;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
 												<!-- background:#8364c4;border-color:#a659bc-->
 											</li>
 										</ul>
@@ -323,13 +337,19 @@ footer {margin-top: 0px!important;}
 									<div class="rv_btnset">
 										<ul>
 											<li class="good-btn">
-											<button type="button" class="btn btn-outline-secondary">
+											<div class="like">
+								               <a type="button"  class="btn btn-outline-danger" name="liker">
+											   		♥좋아요${showView.liker}<span class="badge text-bg-secondary" ></span>
+											   	</a> 
+										   	</div>
+			   	
+											<button type="button" class="btn btn-outline-secondary" style="display:none">
 												<i class="material-icons" style="font-size: 16px;">favorite</i>
 													좋아요
 											</button>
 											</li>
 											<li>
-												<button style="background:#666;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
+												<button style="background:#212529;border-color:#999" type="button" class="btn btn-dark rebtn" onclick="location.href='showview?snum=${showDto.snum}' ">예매하기</button>
 												<!-- background:#8364c4;border-color:#a659bc-->
 											</li>
 										</ul>
@@ -364,9 +384,16 @@ footer {margin-top: 0px!important;}
 			   		</ul>
 		   	</div>
 		   	<!--  동영상 -->
-		   	<div class="focuson" style="display:none">
+		   	<div class="focuson">
 				<div class="focuson-wrap">
-			        <div class="focus-txt"><p class="focus-tit"><span href="#"><img src="http://tkfile.yes24.com/imgNew/main/tit8.png" alt=""></span></p><p class="focus-tit2"><a href="?Gcode=009_212">뮤지컬<br>오페라의 유령</a></p><p class="focus-detail"><a href="?Gcode=009_212">마침내,<br>13년 만의 한국어 공연!</a></p></div><div class="focus-con"><iframe id="playerFocusOn" class="focus-con-movie" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/?enablejsapi=1&amp;origin=http%3A%2F%2Fticket.yes24.com&amp;widgetid=1"></iframe><div class="focus-con-img"><a href="#" title="PJL5WN4NGLQ"><img src="http://tkfile.yes24.com/Upload2/Display/202212/20221230/오페라의 유령 썸네일.jpg/dims/quality/70/" alt="" class="lazyload"></a></div></div>
+			        <div class="focus-txt">
+			        	<p class="focus-tit"><span href="#"><img src="http://tkfile.yes24.com/imgNew/main/tit8.png" alt=""></span></p>
+			        	<p class="focus-tit2"><a href="?Gcode=009_212">뮤지컬<br>오페라의 유령</a></p><p class="focus-detail"><a href="?Gcode=009_212">마침내,<br>13년 만의 한국어 공연!</a></p></div><div class="focus-con">
+			        	
+					   <iframe width="640"  class="focus-con-movie"  height="360" src="https://www.youtube.com/embed/GGK1gQYtHBE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> 
+					 
+			        	
+			        </div>
 				</div>
 			</div>
 		   	<!--  검색기능 -->

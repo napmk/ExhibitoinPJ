@@ -101,7 +101,8 @@ nav .middle-menu ul {display:inline-block;margin: 12px 0 5px;}
 .eventList_wrapper h4{margin-bottom:15px}
 .eventList_wrapper .ev_customer{}
 .eventList_wrapper .ev_customer ul{display:inline-block}
-.eventList_wrapper .ev_customer li{float:left; margin:0 40px 40px 0;position: relative}
+.eventList_wrapper .ev_customer ul:nth-child(4n){margin: 0 0 40px 0;}
+.eventList_wrapper .ev_customer li{float:left; margin:0 40px 40px 0;position: relative;    min-height: 265px;}
 .eventList_wrapper .ev_customer li .event-text{color:#000;margin-bottom:6px; font-size:18px}
 .eventList_wrapper .ev_customer li .event-date{color:#999; font-size:14px}
 /*이벤트 상세페이지*/
@@ -117,9 +118,9 @@ nav .middle-menu ul {display:inline-block;margin: 12px 0 5px;}
 .focuson .focuson-wrap .focus-txt .focus-tit span{display:inline-block;font-size:35px;color:#fff;position:relative;font-weight:700;margin-bottom:54px;}
 .focuson .focuson-wrap .focus-txt .focus-tit span:after{content:""; display:block;position:absolute;right:0;width:50px; height:4px;background:#ec7d2c;bottom:-12px;transition:all 1s;}
 .focuson .focuson-wrap .focus-txt .focus-tit span:hover:after{width:100%;}
-.focuson .focuson-wrap .focus-txt .focus-tit2 a{font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;letter-spacing:-0.059em;font-size:50px; color:#fff;font-weight:700;line-height:60px;margin-bottom:25px;}
-.focuson .focuson-wrap .focus-txt .focus-detail a{font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;font-size:18px; color:#fff;font-weight:300;letter-spacing:-0.01em;}
-.focus-con{position:absolute;width:981px;height:560px;top:0; left:380px;}
+.focuson .focuson-wrap .focus-txt .focus-tit2 a{letter-spacing:-0.059em;font-size:50px; color:#fff;font-weight:700;line-height:60px;margin-bottom:25px;}
+.focuson .focuson-wrap .focus-txt .focus-detail a{font-size:18px; color:#fff;font-weight:300;letter-spacing:-0.01em;}
+.focus-con{position:absolute;width:981px;height:560px;top:0; left:330px;}
 .focus-con-movie{position:absolute;top:0;left:0;width:981px;height:560px;}
 .focus-con-movie iframe{width:981px;height:560px;}
 .focus-con-img{position:absolute;top:0;left:0;width:981px;height:560px;}

@@ -32,11 +32,16 @@
 							}
 						%>
 						
-							${mid }님 로그인 하셨습니다. 반갑습니다.<br>
-							${memberDto.mname }님의 가입일은 [${memberDto.mdate }] 입니다
 						</td>
 					</tr>
 				</table>
+				
+				<div id="loginWrap" class="mgt100">
+						<div style="padding: 30px 60px;border: 1px solid #ddd;border-radius: 10px;">
+					        <b>${mid }</b>님 로그인 하셨습니다. <br>
+							<b>${memberDto.mname }</b>님의 가입일은 [${memberDto.mdate }] 입니다.
+						</div>	
+				</div>
 <%@ include file="inc/footer.jsp" %>				
 </body>
 </html>

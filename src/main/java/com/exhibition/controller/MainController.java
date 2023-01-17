@@ -211,7 +211,7 @@ public class MainController {
 			model.addAttribute("mid",mid);
 		}
 
-		return "index";
+		return "loginOk";
 	}
 	
 	@RequestMapping(value = "/mypage")

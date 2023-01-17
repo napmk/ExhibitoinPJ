@@ -63,6 +63,7 @@
 .tel_inquiry li{float:left;margin-left:18px;padding-left:14px;border-left:solid 1px #bebdb4;}
 .tel_inquiry .time{font-size:12px;}
 
+.accordion{--bs-accordion-active-color: #000;}
 </style>
 </head>
 <body>
