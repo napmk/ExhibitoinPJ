@@ -23,7 +23,7 @@
 
 
 <title>티켓마켓</title>
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/css/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/css/favicon.ico">
 
 </head>
 
