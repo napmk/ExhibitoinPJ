@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/board.js"></script>
 <title>로그인</title>
 <style>
 nav{display:none}
@@ -13,7 +14,7 @@ nav{display:none}
 	<%@ include file="inc/header.jsp" %>
 		<div id="loginWrap" class="mgt100">
 			<a class="mgb20 center" href="/" ><img src="${pageContext.request.contextPath}/resources/image/logo5.jpg" style="width: 150px;"></a>
-			<form action="loginOk" method="post" class="mgt20">
+			<form action="loginOk" method="post" class="mgt20" name="login_check">
 				<div>
 					<label class="form-label" placeholder="아이디를 입력해주세요">아이디</label>
 					<input type="text" name="mid" class="form-control">

@@ -53,7 +53,7 @@ nav .middle-menu ul {display:inline-block;margin: 12px 0 5px;}
 #eventWrap h3 ,#goodsWrap h3{margin-bottom:15px}
 #eventWrap ul{}
 #eventWrap ul li{float:left;width: 440px; margin-right:0;margin-bottom:5px}
-#eventWrap ul li .eventImg{background:#eee; width:350px; height:180px;border-radius: 10px;}
+#eventWrap ul li .eventImg{background:#eee; width:350px; height:180px;border-radius: 10px;width: 350px;border: 1px solid #ddd;background: url(/resources/image/no-image.jpg);}
 #eventWrap ul li .eventTitle{font-size: 18px;margin-top: 10px;color: #363636;}
 #eventWrap ul li .eventDate{font-size:.95em; color:#999}
 #eventWrap ul li:last-child {margin-right:0px}
@@ -85,6 +85,15 @@ nav .middle-menu ul {display:inline-block;margin: 12px 0 5px;}
 .btn2set .firbtn{width:49% ;display:inline-block}
 .btn2set .secbtn{width:49%; display:inline-block;}
 .btn2set>div>input{width:100%}
+
+.btn3set{width:460px}
+.btn3set .firbtn{width:33% ;display:inline-block}
+.btn3set .secbtn{width:33%; display:inline-block;}
+.btn3set .threebtn{width:33%; display:inline-block;}
+.btn3set>div>input{width:100%}
+
+
+
 #footer{clear:both; background:#999; text-align:center; padding:15px 0; color:#fff}
 
 /*이벤트 고객뷰*/

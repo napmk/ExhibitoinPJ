@@ -211,7 +211,7 @@ public class MainController {
 			model.addAttribute("mid",mid);
 		}
 
-		return "redirect:index";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/mypage")
@@ -246,6 +246,99 @@ public class MainController {
 		
 		return "/member/memberModifyOk";
 	}
+	
+
+
+
+	
+	
+//	@RequestMapping ("/mSecessionOk")
+//	public String mSecessionOk(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws IOException {
+//		
+//		IDao dao = sqlSession.getMapper(IDao.class);
+//		
+//		String mid = request.getParameter("mid");
+//		String mpw = request.getParameter("mpw");
+//		
+//		int checkIdPwFlag = dao.checkIdAndPw(mid, mpw);
+//		//아이디와 비밀번호가 모두 일치하면 1 아니면 0
+//		
+//		model.addAttribute("checkIdPwFlag", checkIdPwFlag);
+//		
+//		if (checkIdPwFlag == 0){
+//		
+//			response.setContentType("text/html; charset=UTF-8");      
+//	        PrintWriter out = response.getWriter();
+//	        out.println("<script>alert('입력하신 아이디와 비밀번호가 일치하지 않습니다. 다시 확인해주세요.'); history.go(-1);</script>");
+//	        out.flush(); 
+//			
+//	        return "mSecession";
+//	        
+//		} else {//회원탈퇴창으로 이동
+//			
+//			dao.memberDelete(mid, mpw);//회원정보 삭제
+//			
+//			session.invalidate();//세션값 무효
+//			
+//			response.setContentType("text/html; charset=UTF-8");      
+//	        PrintWriter out = response.getWriter();
+//	        out.println("<script>alert('탈퇴가 완료되었습니다. 안녕히 가십시오.');</script>");
+//	        out.println("<script>location.href = 'index';</script>");
+//	        out.flush();
+//			
+//			return "index";
+//		}
+//		
+//	}
+	
+	
+	@RequestMapping (value ="memberDelete")
+	public String memberDelete () {
+		
+		return "/member/memberDelete";
+	}
+	
+	
+	@RequestMapping(value = "/memberDeleteOk")
+	public String memberDeleteOk(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws IOException{
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		String mid = request.getParameter("mid");
+		String mpw = request.getParameter("mpw");
+		
+		int checkIdPwFlag = dao.checkIdAndPW(mid, mpw);
+		
+		model.addAttribute("checkIdPwFlag", checkIdPwFlag);
+		
+		if (checkIdPwFlag == 0){
+			response.setContentType("text/html; charset=UTF-8");      
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('입력하신 아이디와 비밀번호가 일치하지 않습니다. 다시 확인해주세요.'); history.go(-1);</script>");
+	        out.flush(); 
+			
+	        return "member/memberDelete";
+	        
+		}else {
+		
+		
+		
+		dao.memberDelete(mid, mpw);//회원정보 삭제
+			
+		session.invalidate();
+		
+		response.setContentType("text/html; charset=UTF-8");      
+        PrintWriter out = response.getWriter();
+        out.println("<script>alert('탈퇴가 완료되었습니다. 안녕히 가세요.');</script>");
+        out.println("<script>location.href = 'index';</script>");
+        out.flush();
+		
+		
+		return "redirect:index";
+		}
+	}
+	
+	
 	
 	@RequestMapping (value ="showlist_adm") //관리자등록 show
 	public String showlist (Model model) {

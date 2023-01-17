@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/title.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/content.css">
+
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/join.js"></script>
 <title>전시회 예매</title>
+
 </head>
 <body>
 	<%@ include file="../inc/header.jsp" %>
@@ -41,8 +41,11 @@
 				
 				<div class="btn2set">
 					<div class="firbtn"><input type="submit" value="수정완료" class="btn btn-warning my-2" onclick="joinCheck()"></div>
-					<div class="secbtn"><input class="btn btn-secondary" type="button" value="취소" onclick="script:window.location='index'">
+					<div class="secbtn"><input class="btn btn-secondary" type="button" value="취소" onclick="script:window.location='index'"></div>
+					
 			   </div>
+			   <a  onclick="script:window.location='memberDelete'" style="margin-top: 20px;text-align: right;
+display: block;color: #999;">회원탈퇴</a>
 			</form>	
 		</div>
 		
