@@ -3,7 +3,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet" >
 <footer>
 <style>
-<!--top 메뉴-->
+
 #btn-back-to-top {
   position: fixed;
   bottom: 20px;
