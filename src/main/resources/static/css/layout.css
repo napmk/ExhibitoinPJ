@@ -120,13 +120,13 @@ nav .middle-menu ul {display:inline-block;margin: 12px 0 5px;}
 .focuson .focuson-wrap .focus-txt .focus-tit span:hover:after{width:100%;}
 .focuson .focuson-wrap .focus-txt .focus-tit2 a{letter-spacing:-0.059em;font-size:50px; color:#fff;font-weight:700;line-height:60px;margin-bottom:25px;}
 .focuson .focuson-wrap .focus-txt .focus-detail a{font-size:18px; color:#fff;font-weight:300;letter-spacing:-0.01em;}
-.focus-con{position:absolute;width:981px;height:560px;top:0; left:330px;}
+.focus-con{position:absolute;width:940px;height:560px;top:0; left:330px;}
 .focus-con-movie{position:absolute;top:0;left:0;width:981px;height:560px;}
 .focus-con-movie iframe{width:981px;height:560px;}
 .focus-con-img{position:absolute;top:0;left:0;width:981px;height:560px;}
 .focus-con-img a{display:block;}
 .focus-con-img a:after{content:""; display:block; width:86px; height:86px; background:url('http://tkfile.yes24.com/imgNew/common/kv-movie.png')no-repeat;position:absolute; top:50%; left:50%; margin:-43px 0 0 -43px;}
-.focus-con-img img{width:981px; height:560px;}
+.focus-con-img img{width:940px; height:560px;}
 
 /* 지금 나에게 필요한건? */
 .inner_wrap {position: relative;width: 100%;max-width: 1280px;margin: 0 auto;box-sizing: border-box;}
@@ -311,7 +311,7 @@ nav .middle-menu ul {display:inline-block;margin: 12px 0 5px;}
 }
 
 /*퀵메뉴*/
-#floatdiv { position:fixed; _position:absolute; _z-index:900;width:220px;display:inline-block;/* overflow:hidden;  같은 의미? */
+#floatdiv { position:fixed; _position:absolute; _z-index:900;width:220px;display:inline-block; right: -100px;/* overflow:hidden;  같은 의미? */
 right:0px; /* //화면 오른쪽에 위치한다. left로 변경가능 */top:20%; /* //화면 위쪽과의 간격 */background-color: transparent;margin:0;}
 #floatdiv ul  { list-style: none; }
 #floatdiv li  { margin-bottom: 2px; text-align: left; }
